@@ -14,7 +14,7 @@ struct SplashScreen: View {
         
         ZStack{
             if self.isActive {
-                ContentView()
+                LogInView()
             } else {
                 Color.black.ignoresSafeArea()
                 VStack{
