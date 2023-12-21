@@ -18,11 +18,11 @@ struct ContentView: View {
                 }.tag(0)
             CalculationView()
                 .tabItem {
-                    Label("Count Calories", systemImage: "square.grid.3x3.middleleft.fill")
+                    Label("Count Calories", systemImage: "square.stack.3d.up")
                 }.tag(1)
             WeatherView()
                 .tabItem {
-                    Label("Favourites", systemImage: "heart")
+                    Label("Favourites", systemImage: "heart.text.square")
                 }.tag(2)
             SettingsView()
                 .tabItem {

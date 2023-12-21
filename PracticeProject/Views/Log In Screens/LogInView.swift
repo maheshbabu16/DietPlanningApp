@@ -13,37 +13,38 @@ struct LogInView: View {
     
     @State private var txtUserName = ""
     @State private var txtPassWord = ""
-    @State private var allowLogIn:Bool = false
+    @State private var allowLogIn:Bool = true
     
     var body: some View {
-            if (allowLogIn == true){
-                ContentView()
-            }else{
-                ZStack{
-                    Color.black.ignoresSafeArea()
-                    VStack{
-                        LoginTextFeildView(textFeildStr: $txtUserName, placeHolder: "UserName")
-                            .frame(height: 60)
-                            .padding(.horizontal, 20.0)
-                            .padding(.vertical, 5.0)
-                        LoginTextFeildView(textFeildStr: $txtPassWord, placeHolder: "Password")
-                            .frame(height: 60)
-                            .padding(.horizontal, 20.0)
-                            .padding(.vertical, 5.0)
-                        
-                        Button{
-                            checkLogIn(strUserName: txtUserName, strPassWord: txtPassWord)
-                        }label: {
-                            Text("Login")
-                                .foregroundStyle(Color.textColor)
-                                .font(.system(size: 20))
-                                .bold()
-                        }.frame(width:200, height: 50)
-                            .background(Color.btnGradientColor)
-                            .cornerRadius(10).padding(.top, 50.0)
-                    }
+        if (allowLogIn == true){
+            ContentView()
+        }else{
+            ZStack{
+                Color.black.ignoresSafeArea()
+                VStack{
+                    
+                    LoginTextFeildView(textFeildStr: $txtUserName, placeHolder: "User Name")
+                        .frame(height: 60)
+                        .padding(.horizontal, 20.0)
+                        .padding(.vertical, 5.0)
+                    LoginTextFeildView(textFeildStr: $txtPassWord, placeHolder: "Password")
+                        .frame(height: 60)
+                        .padding(.horizontal, 20.0)
+                        .padding(.vertical, 5.0)
+                    
+                    Button{
+                        checkLogIn(strUserName: txtUserName, strPassWord: txtPassWord)
+                    }label: {
+                        Text("Login")
+                            .foregroundStyle(Color.textColor)
+                            .font(.system(size: 20))
+                            .bold()
+                    }.frame(width:200, height: 50)
+                        .background(Color.btnGradientColor)
+                        .cornerRadius(10).padding(.top, 50.0)
                 }
             }
+        }
     }
     
      func checkLogIn(strUserName:String?, strPassWord:String?){
