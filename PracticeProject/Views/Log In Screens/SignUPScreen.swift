@@ -56,10 +56,12 @@ struct SignUPScreen: View {
     func addData() {
         let newData = DietData(
             userName: strNewUserName,
-            passWord: strNewPassword
+            passWord: strNewPassword,
+            name: strNewUserName
         )
         withAnimation {
             addLogInCredentials.insert(newData)
+            print("Data Saved")
         }
     }
     

@@ -11,8 +11,8 @@ import SwiftUI
 struct PracticeProjectApp: App {
     var body: some Scene {
         WindowGroup {
-            SplashScreen()
+            ContentView()
+                .modelContainer(for: DietData.self)
         }
-            .modelContainer(for: DietData.self, inMemory: true)
     }
 }

@@ -16,7 +16,16 @@ struct SplashScreen: View {
         
         ZStack{
             if self.isActive {
-                LogInView()
+                if fetchDataBase.count != 0 {
+                    if fetchDataBase[0].isLogInApproved {
+                        ContentView()
+                    } else {
+                        LogInView()
+                    }
+                } else {
+                    LogInView()
+                }
+                
             } else {
                 Color.black.ignoresSafeArea()
                 VStack{

@@ -25,7 +25,7 @@ class DietData {
     var isLogInApproved : Bool
     
     
-    init(userName: String = "",passWord: String = "",name: String = "", calories: Int = 1, quantity: Int = 1, protien: Int = 1, carbs: Int = 1, fats: Int = 1, calCount: Int = 1, protienCount: Int = 1, carbsCount: Int = 1, fatsCount: Int = 1, isLogInApproved: Bool = false) {
+    init(userName: String = "",passWord: String = "",name: String = "", calories: Int = 0, quantity: Int = 0, protien: Int = 0, carbs: Int = 0, fats: Int = 0, calCount: Int = 0, protienCount: Int = 0, carbsCount: Int = 0, fatsCount: Int = 0, isLogInApproved: Bool = false) {
         self.userName = userName
         self.passWord = passWord
         self.name = name
