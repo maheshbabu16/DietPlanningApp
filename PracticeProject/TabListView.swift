@@ -7,11 +7,12 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct TabListView: View {
     @State private var selectedTab: Int = 0
     
     var body: some View {
         TabView(selection: $selectedTab){
+            
             ListHomeScreen()
                 .tabItem {
                     Label("Appetite", systemImage: "fork.knife.circle")
@@ -28,16 +29,17 @@ struct ContentView: View {
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }.tag(3)
-        }.accentColor(Color("neonClr"))
-            .onChange(of: selectedTab) { newValue in
-                CommonFunctions.Functions.getHapticFeedback()
-            }
             
+        }
+        .accentColor(Color("neonClr"))
+        .onChange(of: selectedTab) { newValue in
+            CommonFunctions.Functions.getHapticFeedback()
+        }
     }
 }
 
 #Preview {
-    ContentView()
+    TabListView()
 }
 
 

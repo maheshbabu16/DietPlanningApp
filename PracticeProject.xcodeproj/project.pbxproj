@@ -22,7 +22,7 @@
 		FE52E3F62B0E5DE2003855A0 /* DietData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE52E3F52B0E5DE2003855A0 /* DietData.swift */; };
 		FE52E3F72B0E5DE2003855A0 /* DietData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE52E3F52B0E5DE2003855A0 /* DietData.swift */; };
 		FE5CCE5B2B02212D00F6F1C3 /* PracticeProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CCE5A2B02212D00F6F1C3 /* PracticeProjectApp.swift */; };
-		FE5CCE5D2B02212D00F6F1C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CCE5C2B02212D00F6F1C3 /* ContentView.swift */; };
+		FE5CCE5D2B02212D00F6F1C3 /* TabListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CCE5C2B02212D00F6F1C3 /* TabListView.swift */; };
 		FE5CCE5F2B02213000F6F1C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE5CCE5E2B02213000F6F1C3 /* Assets.xcassets */; };
 		FE5CCE632B02213000F6F1C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE5CCE622B02213000F6F1C3 /* Preview Assets.xcassets */; };
 		FE5CCE6A2B02219100F6F1C3 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CCE692B02219000F6F1C3 /* Food.swift */; };
@@ -82,7 +82,7 @@
 		FE52E3F52B0E5DE2003855A0 /* DietData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietData.swift; sourceTree = "<group>"; };
 		FE5CCE572B02212D00F6F1C3 /* PracticeProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PracticeProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE5CCE5A2B02212D00F6F1C3 /* PracticeProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeProjectApp.swift; sourceTree = "<group>"; };
-		FE5CCE5C2B02212D00F6F1C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FE5CCE5C2B02212D00F6F1C3 /* TabListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabListView.swift; sourceTree = "<group>"; };
 		FE5CCE5E2B02213000F6F1C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE5CCE602B02213000F6F1C3 /* PracticeProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PracticeProject.entitlements; sourceTree = "<group>"; };
 		FE5CCE622B02213000F6F1C3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -225,7 +225,7 @@
 			children = (
 				FE5CCE5A2B02212D00F6F1C3 /* PracticeProjectApp.swift */,
 				FEC1EB5C2B023C4A00DF109E /* AddNewItemView.swift */,
-				FE5CCE5C2B02212D00F6F1C3 /* ContentView.swift */,
+				FE5CCE5C2B02212D00F6F1C3 /* TabListView.swift */,
 				FE5CCE6E2B02226F00F6F1C3 /* Data */,
 				FE245AD62B025DD9000EF370 /* Style */,
 				FEC1EB5E2B023C5600DF109E /* Views */,
@@ -384,7 +384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEC1EB602B0244D400DF109E /* SplashScreen.swift in Sources */,
-				FE5CCE5D2B02212D00F6F1C3 /* ContentView.swift in Sources */,
+				FE5CCE5D2B02212D00F6F1C3 /* TabListView.swift in Sources */,
 				FE5CCE702B022B3800F6F1C3 /* ListHomeScreen.swift in Sources */,
 				FE415D232B13686C00EF7D87 /* ProgressViewScreen.swift in Sources */,
 				FE5CCE5B2B02212D00F6F1C3 /* PracticeProjectApp.swift in Sources */,

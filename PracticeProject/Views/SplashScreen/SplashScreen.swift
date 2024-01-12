@@ -18,7 +18,7 @@ struct SplashScreen: View {
             if self.isActive {
                 if fetchDataBase.count != 0 {
                     if fetchDataBase[0].isLogInApproved {
-                        ContentView()
+                        TabListView()
                     } else {
                         LogInView()
                     }

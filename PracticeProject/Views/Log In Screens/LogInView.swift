@@ -67,7 +67,7 @@ struct LogInView: View {
                         )
                     }
                 }
-                NavigationLink(destination: ContentView(), isActive: $allowLogIn){EmptyView()}
+                NavigationLink(destination: TabListView(), isActive: $allowLogIn){EmptyView()}
                 
             }.navigationTitle("Log In")
                 .toolbar{

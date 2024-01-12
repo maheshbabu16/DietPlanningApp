@@ -11,7 +11,7 @@ import SwiftUI
 struct PracticeProjectApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabListView()
                 .modelContainer(for: DietData.self)
         }
     }
