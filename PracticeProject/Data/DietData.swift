@@ -22,9 +22,10 @@ class DietData {
     var protienCount: Int
     var carbsCount: Int
     var fatsCount: Int
+    var isLogInApproved : Bool
     
     
-    init(userName: String = "",passWord: String = "",name: String = "", calories: Int = 1, quantity: Int = 1, protien: Int = 1, carbs: Int = 1, fats: Int = 1, calCount: Int = 1, protienCount: Int = 1, carbsCount: Int = 1, fatsCount: Int = 1) {
+    init(userName: String = "",passWord: String = "",name: String = "", calories: Int = 1, quantity: Int = 1, protien: Int = 1, carbs: Int = 1, fats: Int = 1, calCount: Int = 1, protienCount: Int = 1, carbsCount: Int = 1, fatsCount: Int = 1, isLogInApproved: Bool = false) {
         self.userName = userName
         self.passWord = passWord
         self.name = name
@@ -37,5 +38,6 @@ class DietData {
         self.protienCount = protienCount
         self.carbsCount = carbsCount
         self.fatsCount = fatsCount
+        self.isLogInApproved = isLogInApproved
     }
 }

@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct SplashScreen: View {
     @State var isActive: Bool = false
+    @Query var fetchDataBase: [DietData]
     
     var body: some View {
         

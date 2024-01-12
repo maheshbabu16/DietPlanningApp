@@ -12,6 +12,7 @@ struct PracticeProjectApp: App {
     var body: some Scene {
         WindowGroup {
             SplashScreen()
-        }.modelContainer(for: DietData.self)
+        }
+            .modelContainer(for: DietData.self, inMemory: true)
     }
 }

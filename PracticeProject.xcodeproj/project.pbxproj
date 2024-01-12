@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FE088ED12B02AA5800CBD77F /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE088ED02B02AA5800CBD77F /* WeatherView.swift */; };
+		FE20A7412B4AB24D00B9BD68 /* SignUPScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE20A7402B4AB24D00B9BD68 /* SignUPScreen.swift */; };
 		FE245AE02B026610000EF370 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE245ADF2B026610000EF370 /* WidgetKit.framework */; };
 		FE245AE22B026610000EF370 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE245AE12B026610000EF370 /* SwiftUI.framework */; };
 		FE245AE52B026610000EF370 /* FoodWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE245AE42B026610000EF370 /* FoodWidgetsBundle.swift */; };
@@ -66,6 +67,7 @@
 
 /* Begin PBXFileReference section */
 		FE088ED02B02AA5800CBD77F /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
+		FE20A7402B4AB24D00B9BD68 /* SignUPScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUPScreen.swift; sourceTree = "<group>"; };
 		FE245ADD2B026610000EF370 /* FoodWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FoodWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE245ADF2B026610000EF370 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		FE245AE12B026610000EF370 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -150,6 +152,7 @@
 		FE2596F32B31C39F00CC21DB /* Log In Screens */ = {
 			isa = PBXGroup;
 			children = (
+				FE20A7402B4AB24D00B9BD68 /* SignUPScreen.swift */,
 				FEBD70222B31A21B006EC997 /* LogInView.swift */,
 			);
 			path = "Log In Screens";
@@ -393,6 +396,7 @@
 				FE5CCE722B022BE000F6F1C3 /* SettingsView.swift in Sources */,
 				FE5CCE6C2B02219A00F6F1C3 /* ListDetail.swift in Sources */,
 				FEE88AF72B08C363007E953E /* FoodGridView.swift in Sources */,
+				FE20A7412B4AB24D00B9BD68 /* SignUPScreen.swift in Sources */,
 				FE5CCE6A2B02219100F6F1C3 /* Food.swift in Sources */,
 				FEBD70232B31A21B006EC997 /* LogInView.swift in Sources */,
 				FE2820882B03504800A902AA /* Constants.swift in Sources */,
