@@ -13,6 +13,7 @@ struct SignUPScreen: View {
     
     @State private var strNewUserName = ""
     @State private var strNewPassword = ""
+    @State private var showAlert: Bool = false
     
     var body: some View {
         NavigationStack{
@@ -30,6 +31,7 @@ struct SignUPScreen: View {
                     Button{
                         if !(strNewPassword == "" && strNewUserName == ""){
                             addData()
+                            showAlert = true
                         }
                        
                     }label: {
@@ -42,7 +44,9 @@ struct SignUPScreen: View {
                     .background(Color.btnGradientColor)
                     .cornerRadius(10).padding(.top, 20.0)
                 }
-            }
+            }.alert("Data Added Successfully", isPresented: $showAlert, actions: {
+                
+            })
             .toolbar {
                 ToolbarItem(placement: .principal) { // <3>
                     Text("Create Your Credentials")
@@ -64,7 +68,6 @@ struct SignUPScreen: View {
             print("Data Saved")
         }
     }
-    
 }
 
 #Preview {

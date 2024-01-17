@@ -66,19 +66,39 @@ struct LogInView: View {
                         })
                         )
                     }
+                    
+                    HStack(spacing: 10){
+                        Button{
+                            CommonFunctions.Functions.getHapticFeedback()
+                        }label: {
+                            HStack{
+                                Image(systemName: "apple.logo")
+                                Text("Sign In With Apple")
+                                    .font(.system(size: 14))
+                            }.foregroundStyle(Color.black)
+                            
+                        }.frame(width:170, height: 50)
+                            .background(Color.white)
+                            .cornerRadius(10).padding(.top, 20.0)
+                        Button{
+                            CommonFunctions.Functions.getHapticFeedback()
+                        }label: {
+                            HStack{
+                                Image("google.logo").resizable()
+                                    .frame(width: 20, height: 20)
+                                Text("Sign In With Google")
+                                    .font(.system(size: 14))
+                            }.foregroundStyle(Color.black)
+                                .padding(.horizontal, 5.0)
+                        }.frame(width:170, height: 50)
+                            .background(Color.white)
+                            .cornerRadius(10).padding(.top, 20.0)
+                    }
+                    .padding(.top, 10.0)
                 }
                 NavigationLink(destination: TabListView(), isActive: $allowLogIn){EmptyView()}
                 
             }.navigationTitle("Log In")
-                .toolbar{
-                    ToolbarItem(placement: .navigation) {
-                        Text("Log In")
-                            .fontWeight(.bold)
-                            .foregroundStyle(Color.white)
-                            .font(.system(size: 30))
-                            .padding(.top, 20.0)
-                    }
-                }
         }
         
     }

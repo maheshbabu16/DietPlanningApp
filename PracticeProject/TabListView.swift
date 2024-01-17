@@ -31,7 +31,7 @@ struct TabListView: View {
                 }.tag(3)
             
         }
-        .accentColor(Color("neonClr"))
+        .accentColor(Color.mint)
         .onChange(of: selectedTab) { newValue in
             CommonFunctions.Functions.getHapticFeedback()
         }
