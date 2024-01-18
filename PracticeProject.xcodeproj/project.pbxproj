@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18D474D32B5944DF00DC1637 /* SignInButtonsStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D474D22B5944DF00DC1637 /* SignInButtonsStack.swift */; };
 		FE088ED12B02AA5800CBD77F /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE088ED02B02AA5800CBD77F /* WeatherView.swift */; };
 		FE20A7412B4AB24D00B9BD68 /* SignUPScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE20A7402B4AB24D00B9BD68 /* SignUPScreen.swift */; };
 		FE245AE02B026610000EF370 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE245ADF2B026610000EF370 /* WidgetKit.framework */; };
@@ -66,6 +67,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		18D474D22B5944DF00DC1637 /* SignInButtonsStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButtonsStack.swift; sourceTree = "<group>"; };
 		FE088ED02B02AA5800CBD77F /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		FE20A7402B4AB24D00B9BD68 /* SignUPScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUPScreen.swift; sourceTree = "<group>"; };
 		FE245ADD2B026610000EF370 /* FoodWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FoodWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +156,7 @@
 			children = (
 				FE20A7402B4AB24D00B9BD68 /* SignUPScreen.swift */,
 				FEBD70222B31A21B006EC997 /* LogInView.swift */,
+				18D474D22B5944DF00DC1637 /* SignInButtonsStack.swift */,
 			);
 			path = "Log In Screens";
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D474D32B5944DF00DC1637 /* SignInButtonsStack.swift in Sources */,
 				FEC1EB602B0244D400DF109E /* SplashScreen.swift in Sources */,
 				FE5CCE5D2B02212D00F6F1C3 /* TabListView.swift in Sources */,
 				FE5CCE702B022B3800F6F1C3 /* ListHomeScreen.swift in Sources */,

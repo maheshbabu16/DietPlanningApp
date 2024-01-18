@@ -50,9 +50,9 @@ struct SettingsView: View {
             ZStack{
                 List {
                     Section{
-                        TextField("Username", text: $profileUsername)
-                        Toggle("Make account Private", isOn: $isPrivate).foregroundStyle(Color("TextColor"))
-                        
+                        Text("\(calDataBase[0].name)").bold()
+//                        Toggle("Make account Private", isOn: $isPrivate).foregroundStyle(Color("TextColor"))
+//                        
                     }
                 header: {
                     Text("Profile")
@@ -104,6 +104,23 @@ struct SettingsView: View {
                         
                         
                     }
+                    Button{
+                        self.showsAlert = true
+                       
+                    } label: {
+                        Text("Log Out")
+                            .foregroundStyle(Color.red)
+                    }.alert(isPresented: $showsAlert, content: {
+                        Alert(title: Text("Log Out"),
+                              message: Text("Are Your sure of logging out..?"),
+                              primaryButton: .destructive(
+                                Text("Log Out"),
+                                action: {
+                                    calDataBase[0].isLogInApproved = false
+                                }
+                              ),
+                              secondaryButton: .cancel())
+                    })
                 }
                 .navigationTitle("Settings")
                 .onChange(of: deviceAppearance) { _ in

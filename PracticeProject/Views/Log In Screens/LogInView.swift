@@ -104,15 +104,15 @@ struct LogInView: View {
     }
     
     func checkLogIn() -> Bool{
-        if arrSignUpUserData.count > 0 {
-            guard arrSignUpUserData[0].userName == txtUserName &&  arrSignUpUserData[0].passWord == txtPassWord else {
-                return false
+            
+            let arrFilter = arrSignUpUserData.filter({$0.name == txtUserName && $0.passWord == txtPassWord})
+            if arrFilter.count > 0 {
+                /// if all data are matched then will return true
+                arrFilter[0].isLogInApproved = true
+                return true
             }
-            /// if all data are matched then will return true
-            arrSignUpUserData[0].isLogInApproved = true
-            return true
-        } else { return false }
-    }
+            return false
+        }
 }
 
 struct LoginTextFeildView: View {
