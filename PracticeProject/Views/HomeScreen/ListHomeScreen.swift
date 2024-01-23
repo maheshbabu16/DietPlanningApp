@@ -27,7 +27,7 @@ struct ListHomeScreen: View {
         NavigationView{
                 
             List {
-                if (calCountDatabase.count > 0) {
+                if (calCountDatabase[0].calCount > 0) {
                     Section{
                             
                             ScrollView(.horizontal, showsIndicators: false){
