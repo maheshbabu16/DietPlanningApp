@@ -91,6 +91,7 @@ struct SettingsView: View {
                             calDataBase[0].isLogInApproved = false
                         }), secondaryButton: .cancel())
                     }
+                    
                     Button{
                         self.showsAlert = true
                     } label: {
@@ -118,23 +119,6 @@ struct SettingsView: View {
                         
                         
                     }
-                    Button{
-                        self.showsAlert = true
-                       
-                    } label: {
-                        Text("Log Out")
-                            .foregroundStyle(Color.red)
-                    }.alert(isPresented: $showsAlert, content: {
-                        Alert(title: Text("Log Out"),
-                              message: Text("Are Your sure of logging out..?"),
-                              primaryButton: .destructive(
-                                Text("Log Out"),
-                                action: {
-                                    calDataBase[0].isLogInApproved = false
-                                }
-                              ),
-                              secondaryButton: .cancel())
-                    })
                 }
                 .navigationTitle("Hello \(calDataBase[0].userName)")
                 .onChange(of: deviceAppearance) { _ in

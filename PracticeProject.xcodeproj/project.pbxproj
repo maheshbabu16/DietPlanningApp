@@ -155,7 +155,6 @@
 			children = (
 				FE20A7402B4AB24D00B9BD68 /* SignUPScreen.swift */,
 				FEBD70222B31A21B006EC997 /* LogInView.swift */,
-				18D474D22B5944DF00DC1637 /* SignInButtonsStack.swift */,
 			);
 			path = "Log In Screens";
 			sourceTree = "<group>";
@@ -386,7 +385,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18D474D32B5944DF00DC1637 /* SignInButtonsStack.swift in Sources */,
 				FEC1EB602B0244D400DF109E /* SplashScreen.swift in Sources */,
 				FE5CCE5D2B02212D00F6F1C3 /* TabListView.swift in Sources */,
 				FE5CCE702B022B3800F6F1C3 /* ListHomeScreen.swift in Sources */,
@@ -608,6 +606,8 @@
 				INFOPLIST_FILE = PracticeProject/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Plan My Diet";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Diet app wants to use your location always";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Diet app wants to use yout location";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -650,6 +650,8 @@
 				INFOPLIST_FILE = PracticeProject/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Plan My Diet";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Diet app wants to use your location always";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Diet app wants to use yout location";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

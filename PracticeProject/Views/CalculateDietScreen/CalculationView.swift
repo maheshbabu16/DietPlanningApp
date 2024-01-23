@@ -39,8 +39,10 @@ struct CalculationView: View {
                     }
                     
                 }else {
+                    
                     List{
                         Section{
+                            
                                 MenuSubView()
                                 VStack(spacing: 5){
                                     ForEach(foodDataStorage) { item in
@@ -156,23 +158,25 @@ struct CalculateRowCell: View {
     
     let foodItem: DietData
     var body: some View {
-        ZStack(alignment: .leading) {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.textColor.opacity(0.1))
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-            
-            HStack{
-                Text(foodItem.name).foregroundStyle(Color.textColor)
-                Spacer()
-                HStack(alignment: .center, spacing: 10){
-                    
-                    Text("\(foodItem.protienCount)").foregroundStyle(Color.textColor)
-                    Text("\(foodItem.carbsCount)").foregroundStyle(Color.textColor)
-                    Text("\(foodItem.fatsCount)").foregroundStyle(Color.textColor)
-                    Text("\(foodItem.calCount)").foregroundStyle(Color.textColor)
-                }
+        if (((foodItem.calCount != 0) && foodItem.fatsCount != 0) && (foodItem.protienCount != 0) && (foodItem.protienCount != 0)) {
+            ZStack(alignment: .leading) {
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.textColor.opacity(0.1))
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
                 
-            }.padding()
+                HStack{
+                    Text(foodItem.name).foregroundStyle(Color.textColor)
+                    Spacer()
+                    HStack(alignment: .center, spacing: 10){
+                        
+                        Text("\(foodItem.protienCount)").foregroundStyle(Color.textColor)
+                        Text("\(foodItem.carbsCount)").foregroundStyle(Color.textColor)
+                        Text("\(foodItem.fatsCount)").foregroundStyle(Color.textColor)
+                        Text("\(foodItem.calCount)").foregroundStyle(Color.textColor)
+                    }
+                    
+                }.padding()
+            }
         }
     }
 }
