@@ -21,9 +21,9 @@ struct TabListView: View {
                 .tabItem {
                     Label("Count Calories", systemImage: "square.stack.3d.up")
                 }.tag(1)
-            WeatherView()
+            MapTrackingView()
                 .tabItem {
-                    Label("Favourites", systemImage: "heart.text.square")
+                    Label("Track Steps", systemImage: "figure.walk.motion")
                 }.tag(2)
             SettingsView()
                 .tabItem {
@@ -31,7 +31,7 @@ struct TabListView: View {
                 }.tag(3)
             
         }
-        .accentColor(Color.mint)
+        .accentColor(Color.red)
         .onChange(of: selectedTab) { newValue in
             CommonFunctions.Functions.getHapticFeedback()
         }

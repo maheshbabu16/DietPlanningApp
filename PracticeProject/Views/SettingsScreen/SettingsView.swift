@@ -11,6 +11,7 @@ import SwiftUI
 struct SettingsView: View {
     
     @State var showsAlert = false
+    @State var showsLogOutAlert = false
     @State var showProgress = false
     
     enum AppearnaceStyle {
@@ -77,6 +78,19 @@ struct SettingsView: View {
                     } header: {
                         Text("About")
                     }
+                    
+                    Button{
+                        self.showsLogOutAlert = true
+                    }label: {
+                        Text("Log Out")
+                            .foregroundStyle(Color.btnGradientColor)
+                        
+                    }.alert(isPresented: $showsLogOutAlert) {
+                        Alert(title: Text("Log Out"), message: Text("Click yes if you wish to logout"), primaryButton: .destructive(Text("Log Out"),
+                                                                                                                                    action: {
+                            calDataBase[0].isLogInApproved = false
+                        }), secondaryButton: .cancel())
+                    }
                     Button{
                         self.showsAlert = true
                     } label: {
@@ -105,7 +119,7 @@ struct SettingsView: View {
                         
                     }
                 }
-                .navigationTitle("Settings")
+                .navigationTitle("Hello \(calDataBase[0].userName)")
                 .onChange(of: deviceAppearance) { _ in
                     // Apply appearance changes when the selected style changes
                     deviceAppearance.applyAppearance()

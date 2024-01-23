@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FE088ED12B02AA5800CBD77F /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE088ED02B02AA5800CBD77F /* WeatherView.swift */; };
+		FE088ED12B02AA5800CBD77F /* MapTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE088ED02B02AA5800CBD77F /* MapTrackingView.swift */; };
 		FE20A7412B4AB24D00B9BD68 /* SignUPScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE20A7402B4AB24D00B9BD68 /* SignUPScreen.swift */; };
 		FE245AE02B026610000EF370 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE245ADF2B026610000EF370 /* WidgetKit.framework */; };
 		FE245AE22B026610000EF370 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE245AE12B026610000EF370 /* SwiftUI.framework */; };
@@ -66,7 +66,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		FE088ED02B02AA5800CBD77F /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
+		FE088ED02B02AA5800CBD77F /* MapTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTrackingView.swift; sourceTree = "<group>"; };
+		FE1F49252B5C1AA80071FFCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FE20A7402B4AB24D00B9BD68 /* SignUPScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUPScreen.swift; sourceTree = "<group>"; };
 		FE245ADD2B026610000EF370 /* FoodWidgetsExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FoodWidgetsExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE245ADF2B026610000EF370 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -192,13 +193,13 @@
 			path = SplashScreen;
 			sourceTree = "<group>";
 		};
-		FE58C5542B04C741008C368D /* WeatgerScreen */ = {
+		FE58C5542B04C741008C368D /* MapView */ = {
 			isa = PBXGroup;
 			children = (
-				FE088ED02B02AA5800CBD77F /* WeatherView.swift */,
+				FE088ED02B02AA5800CBD77F /* MapTrackingView.swift */,
 				FE415D222B13686C00EF7D87 /* ProgressViewScreen.swift */,
 			);
-			path = WeatgerScreen;
+			path = MapView;
 			sourceTree = "<group>";
 		};
 		FE5CCE4E2B02212D00F6F1C3 = {
@@ -223,6 +224,7 @@
 		FE5CCE592B02212D00F6F1C3 /* PracticeProject */ = {
 			isa = PBXGroup;
 			children = (
+				FE1F49252B5C1AA80071FFCF /* Info.plist */,
 				FE5CCE5A2B02212D00F6F1C3 /* PracticeProjectApp.swift */,
 				FEC1EB5C2B023C4A00DF109E /* AddNewItemView.swift */,
 				FE5CCE5C2B02212D00F6F1C3 /* TabListView.swift */,
@@ -260,7 +262,7 @@
 				FEE88AF62B08C363007E953E /* FoodGridView.swift */,
 				FE58C5502B04C6E2008C368D /* HomeScreen */,
 				FE58C5522B04C70A008C368D /* CalculateDietScreen */,
-				FE58C5542B04C741008C368D /* WeatgerScreen */,
+				FE58C5542B04C741008C368D /* MapView */,
 				FE58C5512B04C6EE008C368D /* SettingsScreen */,
 			);
 			path = Views;
@@ -388,7 +390,7 @@
 				FE5CCE702B022B3800F6F1C3 /* ListHomeScreen.swift in Sources */,
 				FE415D232B13686C00EF7D87 /* ProgressViewScreen.swift in Sources */,
 				FE5CCE5B2B02212D00F6F1C3 /* PracticeProjectApp.swift in Sources */,
-				FE088ED12B02AA5800CBD77F /* WeatherView.swift in Sources */,
+				FE088ED12B02AA5800CBD77F /* MapTrackingView.swift in Sources */,
 				FE52E3F62B0E5DE2003855A0 /* DietData.swift in Sources */,
 				FE6404F02B0337DD0073CA51 /* CalculationView.swift in Sources */,
 				FEC1EB5D2B023C4A00DF109E /* AddNewItemView.swift in Sources */,
@@ -601,6 +603,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PracticeProject/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Plan My Diet";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -642,6 +645,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PracticeProject/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Plan My Diet";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
