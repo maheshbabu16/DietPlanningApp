@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FoodGridView: View {
+    
     let sheetTitle:String
     let calorieCount:String
     let gridWidth: CGFloat

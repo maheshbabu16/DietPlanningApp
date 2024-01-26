@@ -35,8 +35,8 @@ extension Color {
 
 struct CommonFunctions{
     enum Functions{
-    static func getHapticFeedback() {
-            let generator = UIImpactFeedbackGenerator(style: .heavy)
+        static func getHapticFeedback(impact: UIImpactFeedbackGenerator.FeedbackStyle) {
+            let generator = UIImpactFeedbackGenerator(style: impact)
             generator.impactOccurred()
         }
     }

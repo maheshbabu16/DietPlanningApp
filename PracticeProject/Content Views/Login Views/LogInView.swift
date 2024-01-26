@@ -43,8 +43,11 @@ struct LogInView: View {
                     Button{
                         if checkLogIn() {
                             allowLogIn = true
+                            CommonFunctions.Functions.getHapticFeedback(impact: .light)
                         } else {
                             showsAlert = true
+                            CommonFunctions.Functions.getHapticFeedback(impact: .heavy)
+
                         }
                         
                     }label: {
@@ -69,7 +72,7 @@ struct LogInView: View {
                     
                     HStack(spacing: 10){
                         Button{
-                            CommonFunctions.Functions.getHapticFeedback()
+                            CommonFunctions.Functions.getHapticFeedback(impact: .heavy)
                         }label: {
                             HStack{
                                 Image(systemName: "apple.logo")
@@ -81,7 +84,7 @@ struct LogInView: View {
                             .background(Color.white)
                             .cornerRadius(10).padding(.top, 20.0)
                         Button{
-                            CommonFunctions.Functions.getHapticFeedback()
+                            CommonFunctions.Functions.getHapticFeedback(impact: .heavy)
                         }label: {
                             HStack{
                                 Image("google.logo").resizable()
@@ -96,7 +99,7 @@ struct LogInView: View {
                     }
                     .padding(.top, 10.0)
                 }
-                NavigationLink(destination: TabListView(), isActive: $allowLogIn){EmptyView()}
+                NavigationLink(destination: TabListView(), isActive: $allowLogIn){ EmptyView() }
                 
             }.navigationTitle("Log In")
         }

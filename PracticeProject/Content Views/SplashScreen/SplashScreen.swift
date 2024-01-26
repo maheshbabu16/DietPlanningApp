@@ -9,16 +9,20 @@ import SwiftUI
 import SwiftData
 
 struct SplashScreen: View {
+    
     @State var isActive: Bool = false
-    @Query var fetchDataBase: [DietData]
+    
+    @Query(filter: #Predicate<DietData> { data in
+            data.isLogInApproved == true
+        }) var fetchDataBase: [DietData]
     
     var body: some View {
         
         ZStack{
             if self.isActive {
-                if fetchDataBase.count != 0 {
+                if fetchDataBase.count > 0 {
                     if fetchDataBase[0].isLogInApproved {
-                        TabListView()
+                        TabListView().navigationBarBackButtonHidden()
                     } else {
                         LogInView()
                     }

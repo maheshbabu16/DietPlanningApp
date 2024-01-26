@@ -1,5 +1,5 @@
 //
-//  ListDetail.swift
+//  AppetiteDetailView.swift
 //  ListPractice
 //
 //  Created by Mahesh babu on 13/11/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ListDetail: View {
+struct AppetiteDetailView: View {
     
     var strTitle: String = ""
     var strLogo: String = ""
@@ -87,7 +87,8 @@ struct ListDetail: View {
                    .toolbar{
                        ToolbarItem(placement: .topBarTrailing) {
                            Button{
-                               CommonFunctions.Functions.getHapticFeedback()                           }label:{
+                               CommonFunctions.Functions.getHapticFeedback(impact: .heavy)
+               }label:{
                                Image(systemName: "heart.circle").foregroundStyle(Color.red)
                            }
                        }
@@ -103,5 +104,5 @@ struct ListDetail: View {
 }
 
 #Preview {
-    ListDetail()
+    AppetiteDetailView()
 }

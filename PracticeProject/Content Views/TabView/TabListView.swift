@@ -13,7 +13,7 @@ struct TabListView: View {
     var body: some View {
         TabView(selection: $selectedTab){
             
-            ListHomeScreen()
+            AppetiteHomeView()
                 .tabItem {
                     Label("Appetite", systemImage: "fork.knife.circle")
                 }.tag(0)
@@ -33,7 +33,7 @@ struct TabListView: View {
         }
         .accentColor(Color.red)
         .onChange(of: selectedTab) { newValue in
-            CommonFunctions.Functions.getHapticFeedback()
+            CommonFunctions.Functions.getHapticFeedback(impact: .heavy)
         }
     }
 }

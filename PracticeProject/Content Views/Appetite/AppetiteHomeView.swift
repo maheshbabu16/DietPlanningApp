@@ -1,5 +1,5 @@
 //
-//  ListHomeScreen.swift
+//  AppetiteHomeView.swift
 //  PracticeProject
 //
 //  Created by Mahesh babu on 13/11/23.
@@ -7,9 +7,11 @@
 import SwiftData
 import SwiftUI
 
-struct ListHomeScreen: View {
+struct AppetiteHomeView: View {
     
-    @Query var calCountDatabase:[DietData]
+    @Query(filter: #Predicate<DietData> { data in
+            data.isLogInApproved == true
+        }) var calCountDatabase: [DietData]
     
     @State private var isSheetPresented = false
     @State private var foods:[Food] = Food.preview()
@@ -80,7 +82,7 @@ struct ListHomeScreen: View {
                 }
 
             }.sheet(isPresented: $isSheetPresented) {
-                AddNewItemView(foods: $foods,
+                AddAppetiteItemView(foods: $foods,
                                dismissSheetHandler: { isSheetPresented.toggle() } )
                 .presentationDetents([.fraction(0.8), .large])
             }
@@ -93,21 +95,21 @@ struct ListHomeScreen: View {
         }
     }
     func deleteRow(at offsets: IndexSet){
-        CommonFunctions.Functions.getHapticFeedback()
+        CommonFunctions.Functions.getHapticFeedback(impact: .heavy)
         foods.remove(atOffsets: offsets)
         
     }
 }
 
 #Preview {
-    ListHomeScreen()
+    AppetiteHomeView()
 }
 struct FoodRow: View {
     
     let food: Food
     var body: some View {
         
-        NavigationLink(destination: ListDetail(strTitle: food.name, strLogo: food.icon, strDescription: food.description)) {
+        NavigationLink(destination: AppetiteDetailView(strTitle: food.name, strLogo: food.icon, strDescription: food.description)) {
             HStack(spacing: 20){
                 ZStack{
                     Color.blue.opacity(0.25)

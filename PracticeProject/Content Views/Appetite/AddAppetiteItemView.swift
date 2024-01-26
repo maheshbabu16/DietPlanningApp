@@ -1,5 +1,5 @@
 //
-//  AddNewItemView.swift
+//  AddAppetiteItemView.swift
 //  PracticeProject
 //
 //  Created by Mahesh babu on 13/11/23.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddNewItemView: View {
+struct AddAppetiteItemView: View {
     
     @State private var foodName: String = ""
     @State private var foodIcon: String = ""

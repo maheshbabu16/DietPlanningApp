@@ -9,7 +9,9 @@ import SwiftUI
 
 struct CalculationView: View {
     
-    @Query var foodDataStorage: [DietData]
+    @Query(filter: #Predicate<DietData> { data in
+            data.isLogInApproved == true
+        }) var foodDataStorage: [DietData]
     @Environment(\.modelContext) var formData
     
     @State private var isSheetPresented = false
