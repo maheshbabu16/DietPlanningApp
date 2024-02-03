@@ -19,6 +19,7 @@ struct SettingsView: View {
     @State private var profileImageSize = false
     @State fileprivate var shouldRedirectToLogIn = false
     @State fileprivate var reportIssue: Bool = false
+    @State fileprivate var isNotificationsEnabled: Bool = false
     
     
     @State var profileUsername: String = ""
@@ -37,6 +38,7 @@ struct SettingsView: View {
         case dark
         
         var systemAppearance: UIUserInterfaceStyle{
+            
             switch self {
             case .automatic:
                 return .unspecified
@@ -45,8 +47,8 @@ struct SettingsView: View {
             case .dark:
                 return .dark
             }
-            
         }
+        
         func applyAppearance() {
             UIApplication.shared.windows.forEach { window in
                 window.overrideUserInterfaceStyle = self.systemAppearance
@@ -68,60 +70,97 @@ struct SettingsView: View {
                                 Text("Mahesh")
                                     .font(.system(size: 25))
                                     .bold()
+                                    .padding(.leading)
                                 Spacer()
                                 Button{
                                     CommonFunctions.Functions.getHapticFeedback(impact: .light)
                                 }label: {
                                     ZStack {
-                                        Circle()
-                                            .fill(Color.textColor.opacity(0.15))
-                                        Image(systemName: "pencil").foregroundStyle(Color.blue)
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .fill(Color.blue.opacity(0.25))
+                                        Image(systemName: "pencil").foregroundStyle(Color.primary)
                                     }
-                                    .frame(height: 40)
+                                    .frame(width: 40 ,height: 40)
                                 }
-                                
-                                
-                            }.padding(.vertical, 10)
-                            Toggle("Make account Private", isOn: $isPrivate).foregroundStyle(Color("TextColor"))
+                            }.padding(.vertical, 5)
                             
-                        }
-                    header: {
-                        Text("Profile")
-                    }
-                        Section{
-                            Slider(value: $fontSize, in: 1...10)
-                            Picker("Appearnace", selection: $deviceAppearance){
-                                Text("Auto").tag(AppearnaceStyle.automatic)
-                                Text("Light").tag(AppearnaceStyle.light)
-                                Text("Dark").tag(AppearnaceStyle.dark)
+                            
+                            HStack {
+                                Image(systemName: "key.radiowaves.forward").foregroundStyle(Color.blue)
+                                Text("Change Password")
                             }
                             
                             HStack{
-                                Text("Version")
+                                Image(systemName: "lock")
+                                Toggle("Make account Private", isOn: $isPrivate).foregroundStyle(Color("TextColor"))
+                            }
+                        }
+                    header: {
+                        HStack{
+                            Image(systemName: "person.fill")
+                            Text("Profile")
+                        }
+                    }
+                        Section{
+                            //                            Slider(value: $fontSize, in: 1...10)
+                            
+                            HStack{
+                                Image(systemName: "moonphase.first.quarter")
+                                    .foregroundStyle(Color.gray)
+                                Picker("Appearnace", selection: $deviceAppearance){
+                                    Text("Auto").tag(AppearnaceStyle.automatic)
+                                    Text("Light").tag(AppearnaceStyle.light)
+                                    Text("Dark").tag(AppearnaceStyle.dark)
+                                }
+                            }
+                            HStack{
+                                Image(systemName: "bell.badge")
+                                Toggle("Notifications", isOn: $isNotificationsEnabled).foregroundStyle(Color("TextColor"))
+                            }
+                            HStack{
+                                HStack{
+                                    Image(systemName: "waveform")
+                                    Text("Version")
+                                }
                                 Spacer()
                                 Text("1.0.0")
                             }
-                           
-
+                            
+                            
                         } header: {
-                            Text("System")
+                            HStack{
+                                Image(systemName: "ipad.and.iphone")
+                                Text("System")
+                            }
                         }
                         
-                        Section("Report"){
-                            Picker("Write To Us", selection: $reportIssue) {
-                                Text("Send a screenshot")
-                                Text("Write an email")
-                                Text("Report a crash")
-                                Text("Write feedback on ppstore")
-                                Text("Rate us on Appstore")
-                            }.pickerStyle(NavigationLinkPickerStyle())
+                        Section{
+                            HStack{
+                                Image(systemName: "exclamationmark.bubble").foregroundStyle(Color.yellow)
+                                Picker("Write To Us", selection: $reportIssue) {
+                                    Text("Share screenshot")
+                                    Text("Share a recording")
+                                    Text("Write an email")
+                                    Text("Report a crash")
+                                    Text("Write feedback on Appstore")
+                                    Text("Rate us on Appstore")
+                                }.pickerStyle(NavigationLinkPickerStyle())
+                            }
+                        }header: {
+                            HStack{
+                                Image(systemName: "exclamationmark.warninglight")
+                                Text("Report")
+                            }
                         }
-                        Section("Credentials"){
+                        Section{
+                            
                             Button{
                                 self.showsLogOutAlert = true
                             }label: {
-                                Text("Log Out")
-                                    .foregroundStyle(Color.btnGradientColor)
+                                HStack{
+                                    Image(systemName: "arrow.backward.circle")
+                                    Text("Log Out")
+                                }.foregroundStyle(Color.btnGradientColor)
                                 
                             }.alert(isPresented: $showsLogOutAlert) {
                                 Alert(title: Text("Log Out"), message: Text("Click yes if you wish to logout"), primaryButton: .destructive(Text("Log Out"),
@@ -134,7 +173,11 @@ struct SettingsView: View {
                             Button{
                                 self.showsAlert = true
                             } label: {
-                                Text("Delete my account").foregroundStyle(Color.red)
+                                HStack{
+                                    Image(systemName: "trash")
+                                    
+                                    Text("Delete my account")
+                                }.foregroundStyle(Color.red)
                             }.alert(isPresented: $showsAlert) {
                                 
                                 if (calDataBase.count > 0){
@@ -158,15 +201,24 @@ struct SettingsView: View {
                                 
                                 
                             }
+                            
+                        }header: {
+                            HStack{
+                                Image(systemName: "key.viewfinder")
+                                Text("Credentials")
+                            }
                         }
                         
-                        Section("DataBase") {
+                        Section{
                             
                             Button{
                             }label: {
                                 Text("Delete Database")
                                     .foregroundStyle(Color.btnGradientColor)
                             }
+                        }header: {
+                            Image(systemName: "tray.full")
+                            Text("DataBase")
                         }
                     }
                     .navigationTitle("Settings")
