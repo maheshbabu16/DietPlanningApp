@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct TabListView: View {
+    
     @State private var selectedTab: Int = 0
     
     var body: some View {
+        
         TabView(selection: $selectedTab){
-            
             AppetiteHomeView()
                 .tabItem {
                     Label("Appetite", systemImage: "fork.knife.circle")
@@ -31,7 +32,7 @@ struct TabListView: View {
                 }.tag(3)
             
         }
-        .accentColor(Color.red)
+        .accentColor(Color.brown)
         .onChange(of: selectedTab) { newValue in
             CommonFunctions.Functions.getHapticFeedback(impact: .heavy)
         }
