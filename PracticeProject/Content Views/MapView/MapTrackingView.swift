@@ -13,7 +13,9 @@ struct MapTrackingView: View {
     
     @State private var userCurrentLocation: CLLocationCoordinate2D?
     @State private var camera: MapCameraPosition = .automatic
-    
+
+    let locationManager = CLLocationManager()
+
     var body: some View {
         
         ZStack(alignment: .bottomTrailing) {
@@ -33,14 +35,16 @@ struct MapTrackingView: View {
                 camera = .userLocation(fallback: .automatic)
 
             } label: {
-                Image(systemName: "paperplane.fill")
-                    .resizable()
-                    .foregroundStyle(Color.btnGradientColor)
-                    .padding(.all, 10)
+                withAnimation {
+                    Image(systemName: "paperplane.fill")
+                        .resizable()
+                        .foregroundStyle(Color.btnGradientColor)
+                        .padding(.all, 10)
+                }
             }
-            .frame(width: 40, height: 40)
+            .frame(width: 50, height: 50)
             .cornerRadius(10)
-            .background(Color.mainColor)
+            .background(Color.clear)
             .padding()
         }
         .onAppear {
@@ -48,8 +52,8 @@ struct MapTrackingView: View {
             camera = .userLocation(fallback: .automatic)
         }
     }
+    
     private func fetchUserLocation() {
-        let locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
     }
 }

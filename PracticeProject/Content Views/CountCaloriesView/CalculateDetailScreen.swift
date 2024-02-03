@@ -2,7 +2,11 @@ import SwiftUI
 import SwiftData
 
 struct CalculateDetailScreen: View {
+    
     @Environment(\.modelContext) var modelContext
+    @Query(filter: #Predicate<DietData> { data in
+            data.isLogInApproved == true
+        }) var calCountDatabase: [DietData]
     
     @State private var foodName: String = ""
     @State private var foodTotalCalories: String = ""
@@ -10,9 +14,7 @@ struct CalculateDetailScreen: View {
     @State private var protienInput: String = ""
     @State private var carbsInput: String = ""
     @State private var fatsInput: String = ""
-    
-//    @Binding var calData: [FoodCount]
-    
+        
     var dismissSheetHandler: (() -> Void)?
     
     var body: some View {
@@ -60,25 +62,21 @@ struct CalculateDetailScreen: View {
             let protienCount = (intProtien * intQuantity) / 100
             let carbsCount = (intCarbs * intQuantity) / 100
             let fatsCount = (intFats * intQuantity) / 100
-
             
-            let newData = DietData(
-                name: foodName,
-                calories: intCal,
-                quantity: intQuantity,
-                protien: intProtien,
-                carbs: intCarbs,
-                fats: intFats,
-                calCount: calorieCount,
-                protienCount: protienCount,
-                carbsCount: carbsCount,
-                fatsCount: fatsCount
-                )
+            let calData = calCountDatabase[0]
             withAnimation {
-                modelContext.insert(newData)
+
+                calData.name         = foodName
+                calData.calories     = intCal
+                calData.quantity     = intQuantity
+                calData.protien      = intProtien
+                calData.carbs        = intCarbs
+                calData.fats         = intFats
+                calData.calCount     = calorieCount
+                calData.protienCount = protienCount
+                calData.carbsCount   = carbsCount
+                calData.fatsCount    = fatsCount
             }
-        } else {
-            print("Error: Unable to convert one or both values to Int.")
-        }
+        } else { print("Error: Unable to convert one or both values to Int.")  }
     }
 }
