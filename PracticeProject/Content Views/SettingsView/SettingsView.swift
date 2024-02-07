@@ -26,6 +26,7 @@ struct SettingsView: View {
     @State private var fontSize: CGFloat = 5
     
     @State private var deviceAppearance: AppearnaceStyle = .automatic
+    @State private var changeAppIcon = ""
     
     @Environment(\.modelContext) var dataFromDataBase
     @Query(filter: #Predicate<DietData> { data in
@@ -107,6 +108,10 @@ struct SettingsView: View {
                         }
                         Section{
                             //                            Slider(value: $fontSize, in: 1...10)
+                            HStack{
+                                Image(systemName: "bell.badge")
+                                Toggle("Notifications", isOn: $isNotificationsEnabled).foregroundStyle(Color("TextColor"))
+                            }
                             
                             HStack{
                                 Image(systemName: "moonphase.first.quarter")
@@ -116,10 +121,15 @@ struct SettingsView: View {
                                     Text("Dark").tag(AppearnaceStyle.dark)
                                 }
                             }
+                            
                             HStack{
-                                Image(systemName: "bell.badge")
-                                Toggle("Notifications", isOn: $isNotificationsEnabled).foregroundStyle(Color("TextColor"))
+                                Image(systemName: "square.dashed.inset.filled")
+                                Picker("Change app icon", selection: $changeAppIcon) {
+                                    
+                                }.pickerStyle(NavigationLinkPickerStyle())
                             }
+                            
+                            
                             HStack{
                                 HStack{
                                     Image(systemName: "waveform")
