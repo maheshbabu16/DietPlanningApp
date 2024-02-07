@@ -38,6 +38,7 @@ struct CalculationView: View {
                 if !(totalCalories > 0) {
                     VStack{
                         Text("Add your data")
+                            .font(.system(size: 20))
                     }
                     
                 }else {

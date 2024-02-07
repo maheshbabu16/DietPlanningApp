@@ -85,6 +85,14 @@ struct SettingsView: View {
                             }.padding(.vertical, 5)
                             
                             
+                        }
+                    header: {
+                        HStack{
+                            Image(systemName: "person.fill")
+                            Text("Profile")
+                        }
+                    }
+                        Section{
                             HStack {
                                 Image(systemName: "key.radiowaves.forward").foregroundStyle(Color.blue)
                                 Text("Change Password")
@@ -94,19 +102,14 @@ struct SettingsView: View {
                                 Image(systemName: "lock")
                                 Toggle("Make account Private", isOn: $isPrivate).foregroundStyle(Color("TextColor"))
                             }
+                        }header: {
+                            Text("Account")
                         }
-                    header: {
-                        HStack{
-                            Image(systemName: "person.fill")
-                            Text("Profile")
-                        }
-                    }
                         Section{
                             //                            Slider(value: $fontSize, in: 1...10)
                             
                             HStack{
                                 Image(systemName: "moonphase.first.quarter")
-                                    .foregroundStyle(Color.gray)
                                 Picker("Appearnace", selection: $deviceAppearance){
                                     Text("Auto").tag(AppearnaceStyle.automatic)
                                     Text("Light").tag(AppearnaceStyle.light)
@@ -130,7 +133,7 @@ struct SettingsView: View {
                         } header: {
                             HStack{
                                 Image(systemName: "ipad.and.iphone")
-                                Text("System")
+                                Text("Device")
                             }
                         }
                         

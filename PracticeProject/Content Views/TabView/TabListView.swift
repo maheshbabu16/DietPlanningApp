@@ -20,11 +20,11 @@ struct TabListView: View {
                 }.tag(0)
             CalculationView()
                 .tabItem {
-                    Label("Count Calories", systemImage: "square.stack.3d.up")
+                    Label("Count Calories", systemImage: "takeoutbag.and.cup.and.straw")
                 }.tag(1)
-            MapTrackingView()
+            SheduleWorkOutView()
                 .tabItem {
-                    Label("Track Steps", systemImage: "figure.walk.motion")
+                    Label("Shedule Workout", systemImage: "dumbbell")
                 }.tag(2)
             SettingsView()
                 .tabItem {
@@ -32,7 +32,7 @@ struct TabListView: View {
                 }.tag(3)
             
         }
-        .accentColor(Color.brown)
+        .accentColor(Color.red)
         .onChange(of: selectedTab) { newValue in
             CommonFunctions.Functions.getHapticFeedback(impact: .heavy)
         }
