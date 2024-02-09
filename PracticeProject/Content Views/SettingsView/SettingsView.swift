@@ -10,7 +10,8 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @Environment(\.presentationMode) var presentationMode
+    //MARK: - Property Wrappers for variables
+    @AppStorage("active_icon") var activeAppIcon : String = "AppIcon"
     
     @State var showsAlert = false
     @State var showsLogOutAlert = false
@@ -20,14 +21,12 @@ struct SettingsView: View {
     @State fileprivate var shouldRedirectToLogIn = false
     @State fileprivate var reportIssue: Bool = false
     @State fileprivate var isNotificationsEnabled: Bool = false
-    
-    
     @State var profileUsername: String = ""
     @State private var fontSize: CGFloat = 5
-    
     @State private var deviceAppearance: AppearnaceStyle = .automatic
     @State private var changeAppIcon = ""
     
+    @Environment(\.presentationMode) var presentationMode
     @Environment(\.modelContext) var dataFromDataBase
     @Query(filter: #Predicate<DietData> { data in
         data.isLogInApproved == true
@@ -57,15 +56,18 @@ struct SettingsView: View {
         }
     }
     
-    
+    //MARK: - Body for main view
     var body: some View {
-        NavigationView{
-            
+        
+        //MARK: - NavigationStack
+        NavigationStack{
             if shouldRedirectToLogIn {
                 SplashScreen()
             } else {
                 ZStack{
                     List {
+                        
+                        //MARK: - Profile Section
                         Section{
                             HStack {
                                 Text("Mahesh")
@@ -93,25 +95,38 @@ struct SettingsView: View {
                             Text("Profile")
                         }
                     }
+                        
+                        //MARK: - Notifications Section
                         Section{
+                            HStack{
+                                Image(systemName: "app.badge")
+                                Toggle("Notifications", isOn: $isNotificationsEnabled).foregroundStyle(Color("TextColor")).font(.system(size: 14))
+                            }
+                        }header: {
+                            HStack{
+                                Image(systemName: "bell.badge")
+                                Text("Notifications")
+                            }
+                        }
+                        
+                        //MARK: - Account Section
+                        Section{
+                            
                             HStack {
                                 Image(systemName: "key.radiowaves.forward").foregroundStyle(Color.blue)
                                 Text("Change Password")
+                                    .font(.system(size: 14))
                             }
-                            
                             HStack{
                                 Image(systemName: "lock")
-                                Toggle("Make account Private", isOn: $isPrivate).foregroundStyle(Color("TextColor"))
+                                Toggle("Make account Private", isOn: $isPrivate).foregroundStyle(Color("TextColor")).font(.system(size: 14))
                             }
                         }header: {
                             Text("Account")
                         }
+                        
+                        //MARK: - Device Section
                         Section{
-                            //                            Slider(value: $fontSize, in: 1...10)
-                            HStack{
-                                Image(systemName: "bell.badge")
-                                Toggle("Notifications", isOn: $isNotificationsEnabled).foregroundStyle(Color("TextColor"))
-                            }
                             
                             HStack{
                                 Image(systemName: "moonphase.first.quarter")
@@ -119,35 +134,34 @@ struct SettingsView: View {
                                     Text("Auto").tag(AppearnaceStyle.automatic)
                                     Text("Light").tag(AppearnaceStyle.light)
                                     Text("Dark").tag(AppearnaceStyle.dark)
-                                }
+                                }.font(.system(size: 14))
                             }
                             
                             HStack{
                                 Image(systemName: "square.dashed.inset.filled")
-                                Picker("Change app icon", selection: $changeAppIcon) {
-                                    
+                                Picker("Select icon", selection: $activeAppIcon) {
+                                    let customIcons: [String] = ["AppIcon", "BallIcon", "OrangeIcon"]
+                                    ForEach(customIcons, id: \.self){ i in
+                                        HStack{
+                                            Image("IconApp").resizable().frame(width: 30, height: 30)
+                                            Text("\(i)")
+                                        }
+                                        .tag(i)
+                                    }
                                 }.pickerStyle(NavigationLinkPickerStyle())
+                                
                             }
-                            
-                            
-                            HStack{
-                                HStack{
-                                    Image(systemName: "waveform")
-                                    Text("Version")
-                                }
-                                Spacer()
-                                Text("1.0.0")
-                            }
-                            
                             
                         } header: {
                             HStack{
                                 Image(systemName: "ipad.and.iphone")
-                                Text("Device")
+                                Text("Appearance")
                             }
                         }
                         
+                        //MARK: - Help Section
                         Section{
+                            
                             HStack{
                                 Image(systemName: "exclamationmark.bubble").foregroundStyle(Color.yellow)
                                 Picker("Write To Us", selection: $reportIssue) {
@@ -157,14 +171,25 @@ struct SettingsView: View {
                                     Text("Report a crash")
                                     Text("Write feedback on Appstore")
                                     Text("Rate us on Appstore")
-                                }.pickerStyle(NavigationLinkPickerStyle())
+                                }.pickerStyle(NavigationLinkPickerStyle()).font(.system(size: 15))
+                            }
+                            
+                            HStack{
+                                HStack{
+                                    Image(systemName: "waveform")
+                                    Text("Version").font(.system(size: 14))
+                                }
+                                Spacer()
+                                Text("1.0.0").font(.system(size: 14))
                             }
                         }header: {
                             HStack{
-                                Image(systemName: "exclamationmark.warninglight")
-                                Text("Report")
+                                Image(systemName: "externaldrive.badge.exclamationmark")
+                                Text("Help")
                             }
                         }
+                        
+                        //MARK: - Credentials Section
                         Section{
                             
                             Button{
@@ -177,7 +202,7 @@ struct SettingsView: View {
                                 
                             }.alert(isPresented: $showsLogOutAlert) {
                                 Alert(title: Text("Log Out"), message: Text("Click yes if you wish to logout"), primaryButton: .destructive(Text("Log Out"),
-                                                                                                                                            action: {
+                                     action: {
                                     calDataBase[0].isLogInApproved = false
                                     shouldRedirectToLogIn = true
                                 }), secondaryButton: .cancel())
@@ -221,7 +246,7 @@ struct SettingsView: View {
                                 Text("Credentials")
                             }
                         }
-                        
+                        //MARK: - Database Section
                         Section{
                             
                             Button{
@@ -242,10 +267,13 @@ struct SettingsView: View {
                 }
             }
             
+        }.onChange(of: activeAppIcon) { newIcon in
+            UIApplication.shared.setAlternateIconName(newIcon)
         }
         
     }
     
+    //MARK: - Function meathods.
     func deleteAccountAction(){
         
         do {
@@ -262,6 +290,7 @@ struct SettingsView: View {
                 try dataFromDataBase.delete(model: DietData.self) } catch { print("Failed to clear all data.") }
         }
     }
+    
 }
 
 #Preview {

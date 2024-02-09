@@ -10,10 +10,11 @@ import SwiftUI
 struct SignUPScreen: View {
     
     @Environment (\.modelContext) var addLogInCredentials
-    
+
     @State private var strNewUserName = ""
     @State private var strNewPassword = ""
     @State private var showAlert: Bool = false
+    @State private var showMachingAlert: Bool = false
     
     var body: some View {
         NavigationStack{
@@ -30,8 +31,12 @@ struct SignUPScreen: View {
                         .padding(.vertical, 5.0)
                     Button{
                         if !(strNewPassword == "" && strNewUserName == ""){
-                            addData()
-                            showAlert = true
+                            if !checkUserNameAlreadyExists(userName: strNewUserName){
+                                addData()
+                                showAlert = true
+                            }else {
+                                showMachingAlert = true
+                            }
                         }
                        
                     }label: {
@@ -45,6 +50,9 @@ struct SignUPScreen: View {
                     .cornerRadius(10).padding(.top, 20.0)
                 }
             }.alert("Data Added Successfully", isPresented: $showAlert, actions: {
+                
+            })
+            .alert("Select a diffrent User Name", isPresented: $showMachingAlert, actions: {
                 
             })
             .toolbar {
@@ -67,6 +75,21 @@ struct SignUPScreen: View {
             addLogInCredentials.insert(newData)
             print("Data Saved")
         }
+    }
+    
+    func checkUserNameAlreadyExists(userName: String) -> Bool {
+        
+        let descriptor = FetchDescriptor<DietData>(predicate: #Predicate { data in
+            data.userName == userName
+        })
+       
+        do {
+            let fetchDataBase = try addLogInCredentials.fetch(descriptor)
+            return fetchDataBase.count != 0 ? true : false
+        }catch {
+            
+        }
+        return false
     }
 }
 
