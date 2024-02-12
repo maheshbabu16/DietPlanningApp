@@ -36,8 +36,14 @@ struct LogInView: View {
                     
                     HStack{
                         Spacer()
-                        NavigationLink("Sign up ?", destination: SignUPScreen())
-                            .padding(.trailing, 25.0).foregroundStyle(Color.btnGradientColor)
+                        NavigationLink {
+                            SignUPScreen()
+                        } label: {
+                            Text("Create an account ?")
+                         .font(.system(size: 14))
+                         .foregroundStyle(Color.btnGradientColor)
+                         .padding(.trailing, 25.0)
+                        }
                     }
                     
                     Button{
@@ -85,6 +91,7 @@ struct LogInView: View {
                         }.frame(width:170, height: 50)
                             .background(Color.white)
                             .cornerRadius(10).padding(.top, 20.0)
+                        
                         Button{
                             CommonFunctions.Functions.getHapticFeedback(impact: .heavy)
                         }label: {
@@ -102,14 +109,20 @@ struct LogInView: View {
                     .padding(.top, 10.0)
                 }
                 
-            }.navigationTitle("Log In")
+            }.toolbar(content: {
+                ToolbarItem(placement: .topBarLeading) {
+                    Text("Sign In")
+                        .foregroundStyle(Color.titleGradientColor)
+                        .font(.system(size: 25))
+                }
+            })
         }
         
     }
     
-    func checkLogIn() -> Bool{
-            
+    func checkLogIn() -> Bool {
             let arrFilter = arrSignUpUserData.filter({$0.name == txtUserName && $0.passWord == txtPassWord})
+        
             if arrFilter.count > 0 {
                 /// if all data are matched then will return true
                 arrFilter[0].isLogInApproved = true
