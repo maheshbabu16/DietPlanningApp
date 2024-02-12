@@ -25,6 +25,8 @@ struct SettingsView: View {
     @State private var fontSize: CGFloat = 5
     @State private var deviceAppearance: AppearnaceStyle = .automatic
     @State private var changeAppIcon = ""
+    @State private var editSheetPresented : Bool = false
+    @State private var showChangePasswordSheet : Bool = false
     
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.modelContext) var dataFromDataBase
@@ -70,12 +72,14 @@ struct SettingsView: View {
                         //MARK: - Profile Section
                         Section{
                             HStack {
-                                Text("Mahesh")
+                                Text("\(calDataBase[0].name)")
                                     .font(.system(size: 25))
                                     .bold()
                                     .padding(.leading)
                                 Spacer()
                                 Button{
+                                    self.profileUsername = calDataBase[0].name
+                                    self.editSheetPresented.toggle()
                                     CommonFunctions.Functions.getHapticFeedback(impact: .light)
                                 }label: {
                                     ZStack {
@@ -113,7 +117,11 @@ struct SettingsView: View {
                         Section{
                             
                             HStack {
-                                Image(systemName: "key.radiowaves.forward").foregroundStyle(Color.blue)
+                                Button{
+                                    self.showChangePasswordSheet.toggle()
+                                }label: {
+                                    Image(systemName: "key.radiowaves.forward").foregroundStyle(Color.blue)
+                                }
                                 Text("Change Password")
                                     .font(.system(size: 14))
                             }
@@ -264,13 +272,25 @@ struct SettingsView: View {
                         // Apply appearance changes when the selected style changes
                         deviceAppearance.applyAppearance()
                     }
+                }.sheet(isPresented: $editSheetPresented) {
+                    ChangePasswordView(textFeildStr: $profileUsername, editButtonClicked: {
+                        if profileUsername != calDataBase[0].name && profileUsername != ""{
+                            calDataBase[0].name = profileUsername
+                        }
+                        self.editSheetPresented.toggle()
+                    }, sheetType: .editUserName)
+                    .presentationDetents([.medium, .large])
                 }
+                .sheet(isPresented: $showChangePasswordSheet) {
+                    ChangePasswordView(textFeildStr: .constant(""), editButtonClicked: {
+                        
+                        self.showChangePasswordSheet.toggle()
+                    }, sheetType: .changePassword)
+                    .presentationDetents([.medium, .large])                }
             }
-            
         }.onChange(of: activeAppIcon) { newIcon in
             UIApplication.shared.setAlternateIconName(newIcon)
         }
-        
     }
     
     //MARK: - Function meathods.
@@ -290,7 +310,6 @@ struct SettingsView: View {
                 try dataFromDataBase.delete(model: DietData.self) } catch { print("Failed to clear all data.") }
         }
     }
-    
 }
 
 #Preview {

@@ -16,6 +16,7 @@ struct SplashScreen: View {
             data.isLogInApproved == true
         }) var fetchDataBase: [DietData]
     
+    @Query var dataFromDatabase: [DietData]
     var body: some View {
         
         ZStack{

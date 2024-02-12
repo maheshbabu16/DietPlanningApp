@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CalculationView: View {
     
+    //MARK: - Property Wrappers for variables
     @Query(filter: #Predicate<DietData> { data in
             data.isLogInApproved == true
         }) var foodDataStorage: [DietData]

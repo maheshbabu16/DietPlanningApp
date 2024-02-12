@@ -41,8 +41,10 @@ struct LogInView: View {
                     }
                     
                     Button{
-                        if checkLogIn() {
-                            allowLogIn = true
+                        if checkLogIn(){
+                            NavigationLink("") {
+                                TabListView()
+                            }
                             CommonFunctions.Functions.getHapticFeedback(impact: .light)
                         } else {
                             showsAlert = true
@@ -99,7 +101,6 @@ struct LogInView: View {
                     }
                     .padding(.top, 10.0)
                 }
-                NavigationLink(destination: TabListView(), isActive: $allowLogIn){ EmptyView() }
                 
             }.navigationTitle("Log In")
         }
@@ -118,28 +119,6 @@ struct LogInView: View {
         }
 }
 
-struct LoginTextFeildView: View {
-    @Binding var textFeildStr: String
-    var placeHolder: String
-    
-    
-    var strUsername: String?
-    var body: some View {
-        ZStack{
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.white.opacity(0.15))
-            
-            TextField("", text: $textFeildStr,
-                      prompt: Text("\(placeHolder)")
-                .foregroundStyle(Color.white)
-                .font(.system(size: 15))
-            )
-            .padding()
-            .foregroundStyle(Color.white)
-        }
-    }
-    
-}
 #Preview {
     LogInView()
 }
