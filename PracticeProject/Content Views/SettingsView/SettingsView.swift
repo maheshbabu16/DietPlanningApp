@@ -204,9 +204,11 @@ struct SettingsView: View {
                                 self.showsLogOutAlert = true
                             }label: {
                                 HStack{
-                                    Image(systemName: "arrow.backward.circle")
+                                    Image(systemName: "arrow.backward.circle").foregroundStyle(Color.btnGradientColor)
                                     Text("Log Out")
-                                }.foregroundStyle(Color.btnGradientColor)
+                                        .font(.system(size: 14))
+                                        .foregroundStyle(Color.primary)
+                                }
                                 
                             }.alert(isPresented: $showsLogOutAlert) {
                                 Alert(title: Text("Log Out"), message: Text("Click yes if you wish to logout"), primaryButton: .destructive(Text("Log Out"),
@@ -220,10 +222,11 @@ struct SettingsView: View {
                                 self.showsAlert = true
                             } label: {
                                 HStack{
-                                    Image(systemName: "trash")
-                                    
+                                    Image(systemName: "trash").foregroundStyle(Color.red)
                                     Text("Delete my account")
-                                }.foregroundStyle(Color.red)
+                                        .font(.system(size: 14))
+                                        .foregroundStyle(Color.primary)
+                                }
                             }.alert(isPresented: $showsAlert) {
                                 
                                 if (calDataBase.count > 0){
@@ -259,12 +262,14 @@ struct SettingsView: View {
                             
                             Button{
                             }label: {
-                                Text("Delete Database")
+                                Text("Clear Database")
                                     .foregroundStyle(Color.btnGradientColor)
                             }
                         }header: {
-                            Image(systemName: "tray.full")
-                            Text("DataBase")
+                            HStack{
+                                Image(systemName: "tray.full")
+                                Text("DataBase")
+                            }
                         }
                     }
                     .navigationTitle("Settings")
