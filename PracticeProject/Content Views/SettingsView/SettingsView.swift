@@ -263,6 +263,7 @@ struct SettingsView: View {
                             Button{
                             }label: {
                                 Text("Clear Database")
+                                    .font(.system(size: 14))
                                     .foregroundStyle(Color.btnGradientColor)
                             }
                         }header: {
