@@ -26,6 +26,7 @@ struct Food: Identifiable {
             Food(name: "Grapes", icon: "🍇", description: "62", isFavorite: true)
         ]
     }
+    //
 }
 
 struct FoodCount: Identifiable {

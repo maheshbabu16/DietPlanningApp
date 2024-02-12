@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1831A3E42B79D9D200D5F8F1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1831A3E32B79D9D200D5F8F1 /* Extensions.swift */; };
 		FE088ED12B02AA5800CBD77F /* MapTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE088ED02B02AA5800CBD77F /* MapTrackingView.swift */; };
 		FE20A7412B4AB24D00B9BD68 /* SignUPScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE20A7402B4AB24D00B9BD68 /* SignUPScreen.swift */; };
 		FE245AE02B026610000EF370 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE245ADF2B026610000EF370 /* WidgetKit.framework */; };
@@ -66,6 +67,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1831A3E32B79D9D200D5F8F1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		FE088ED02B02AA5800CBD77F /* MapTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTrackingView.swift; sourceTree = "<group>"; };
 		FE1F49252B5C1AA80071FFCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FE20A7402B4AB24D00B9BD68 /* SignUPScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUPScreen.swift; sourceTree = "<group>"; };
@@ -120,6 +122,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1831A3E12B79D95A00D5F8F1 /* SwiftData Model */ = {
+			isa = PBXGroup;
+			children = (
+				FE52E3F52B0E5DE2003855A0 /* DietData.swift */,
+			);
+			path = "SwiftData Model";
+			sourceTree = "<group>";
+		};
+		1831A3E22B79D96C00D5F8F1 /* FoodListModel */ = {
+			isa = PBXGroup;
+			children = (
+				FE5CCE692B02219000F6F1C3 /* Food.swift */,
+			);
+			path = FoodListModel;
+			sourceTree = "<group>";
+		};
 		FE245AD62B025DD9000EF370 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,7 +155,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		FE245AE32B026610000EF370 /* FoodWidgets */ = {
+		FE245AE32B026610000EF370 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
 				FE245AE42B026610000EF370 /* FoodWidgetsBundle.swift */,
@@ -147,7 +165,7 @@
 				FE245AEC2B026613000EF370 /* Assets.xcassets */,
 				FE245AEE2B026613000EF370 /* Info.plist */,
 			);
-			path = FoodWidgets;
+			path = Widget;
 			sourceTree = "<group>";
 		};
 		FE2596F32B31C39F00CC21DB /* Login Views */ = {
@@ -179,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				FE2820872B03504800A902AA /* Constants.swift */,
+				1831A3E32B79D9D200D5F8F1 /* Extensions.swift */,
 			);
 			path = "Constants + Extensions";
 			sourceTree = "<group>";
@@ -232,7 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				FE5CCE592B02212D00F6F1C3 /* PracticeProject */,
-				FE245AE32B026610000EF370 /* FoodWidgets */,
+				FE245AE32B026610000EF370 /* Widget */,
 				FE245ADE2B026610000EF370 /* Frameworks */,
 				FE5CCE582B02212D00F6F1C3 /* Products */,
 			);
@@ -252,8 +271,8 @@
 			children = (
 				FE1F49252B5C1AA80071FFCF /* Info.plist */,
 				FE45EC3B2B63D24F0040B6C6 /* MainWindow */,
-				FE5CCE6E2B02226F00F6F1C3 /* SwiftData */,
 				FE245AD62B025DD9000EF370 /* Assets */,
+				FE5CCE6E2B02226F00F6F1C3 /* Model */,
 				FE45EC3D2B63D2AF0040B6C6 /* Constants + Extensions */,
 				FEC1EB5E2B023C5600DF109E /* Content Views */,
 				FE5CCE602B02213000F6F1C3 /* PracticeProject.entitlements */,
@@ -270,13 +289,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		FE5CCE6E2B02226F00F6F1C3 /* SwiftData */ = {
+		FE5CCE6E2B02226F00F6F1C3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FE5CCE692B02219000F6F1C3 /* Food.swift */,
-				FE52E3F52B0E5DE2003855A0 /* DietData.swift */,
+				1831A3E22B79D96C00D5F8F1 /* FoodListModel */,
+				1831A3E12B79D95A00D5F8F1 /* SwiftData Model */,
 			);
-			path = SwiftData;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FEC1EB5E2B023C5600DF109E /* Content Views */ = {
@@ -417,6 +436,7 @@
 				FE5CCE5B2B02212D00F6F1C3 /* PracticeProjectApp.swift in Sources */,
 				FE088ED12B02AA5800CBD77F /* MapTrackingView.swift in Sources */,
 				FE52E3F62B0E5DE2003855A0 /* DietData.swift in Sources */,
+				1831A3E42B79D9D200D5F8F1 /* Extensions.swift in Sources */,
 				FE6404F02B0337DD0073CA51 /* CalculationView.swift in Sources */,
 				FEC1EB5D2B023C4A00DF109E /* AddAppetiteItemView.swift in Sources */,
 				FEC966842B03859D00A211D6 /* CalculateDetailScreen.swift in Sources */,
