@@ -10,26 +10,24 @@ import SwiftData
 
 struct SplashScreen: View {
     
-    @State var isActive: Bool = false
+    //MARK: - Property Wrappers for variables
     
-    @Query(filter: #Predicate<DietData> { data in
-            data.isLogInApproved == true
-        }) var fetchDataBase: [DietData]
+    @State var isSplashScreenActive: Bool = false
+    @Query(filter: #Predicate<UserDataModel> { data in
+        data.isLoginApproved == true
+    }) var fetchDataBase: [UserDataModel]
     
-    @Query var dataFromDatabase: [DietData]
+    //MARK: - Body View
+    
     var body: some View {
-        
         ZStack{
-            if self.isActive {
+            if self.isSplashScreenActive {
                 if fetchDataBase.count > 0 {
-                    if fetchDataBase[0].isLogInApproved {
+                    if fetchDataBase[0].isLoginApproved {
                         TabListView().navigationBarBackButtonHidden()
-                    } else {
-                        LogInView()
-                    }
-                } else {
-                    LogInView()
-                }
+                        
+                    } else { LogInView() }
+                } else { LogInView() }
                 
             } else {
                 Color.black.ignoresSafeArea()
@@ -43,16 +41,17 @@ struct SplashScreen: View {
                 }
             }
         }
+        
+        //MARK:  View will appear
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 withAnimation {
-                    self.isActive = true
+                    self.isSplashScreenActive = true
                 }
             }
         }
     }
 }
-
 
 #Preview {
     SplashScreen()

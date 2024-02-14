@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct TabListView: View {
-    
+   
+    //MARK: - Property Wrappers for variables
     @State private var selectedTab: Int = 0
     
+    //MARK: - Body view
     var body: some View {
-        
         TabView(selection: $selectedTab){
             AppetiteHomeView()
                 .tabItem {
@@ -30,7 +31,6 @@ struct TabListView: View {
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }.tag(3)
-            
         }
         .accentColor(Color.red)
         .onChange(of: selectedTab) { newValue in

@@ -19,8 +19,8 @@ struct PracticeProjectApp: App {
     }
     
     init() {
-        let schema = Schema([DietData.self])
-        let config  = ModelConfiguration("Diet Data", schema: schema)
+        let schema = Schema([UserDataModel.self])
+        let config  = ModelConfiguration("UserDataModel", schema: schema)
         do{
             container = try ModelContainer(for: schema, configurations: config)
         } catch{

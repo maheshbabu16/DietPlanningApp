@@ -13,6 +13,7 @@
 		187CB5A42B7CCF480051DEC9 /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CB5A32B7CCF480051DEC9 /* UserDataModel.swift */; };
 		187CB5A62B7CD0A80051DEC9 /* SheduleWorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CB5A52B7CD0A80051DEC9 /* SheduleWorkoutModel.swift */; };
 		187CB5A82B7CD0C80051DEC9 /* CalorieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CB5A72B7CD0C80051DEC9 /* CalorieModel.swift */; };
+		187CB5AA2B7CDD790051DEC9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CB5A92B7CDD790051DEC9 /* Extensions.swift */; };
 		FE088ED12B02AA5800CBD77F /* MapTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE088ED02B02AA5800CBD77F /* MapTrackingView.swift */; };
 		FE20A7412B4AB24D00B9BD68 /* SignUPScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE20A7402B4AB24D00B9BD68 /* SignUPScreen.swift */; };
 		FE245AE02B026610000EF370 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE245ADF2B026610000EF370 /* WidgetKit.framework */; };
@@ -78,6 +79,8 @@
 		187CB5A32B7CCF480051DEC9 /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		187CB5A52B7CD0A80051DEC9 /* SheduleWorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheduleWorkoutModel.swift; sourceTree = "<group>"; };
 		187CB5A72B7CD0C80051DEC9 /* CalorieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieModel.swift; sourceTree = "<group>"; };
+		187CB5A92B7CDD790051DEC9 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		187CB5AC2B7CE3840051DEC9 /* RemindMe.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = RemindMe.md; sourceTree = "<group>"; };
 		FE088ED02B02AA5800CBD77F /* MapTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTrackingView.swift; sourceTree = "<group>"; };
 		FE1F49252B5C1AA80071FFCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FE20A7402B4AB24D00B9BD68 /* SignUPScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUPScreen.swift; sourceTree = "<group>"; };
@@ -132,12 +135,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		18456B422B7A1BAB001013EF /* Cell Views */ = {
+		18456B422B7A1BAB001013EF /* CustomCellViews */ = {
 			isa = PBXGroup;
 			children = (
 				18456B432B7A1BD2001013EF /* LoginTextFeildView.swift */,
 			);
-			path = "Cell Views";
+			path = CustomCellViews;
+			sourceTree = "<group>";
+		};
+		187CB5AB2B7CE3110051DEC9 /* SheduleWorkout */ = {
+			isa = PBXGroup;
+			children = (
+				FE2F0A0D2B73E0DC0010B400 /* SheduleWorkOutView.swift */,
+			);
+			path = SheduleWorkout;
 			sourceTree = "<group>";
 		};
 		FE245AD62B025DD9000EF370 /* Assets */ = {
@@ -199,6 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				FE2820872B03504800A902AA /* Constants.swift */,
+				187CB5A92B7CDD790051DEC9 /* Extensions.swift */,
 			);
 			path = "Constants + Extensions";
 			sourceTree = "<group>";
@@ -252,6 +264,7 @@
 		FE5CCE4E2B02212D00F6F1C3 = {
 			isa = PBXGroup;
 			children = (
+				187CB5AC2B7CE3840051DEC9 /* RemindMe.md */,
 				FE5CCE592B02212D00F6F1C3 /* PracticeProject */,
 				FE245AE32B026610000EF370 /* FoodWidgets */,
 				FE245ADE2B026610000EF370 /* Frameworks */,
@@ -276,8 +289,8 @@
 				FE5CCE6E2B02226F00F6F1C3 /* SwiftData */,
 				FE245AD62B025DD9000EF370 /* Assets */,
 				FE45EC3D2B63D2AF0040B6C6 /* Constants + Extensions */,
+				18456B422B7A1BAB001013EF /* CustomCellViews */,
 				FEC1EB5E2B023C5600DF109E /* Content Views */,
-				18456B422B7A1BAB001013EF /* Cell Views */,
 				FE5CCE602B02213000F6F1C3 /* PracticeProject.entitlements */,
 				FE5CCE612B02213000F6F1C3 /* Preview Content */,
 			);
@@ -313,7 +326,7 @@
 				FE45EC3C2B63D2800040B6C6 /* TabView */,
 				FE58C5502B04C6E2008C368D /* Appetite */,
 				FE58C5522B04C70A008C368D /* CountCaloriesView */,
-				FE2F0A0D2B73E0DC0010B400 /* SheduleWorkOutView.swift */,
+				187CB5AB2B7CE3110051DEC9 /* SheduleWorkout */,
 				FE58C5542B04C741008C368D /* MapView */,
 				FE58C5512B04C6EE008C368D /* SettingsView */,
 			);
@@ -456,6 +469,7 @@
 				187CB5A62B7CD0A80051DEC9 /* SheduleWorkoutModel.swift in Sources */,
 				FEE88AF72B08C363007E953E /* FoodGridView.swift in Sources */,
 				FE2F0A0E2B73E0DC0010B400 /* SheduleWorkOutView.swift in Sources */,
+				187CB5AA2B7CDD790051DEC9 /* Extensions.swift in Sources */,
 				FE20A7412B4AB24D00B9BD68 /* SignUPScreen.swift in Sources */,
 				FE5CCE6A2B02219100F6F1C3 /* Food.swift in Sources */,
 				FEBD70232B31A21B006EC997 /* LogInView.swift in Sources */,

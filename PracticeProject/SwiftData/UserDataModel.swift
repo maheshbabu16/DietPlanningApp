@@ -10,6 +10,7 @@ import SwiftData
 
 @Model
 class UserDataModel{
+    
     var userName: String
     var passWord: String
     var name: String

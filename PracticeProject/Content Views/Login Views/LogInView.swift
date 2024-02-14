@@ -9,8 +9,10 @@ import SwiftUI
 import SwiftData
 
 struct LogInView: View {
+    
+    //MARK: - Property Wrappers for variables
     @Environment(\ .modelContext) var logInInfo
-    @Query var arrSignUpUserData: [DietData]
+    @Query var arrSignUpUserData: [UserDataModel]
     
     @State private var txtUserName = ""
     @State private var txtPassWord = ""
@@ -18,34 +20,39 @@ struct LogInView: View {
     @State private var showsAlert:Bool = false
     @State var showProgress = false
     
+    //MARK: - Body View
     var body: some View {
-        
         NavigationStack{
             ZStack{
                 Color.black.ignoresSafeArea()
+                //MARK: - Text Feilds
                 VStack{
-                    
+                    Spacer()
+                    Spacer()
+                    Spacer()
+
                     LoginTextFeildView(textFeildStr: $txtUserName, placeHolder: "User Name")
                         .frame(height: 60)
                         .padding(.horizontal, 20.0)
-                        .padding(.vertical, 5.0)
                     LoginTextFeildView(textFeildStr: $txtPassWord, placeHolder: "Password")
                         .frame(height: 60)
                         .padding(.horizontal, 20.0)
-                        .padding(.vertical, 5.0)
+                        .padding(.bottom, 5.0)
                     
+                    //MARK: - Create account button
                     HStack{
                         Spacer()
                         NavigationLink {
                             SignUPScreen()
                         } label: {
                             Text("Create an account ?")
-                         .font(.system(size: 14))
-                         .foregroundStyle(Color.btnGradientColor)
-                         .padding(.trailing, 25.0)
+                                .font(.system(size: 16))
+                                .foregroundStyle(Color.btnGradientColor)
+                                .padding(.trailing, 25.0)
                         }
-                    }
+                    }.padding(.bottom, 5.0)
                     
+                    //MARK: - Login button
                     Button{
                         if checkLogIn(){
                             NavigationLink("") {
@@ -55,7 +62,7 @@ struct LogInView: View {
                         } else {
                             showsAlert = true
                             CommonFunctions.Functions.getHapticFeedback(impact: .heavy)
-
+                            
                         }
                         
                     }label: {
@@ -65,7 +72,7 @@ struct LogInView: View {
                             .bold()
                     }
                     .frame(width:200, height: 50)
-                    .background(Color.btnGradientColor)
+                    .background(Color.titleGradientColor)
                     .cornerRadius(10).padding(.top, 20.0)
                     
                     .alert(isPresented: $showsAlert) {
@@ -77,43 +84,61 @@ struct LogInView: View {
                         })
                         )
                     }
-                    
+                    Spacer()
+
                     HStack(spacing: 10){
+                        //MARK: - Sign in with apple
+                        
                         Button{
                             CommonFunctions.Functions.getHapticFeedback(impact: .heavy)
                         }label: {
-                            HStack{
+                            HStack(spacing: 5){
                                 Image(systemName: "apple.logo")
                                 Text("Sign In With Apple")
+                                    .minimumScaleFactor(0.2)
                                     .font(.system(size: 14))
-                            }.foregroundStyle(Color.black)
+                                .fontWeight(.medium)                            }.foregroundStyle(Color.black)
                             
                         }.frame(width:170, height: 50)
                             .background(Color.white)
                             .cornerRadius(10).padding(.top, 20.0)
                         
+                        //MARK: - Sign in with google
                         Button{
                             CommonFunctions.Functions.getHapticFeedback(impact: .heavy)
                         }label: {
-                            HStack{
+                            HStack(spacing: 5){
                                 Image("google.logo").resizable()
                                     .frame(width: 20, height: 20)
                                 Text("Sign In With Google")
+                                    .minimumScaleFactor(0.2)
                                     .font(.system(size: 14))
+                                    .fontWeight(.medium)
                             }.foregroundStyle(Color.black)
                                 .padding(.horizontal, 5.0)
                         }.frame(width:170, height: 50)
                             .background(Color.white)
                             .cornerRadius(10).padding(.top, 20.0)
-                    }
-                    .padding(.top, 10.0)
+                    }.padding(.top, 5.0)
+                    Spacer()
+                
                 }
+                //MARK: - Toolbar Contents
                 
             }.toolbar(content: {
                 ToolbarItem(placement: .topBarLeading) {
                     Text("Sign In")
-                        .foregroundStyle(Color.titleGradientColor)
-                        .font(.system(size: 25))
+                        .bold()
+                        .foregroundStyle(Color.btnGradientColor)
+                        .font(.system(size: 30))
+                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button{
+                        
+                    }label: {
+                        Image(systemName: "person.fill.questionmark")
+                    }.foregroundStyle(Color.white)
                 }
             })
         }
@@ -121,15 +146,15 @@ struct LogInView: View {
     }
     
     func checkLogIn() -> Bool {
-            let arrFilter = arrSignUpUserData.filter({$0.name == txtUserName && $0.passWord == txtPassWord})
+        let arrFilter = arrSignUpUserData.filter({$0.name == txtUserName && $0.passWord == txtPassWord})
         
-            if arrFilter.count > 0 {
-                /// if all data are matched then will return true
-                arrFilter[0].isLogInApproved = true
-                return true
-            }
-            return false
+        if arrFilter.count > 0 {
+            /// if all data are matched then will return true
+            arrFilter[0].isLoginApproved = true
+            return true
         }
+        return false
+    }
 }
 
 #Preview {

@@ -9,10 +9,12 @@ import SwiftUI
 
 struct AppetiteHomeView: View {
     
-    @Query(filter: #Predicate<DietData> { data in
-            data.isLogInApproved == true
-        }) var calCountDatabase: [DietData]
+    @Query(filter: #Predicate<UserDataModel> { data in
+            data.isLoginApproved == true
+        }) var calCountDatabase: [UserDataModel] 
     
+    @Query var calorieData: [CalorieModel]
+
     @State private var isSheetPresented = false
     @State private var foods:[Food] = Food.preview()
     
@@ -29,28 +31,31 @@ struct AppetiteHomeView: View {
         NavigationView{
                 
             List {
-                if (calCountDatabase[0].calCount > 0) {
-                    Section{
+                if let calData = calCountDatabase[0].dietChart {
+                    
+                    if (calCountDatabase[0].dietChart?.calCount ?? 0 > 0) {
+                        Section{
                             
                             ScrollView(.horizontal, showsIndicators: false){
                                 LazyHGrid(rows: [GridItem()], spacing: 15) {
                                     
-                                    ForEach(calCountDatabase) { diet in
-                                         let strCal:String = "\(diet.calCount)"
-                                        FoodGridView(
-                                            sheetTitle: diet.name,
-                                            calorieCount: strCal,
-                                            gridWidth: 155,gridHeight: 125,
-                                            deleteBlockHandler: {
-//                                                deleteRow(at: IndexSet(integer: index))
-                                            }
-                                        )
-                                    }
+//                                    ForEach(calorieData) { diet in
+//                                         let strCal:String = "\(diet.calCount)"
+//                                        FoodGridView(
+//                                            sheetTitle: diet.name,
+//                                            calorieCount: strCal,
+//                                            gridWidth: 155,gridHeight: 125,
+//                                            deleteBlockHandler: {
+//                                                //                                                deleteRow(at: IndexSet(integer: index))
+//                                            }
+//                                        )
+//                                    }
                                 }
                             }.frame(height: 130)
                                 .listRowBackground(Color.clear)
-                    }header: {
-                        Text("Profile")
+                        }header: {
+                            Text("Profile")
+                        }
                     }
                 }
                 
