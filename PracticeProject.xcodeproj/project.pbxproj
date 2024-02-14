@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		18308FDE2B7A251B005D9963 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18308FDD2B7A251B005D9963 /* ChangePasswordView.swift */; };
 		18456B442B7A1BD2001013EF /* LoginTextFeildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18456B432B7A1BD2001013EF /* LoginTextFeildView.swift */; };
+		187CB5A22B7CCCAE0051DEC9 /* UserPrefrences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CB5A12B7CCCAE0051DEC9 /* UserPrefrences.swift */; };
+		187CB5A42B7CCF480051DEC9 /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CB5A32B7CCF480051DEC9 /* UserDataModel.swift */; };
+		187CB5A62B7CD0A80051DEC9 /* SheduleWorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CB5A52B7CD0A80051DEC9 /* SheduleWorkoutModel.swift */; };
+		187CB5A82B7CD0C80051DEC9 /* CalorieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CB5A72B7CD0C80051DEC9 /* CalorieModel.swift */; };
 		FE088ED12B02AA5800CBD77F /* MapTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE088ED02B02AA5800CBD77F /* MapTrackingView.swift */; };
 		FE20A7412B4AB24D00B9BD68 /* SignUPScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE20A7402B4AB24D00B9BD68 /* SignUPScreen.swift */; };
 		FE245AE02B026610000EF370 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE245ADF2B026610000EF370 /* WidgetKit.framework */; };
@@ -70,6 +74,10 @@
 /* Begin PBXFileReference section */
 		18308FDD2B7A251B005D9963 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		18456B432B7A1BD2001013EF /* LoginTextFeildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFeildView.swift; sourceTree = "<group>"; };
+		187CB5A12B7CCCAE0051DEC9 /* UserPrefrences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPrefrences.swift; sourceTree = "<group>"; };
+		187CB5A32B7CCF480051DEC9 /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
+		187CB5A52B7CD0A80051DEC9 /* SheduleWorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheduleWorkoutModel.swift; sourceTree = "<group>"; };
+		187CB5A72B7CD0C80051DEC9 /* CalorieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieModel.swift; sourceTree = "<group>"; };
 		FE088ED02B02AA5800CBD77F /* MapTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTrackingView.swift; sourceTree = "<group>"; };
 		FE1F49252B5C1AA80071FFCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FE20A7402B4AB24D00B9BD68 /* SignUPScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUPScreen.swift; sourceTree = "<group>"; };
@@ -289,6 +297,10 @@
 			children = (
 				FE5CCE692B02219000F6F1C3 /* Food.swift */,
 				FE52E3F52B0E5DE2003855A0 /* DietData.swift */,
+				187CB5A12B7CCCAE0051DEC9 /* UserPrefrences.swift */,
+				187CB5A32B7CCF480051DEC9 /* UserDataModel.swift */,
+				187CB5A72B7CD0C80051DEC9 /* CalorieModel.swift */,
+				187CB5A52B7CD0A80051DEC9 /* SheduleWorkoutModel.swift */,
 			);
 			path = SwiftData;
 			sourceTree = "<group>";
@@ -429,15 +441,19 @@
 				FE5CCE5D2B02212D00F6F1C3 /* TabListView.swift in Sources */,
 				FE5CCE702B022B3800F6F1C3 /* AppetiteHomeView.swift in Sources */,
 				FE415D232B13686C00EF7D87 /* ProgressViewScreen.swift in Sources */,
+				187CB5A82B7CD0C80051DEC9 /* CalorieModel.swift in Sources */,
+				187CB5A42B7CCF480051DEC9 /* UserDataModel.swift in Sources */,
 				FE5CCE5B2B02212D00F6F1C3 /* PracticeProjectApp.swift in Sources */,
 				FE088ED12B02AA5800CBD77F /* MapTrackingView.swift in Sources */,
 				18308FDE2B7A251B005D9963 /* ChangePasswordView.swift in Sources */,
 				FE52E3F62B0E5DE2003855A0 /* DietData.swift in Sources */,
 				FE6404F02B0337DD0073CA51 /* CalculationView.swift in Sources */,
+				187CB5A22B7CCCAE0051DEC9 /* UserPrefrences.swift in Sources */,
 				FEC1EB5D2B023C4A00DF109E /* AddAppetiteItemView.swift in Sources */,
 				FEC966842B03859D00A211D6 /* CalculateDetailScreen.swift in Sources */,
 				FE5CCE722B022BE000F6F1C3 /* SettingsView.swift in Sources */,
 				FE5CCE6C2B02219A00F6F1C3 /* AppetiteDetailView.swift in Sources */,
+				187CB5A62B7CD0A80051DEC9 /* SheduleWorkoutModel.swift in Sources */,
 				FEE88AF72B08C363007E953E /* FoodGridView.swift in Sources */,
 				FE2F0A0E2B73E0DC0010B400 /* SheduleWorkOutView.swift in Sources */,
 				FE20A7412B4AB24D00B9BD68 /* SignUPScreen.swift in Sources */,

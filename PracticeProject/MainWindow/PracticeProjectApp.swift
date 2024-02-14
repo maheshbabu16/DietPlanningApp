@@ -9,10 +9,23 @@ import SwiftUI
 
 @main
 struct PracticeProjectApp: App {
+    
+    let container : ModelContainer
+    
     var body: some Scene {
         WindowGroup {
             SplashScreen()
-                .modelContainer(for: DietData.self)
+        }.modelContainer(container)
+    }
+    
+    init() {
+        let schema = Schema([DietData.self])
+        let config  = ModelConfiguration("Diet Data", schema: schema)
+        do{
+            container = try ModelContainer(for: schema, configurations: config)
+        } catch{
+            fatalError("Something went wrong")
         }
     }
+    
 }
