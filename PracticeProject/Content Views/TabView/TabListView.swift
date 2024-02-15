@@ -6,11 +6,17 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TabListView: View {
    
     //MARK: - Property Wrappers for variables
     @State private var selectedTab: Int = 0
+    
+    @Query(filter: #Predicate<UserDataModel> { data in
+            data.isLoginApproved == true
+        }) var userModel: [UserDataModel]
+  
     
     //MARK: - Body view
     var body: some View {
@@ -32,6 +38,9 @@ struct TabListView: View {
                     Label("Settings", systemImage: "gear")
                 }.tag(3)
         }
+        .onAppear(perform: {
+            UserDefaults.standard.setValue(userModel[0].userID, forKey: "UserID")
+        })
         .accentColor(Color.red)
         .onChange(of: selectedTab) { newValue in
             CommonFunctions.Functions.getHapticFeedback(impact: .heavy)

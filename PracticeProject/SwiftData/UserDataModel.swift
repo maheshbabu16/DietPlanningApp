@@ -9,19 +9,19 @@ import Foundation
 import SwiftData
 
 @Model
-class UserDataModel{
+class UserDataModel  {
     
+    @Attribute(.unique) var userID : String
     var userName: String
     var passWord: String
     var name: String
     var isLoginApproved : Bool 
-
-    @Relationship(deleteRule: .cascade) 
-    var userPrefrence :  UserPrefrences?
-    var dietChart :  CalorieModel?
-    var workoutChart :  SheduleWorkoutModel?
+    @Relationship(deleteRule: .cascade) var userPrefrence :  UserPrefrences?
+    @Relationship(deleteRule: .cascade) var dietChart :  CalorieModel?
+    @Relationship(deleteRule: .cascade) var workoutChart :  SheduleWorkoutModel?
     
-    init(userName: String, passWord: String, name: String, isLoginApproved: Bool = false, userPrefrence: UserPrefrences? = nil, dietChart: CalorieModel? = nil, workoutChart: SheduleWorkoutModel? = nil) {
+    init(userID: String, userName: String, passWord: String, name: String, isLoginApproved: Bool, userPrefrence: UserPrefrences? = nil, dietChart: CalorieModel? = nil, workoutChart: SheduleWorkoutModel? = nil) {
+        self.userID = userID
         self.userName = userName
         self.passWord = passWord
         self.name = name

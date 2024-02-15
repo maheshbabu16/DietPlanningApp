@@ -1,0 +1,40 @@
+//
+//  TitleHeaderView.swift
+//  PracticeProject
+//
+//  Created by Mahesh on 15/02/24.
+//
+
+import SwiftUI
+
+struct TitleHeaderView: View {
+    var body: some View {
+        HStack{
+            Text("Food Name")
+                .fontWeight(.semibold)
+                .foregroundStyle(Color.textColor.opacity(0.5))
+                .font(.system(size: 14))
+            Spacer()
+            HStack(alignment: .center, spacing: 10){
+                Text("Pro") .fontWeight(.semibold)
+                    .foregroundStyle(Color.textColor.opacity(0.5))
+                    .font(.system(size: 14))
+                Text("Crab") .fontWeight(.semibold)
+                    .foregroundStyle(Color.textColor.opacity(0.5))
+                    .font(.system(size: 14))
+                Text("Fat") .fontWeight(.semibold)
+                    .foregroundStyle(Color.textColor.opacity(0.5))
+                    .font(.system(size: 14))
+                Text("Kcal")
+                    .fontWeight(.semibold)
+                    .foregroundStyle(Color.textColor.opacity(0.5))
+                    .font(.system(size: 14))
+            }
+            
+        }.padding()
+    }
+}
+
+#Preview {
+    TitleHeaderView()
+}

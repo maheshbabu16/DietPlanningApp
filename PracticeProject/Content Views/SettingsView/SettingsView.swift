@@ -30,9 +30,9 @@ struct SettingsView: View {
     
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.modelContext) var dataFromDataBase
-    @Query(filter: #Predicate<DietData> { data in
-        data.isLogInApproved == true
-    }) var calDataBase: [DietData]
+    @Query(filter: #Predicate<UserDataModel> { data in
+        data.isLoginApproved == true
+    }) var userDataM: [UserDataModel]
     
     enum AppearnaceStyle {
         case automatic
@@ -72,13 +72,13 @@ struct SettingsView: View {
                         //MARK: - Profile Section
                         Section{
                             HStack {
-                                Text("\(calDataBase[0].name)")
+                                Text("\(userDataM[0].name)")
                                     .font(.system(size: 25))
                                     .bold()
                                     .padding(.leading)
                                 Spacer()
                                 Button{
-                                    self.profileUsername = calDataBase[0].name
+                                    self.profileUsername = userDataM[0].name
                                     self.editSheetPresented.toggle()
                                     CommonFunctions.Functions.getHapticFeedback(impact: .light)
                                 }label: {
@@ -212,8 +212,8 @@ struct SettingsView: View {
                                 
                             }.alert(isPresented: $showsLogOutAlert) {
                                 Alert(title: Text("Log Out"), message: Text("Click yes if you wish to logout"), primaryButton: .destructive(Text("Log Out"),
-                                     action: {
-                                    calDataBase[0].isLogInApproved = false
+                                                                                                                                            action: {
+                                    userDataM[0].isLoginApproved = false
                                     shouldRedirectToLogIn = true
                                 }), secondaryButton: .cancel())
                             }
@@ -227,29 +227,17 @@ struct SettingsView: View {
                                         .font(.system(size: 14))
                                         .foregroundStyle(Color.primary)
                                 }
-                            }.alert(isPresented: $showsAlert) {
-                                
-                                if (calDataBase.count > 0){
-                                    Alert(title: Text("Confirm"),
-                                          message: Text("This deletes all your data"),
-                                          primaryButton: .destructive(
-                                            Text("Delete"),
-                                            action: {
-                                                deleteAccountAction()
-                                            }
-                                          ),
-                                          secondaryButton: .cancel())
-                                }else{
-                                    Alert(title: Text("No data Found"),
-                                          message: Text("You haven't added any data yet!"),
-                                          dismissButton: .default(Text("Ok"), action: {
-                                        self.showsAlert = false
-                                    })
-                                    )
+                            } .confirmationDialog("This action deletes your account from database!!!", isPresented: $showsAlert, titleVisibility: .visible, actions: {
+                                Button {
+                                    self.showsLogOutAlert = true
+                                } label: {
+                                    Text("Log out instead")
                                 }
                                 
-                                
-                            }
+                                Button("Erase account", role: .destructive) {
+                                    self.deleteAccountAction()
+                                }
+                            })
                             
                         }header: {
                             HStack{
@@ -280,8 +268,8 @@ struct SettingsView: View {
                     }
                 }.sheet(isPresented: $editSheetPresented) {
                     ChangePasswordView(textFeildStr: $profileUsername, editButtonClicked: {
-                        if profileUsername != calDataBase[0].name && profileUsername != ""{
-                            calDataBase[0].name = profileUsername
+                        if profileUsername != userDataM[0].name && profileUsername != ""{
+                            userDataM[0].name = profileUsername
                         }
                         self.editSheetPresented.toggle()
                     }, sheetType: .editUserName)

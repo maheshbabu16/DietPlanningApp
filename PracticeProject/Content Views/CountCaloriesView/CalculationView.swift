@@ -10,13 +10,11 @@ import SwiftUI
 struct CalculationView: View {
     
     //MARK: - Property Wrappers for variables
-    @Query(filter: #Predicate<DietData> { data in
-            data.isLogInApproved == true
-        }) var foodDataStorage: [DietData]
-    @Environment(\.modelContext) var formData
+    @State private var foodDataStorage: [CalorieModel] = []
     
+    @Environment(\.modelContext) var formData
     @State private var isSheetPresented = false
-    @State var foodItems: [FoodCount] = []
+    
     
     var totalCalories: Int {
         foodDataStorage.reduce(0) { $0 + (Int($1.calCount) ) }
@@ -46,8 +44,7 @@ struct CalculationView: View {
                     
                     List{
                         Section{
-                            
-                                MenuSubView()
+                                TitleHeaderView()
                                 VStack(spacing: 5){
                                     ForEach(foodDataStorage) { item in
                                         CalculateRowCell(foodItem: item)
@@ -55,10 +52,7 @@ struct CalculationView: View {
                                     .onDelete(perform: { indexSet in
                                         deleteItemAtRow(indexSet)
                                     })
-                                   
                                 }
-                            
-                           
                         } .listRowBackground(Color.clear)
                             .listRowSeparatorTint(Color.clear)
                         
@@ -127,6 +121,9 @@ struct CalculationView: View {
                     
                 }
             }
+            .onAppear(perform: {
+                fetchData()
+            })
             .toolbar{
                 Button{
                     isSheetPresented.toggle()
@@ -136,7 +133,10 @@ struct CalculationView: View {
                 
             }.sheet(isPresented: $isSheetPresented) {
                 CalculateDetailScreen(
-                     dismissSheetHandler: { isSheetPresented.toggle() }
+                    dismissSheetHandler: {
+                        isSheetPresented.toggle()
+                        fetchData()
+                    }
                 )
                 .presentationDetents([.medium, .large])
             }
@@ -144,6 +144,18 @@ struct CalculationView: View {
         }
     }
     
+    func fetchData(){
+        let userID =  UserDefaults.standard.value(forKey: "UserID") as! String
+        let descriptor = FetchDescriptor<CalorieModel>(predicate: #Predicate { data in
+            data.userID == userID
+        })
+        do {
+            foodDataStorage = try formData.fetch(descriptor)
+            print(foodDataStorage)
+        }catch {
+            
+        }
+    }
     func deleteItemAtRow(_ indexSet: IndexSet){
         for index in indexSet {
                let destination = foodDataStorage[index]
@@ -154,61 +166,4 @@ struct CalculationView: View {
 
 #Preview {
     CalculationView()
-}
-
-
-//MARK: - Cell Views
-struct CalculateRowCell: View {
-    
-    let foodItem: DietData
-    var body: some View {
-        if (((foodItem.calCount != 0) && foodItem.fatsCount != 0) && (foodItem.protienCount != 0) && (foodItem.protienCount != 0)) {
-            ZStack(alignment: .leading) {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.textColor.opacity(0.1))
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-                
-                HStack{
-                    Text(foodItem.name).foregroundStyle(Color.textColor)
-                    Spacer()
-                    HStack(alignment: .center, spacing: 10){
-                        
-                        Text("\(foodItem.protienCount)").foregroundStyle(Color.textColor)
-                        Text("\(foodItem.carbsCount)").foregroundStyle(Color.textColor)
-                        Text("\(foodItem.fatsCount)").foregroundStyle(Color.textColor)
-                        Text("\(foodItem.calCount)").foregroundStyle(Color.textColor)
-                    }
-                    
-                }.padding()
-            }
-        }
-    }
-}
-
-struct MenuSubView: View {
-    var body: some View {
-        HStack{
-            Text("Food Name")
-                .fontWeight(.semibold)
-                .foregroundStyle(Color.textColor.opacity(0.5))
-                .font(.system(size: 14))
-            Spacer()
-            HStack(alignment: .center, spacing: 10){
-                Text("Pro") .fontWeight(.semibold)
-                    .foregroundStyle(Color.textColor.opacity(0.5))
-                    .font(.system(size: 14))
-                Text("Crab") .fontWeight(.semibold)
-                    .foregroundStyle(Color.textColor.opacity(0.5))
-                    .font(.system(size: 14))
-                Text("Fat") .fontWeight(.semibold)
-                    .foregroundStyle(Color.textColor.opacity(0.5))
-                    .font(.system(size: 14))
-                Text("Kcal")
-                    .fontWeight(.semibold)
-                    .foregroundStyle(Color.textColor.opacity(0.5))
-                    .font(.system(size: 14))
-            }
-            
-        }.padding()
-    }
 }

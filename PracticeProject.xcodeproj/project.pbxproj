@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		182C51AE2B7E1F660034B91D /* CalculateRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C51AD2B7E1F660034B91D /* CalculateRowCell.swift */; };
+		182C51B02B7E1FDF0034B91D /* TitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C51AF2B7E1FDF0034B91D /* TitleHeaderView.swift */; };
+		182C51B12B7E31C30034B91D /* CalorieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CB5A72B7CD0C80051DEC9 /* CalorieModel.swift */; };
 		18308FDE2B7A251B005D9963 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18308FDD2B7A251B005D9963 /* ChangePasswordView.swift */; };
 		18456B442B7A1BD2001013EF /* LoginTextFeildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18456B432B7A1BD2001013EF /* LoginTextFeildView.swift */; };
 		187CB5A22B7CCCAE0051DEC9 /* UserPrefrences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CB5A12B7CCCAE0051DEC9 /* UserPrefrences.swift */; };
@@ -27,8 +30,6 @@
 		FE2820882B03504800A902AA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2820872B03504800A902AA /* Constants.swift */; };
 		FE2F0A0E2B73E0DC0010B400 /* SheduleWorkOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2F0A0D2B73E0DC0010B400 /* SheduleWorkOutView.swift */; };
 		FE415D232B13686C00EF7D87 /* ProgressViewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE415D222B13686C00EF7D87 /* ProgressViewScreen.swift */; };
-		FE52E3F62B0E5DE2003855A0 /* DietData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE52E3F52B0E5DE2003855A0 /* DietData.swift */; };
-		FE52E3F72B0E5DE2003855A0 /* DietData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE52E3F52B0E5DE2003855A0 /* DietData.swift */; };
 		FE5CCE5B2B02212D00F6F1C3 /* PracticeProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CCE5A2B02212D00F6F1C3 /* PracticeProjectApp.swift */; };
 		FE5CCE5D2B02212D00F6F1C3 /* TabListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CCE5C2B02212D00F6F1C3 /* TabListView.swift */; };
 		FE5CCE5F2B02213000F6F1C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE5CCE5E2B02213000F6F1C3 /* Assets.xcassets */; };
@@ -73,6 +74,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		182C51AD2B7E1F660034B91D /* CalculateRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateRowCell.swift; sourceTree = "<group>"; };
+		182C51AF2B7E1FDF0034B91D /* TitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderView.swift; sourceTree = "<group>"; };
 		18308FDD2B7A251B005D9963 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		18456B432B7A1BD2001013EF /* LoginTextFeildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFeildView.swift; sourceTree = "<group>"; };
 		187CB5A12B7CCCAE0051DEC9 /* UserPrefrences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPrefrences.swift; sourceTree = "<group>"; };
@@ -96,7 +99,6 @@
 		FE2820872B03504800A902AA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FE2F0A0D2B73E0DC0010B400 /* SheduleWorkOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheduleWorkOutView.swift; sourceTree = "<group>"; };
 		FE415D222B13686C00EF7D87 /* ProgressViewScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewScreen.swift; sourceTree = "<group>"; };
-		FE52E3F52B0E5DE2003855A0 /* DietData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DietData.swift; sourceTree = "<group>"; };
 		FE5CCE572B02212D00F6F1C3 /* PracticeProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PracticeProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE5CCE5A2B02212D00F6F1C3 /* PracticeProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PracticeProjectApp.swift; sourceTree = "<group>"; };
 		FE5CCE5C2B02212D00F6F1C3 /* TabListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabListView.swift; sourceTree = "<group>"; };
@@ -139,6 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				18456B432B7A1BD2001013EF /* LoginTextFeildView.swift */,
+				182C51AD2B7E1F660034B91D /* CalculateRowCell.swift */,
+				182C51AF2B7E1FDF0034B91D /* TitleHeaderView.swift */,
 			);
 			path = CustomCellViews;
 			sourceTree = "<group>";
@@ -309,9 +313,8 @@
 			isa = PBXGroup;
 			children = (
 				FE5CCE692B02219000F6F1C3 /* Food.swift */,
-				FE52E3F52B0E5DE2003855A0 /* DietData.swift */,
-				187CB5A12B7CCCAE0051DEC9 /* UserPrefrences.swift */,
 				187CB5A32B7CCF480051DEC9 /* UserDataModel.swift */,
+				187CB5A12B7CCCAE0051DEC9 /* UserPrefrences.swift */,
 				187CB5A72B7CD0C80051DEC9 /* CalorieModel.swift */,
 				187CB5A52B7CD0A80051DEC9 /* SheduleWorkoutModel.swift */,
 			);
@@ -436,10 +439,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE245AE72B026610000EF370 /* FoodWidgetsLiveActivity.swift in Sources */,
-				FE52E3F72B0E5DE2003855A0 /* DietData.swift in Sources */,
 				FE245AEB2B026610000EF370 /* AppIntent.swift in Sources */,
 				FE245AE52B026610000EF370 /* FoodWidgetsBundle.swift in Sources */,
 				FEC966852B03859D00A211D6 /* CalculateDetailScreen.swift in Sources */,
+				182C51B12B7E31C30034B91D /* CalorieModel.swift in Sources */,
 				FE245AE92B026610000EF370 /* FoodWidgets.swift in Sources */,
 				FED9F3142B048996007932C6 /* Food.swift in Sources */,
 			);
@@ -450,16 +453,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				FEC1EB602B0244D400DF109E /* SplashScreen.swift in Sources */,
+				182C51AE2B7E1F660034B91D /* CalculateRowCell.swift in Sources */,
 				18456B442B7A1BD2001013EF /* LoginTextFeildView.swift in Sources */,
 				FE5CCE5D2B02212D00F6F1C3 /* TabListView.swift in Sources */,
 				FE5CCE702B022B3800F6F1C3 /* AppetiteHomeView.swift in Sources */,
 				FE415D232B13686C00EF7D87 /* ProgressViewScreen.swift in Sources */,
 				187CB5A82B7CD0C80051DEC9 /* CalorieModel.swift in Sources */,
+				182C51B02B7E1FDF0034B91D /* TitleHeaderView.swift in Sources */,
 				187CB5A42B7CCF480051DEC9 /* UserDataModel.swift in Sources */,
 				FE5CCE5B2B02212D00F6F1C3 /* PracticeProjectApp.swift in Sources */,
 				FE088ED12B02AA5800CBD77F /* MapTrackingView.swift in Sources */,
 				18308FDE2B7A251B005D9963 /* ChangePasswordView.swift in Sources */,
-				FE52E3F62B0E5DE2003855A0 /* DietData.swift in Sources */,
 				FE6404F02B0337DD0073CA51 /* CalculationView.swift in Sources */,
 				187CB5A22B7CCCAE0051DEC9 /* UserPrefrences.swift in Sources */,
 				FEC1EB5D2B023C4A00DF109E /* AddAppetiteItemView.swift in Sources */,

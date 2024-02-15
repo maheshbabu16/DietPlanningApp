@@ -49,12 +49,12 @@ struct SignUPScreen: View {
                         
                     }label: {
                         Text("Sign Up")
-                            .foregroundStyle(Color.textColor)
+                            .foregroundStyle(Color.white)
                             .font(.system(size: 20))
                             .bold()
                     }
                     .frame(width:200, height: 50)
-                    .background(Color.btnGradientColor)
+                    .background(Color.textGradient)
                     .cornerRadius(10).padding(.top, 20.0)
                 }
             }.alert("Data Added Successfully", isPresented: $showAlert, actions: {
@@ -70,7 +70,7 @@ struct SignUPScreen: View {
                     Text("Create Your Credentials")
                         .font(.system(size: 20))
                         .fontWeight(.semibold)
-                        .foregroundStyle(Color.titleGradientColor)
+                        .foregroundStyle(Color.white)
                 }
             }
         }
@@ -78,7 +78,7 @@ struct SignUPScreen: View {
     
     //MARK: - Add data function
     func addData() {
-        let newData = UserDataModel(userName: strNewUserName, passWord: strNewPassword, name: strNewUserName)
+        let newData = UserDataModel(userID: UUID().uuidString, userName: strNewUserName, passWord: strNewPassword, name: strNewUserName, isLoginApproved: false)
         withAnimation {
             addLogInCredentials.insert(newData)
             print("Data Saved")
@@ -88,7 +88,7 @@ struct SignUPScreen: View {
     //MARK: - Check user already exists function
     func checkUserNameAlreadyExists(userName: String) -> Bool {
         
-        let descriptor = FetchDescriptor<DietData>(predicate: #Predicate { data in
+        let descriptor = FetchDescriptor<UserDataModel>(predicate: #Predicate { data in
             data.userName == userName
         })
         

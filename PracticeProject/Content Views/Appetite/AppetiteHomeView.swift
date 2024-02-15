@@ -33,7 +33,7 @@ struct AppetiteHomeView: View {
             List {
                 if let calData = calCountDatabase[0].dietChart {
                     
-                    if (calCountDatabase[0].dietChart?.calCount ?? 0 > 0) {
+                    if (calData.calCount > 0) {
                         Section{
                             
                             ScrollView(.horizontal, showsIndicators: false){

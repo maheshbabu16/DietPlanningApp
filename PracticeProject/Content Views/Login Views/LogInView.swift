@@ -13,7 +13,7 @@ struct LogInView: View {
     //MARK: - Property Wrappers for variables
     @Environment(\ .modelContext) var logInInfo
     @Query var arrSignUpUserData: [UserDataModel]
-    
+   
     @State private var txtUserName = ""
     @State private var txtPassWord = ""
     @State private var allowLogIn:Bool = false

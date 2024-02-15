@@ -4,9 +4,9 @@ import SwiftData
 struct CalculateDetailScreen: View {
     
     @Environment(\.modelContext) var modelContext
-    @Query(filter: #Predicate<DietData> { data in
-            data.isLogInApproved == true
-        }) var calCountDatabase: [DietData]
+    
+    //MARK: - Property Wrappers for variables
+    @State private var calCountDatabase: [CalorieModel] = []
     
     @State private var foodName: String = ""
     @State private var foodTotalCalories: String = ""
@@ -36,6 +36,18 @@ struct CalculateDetailScreen: View {
                 }
                 .listStyle(DefaultListStyle())
             }
+            .onAppear(perform: {
+                let userID =  UserDefaults.standard.value(forKey: "UserID") as! String
+
+                let descriptor = FetchDescriptor<CalorieModel>(predicate: #Predicate { data in
+                    data.userID == userID
+                })
+                do {
+                    calCountDatabase = try modelContext.fetch(descriptor)
+                }catch {
+                    
+                }
+            })
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Text("Add your calorie intake")
@@ -62,20 +74,21 @@ struct CalculateDetailScreen: View {
             let protienCount = (intProtien * intQuantity) / 100
             let carbsCount = (intCarbs * intQuantity) / 100
             let fatsCount = (intFats * intQuantity) / 100
-            
-            let calData = calCountDatabase[0]
-            withAnimation {
+            let userID =  UserDefaults.standard.value(forKey: "UserID") as! String
 
-                calData.name         = foodName
-                calData.calories     = intCal
-                calData.quantity     = intQuantity
-                calData.protien      = intProtien
-                calData.carbs        = intCarbs
-                calData.fats         = intFats
-                calData.calCount     = calorieCount
-                calData.protienCount = protienCount
-                calData.carbsCount   = carbsCount
-                calData.fatsCount    = fatsCount
+            let calData = CalorieModel(userID        : userID,
+                                       name          : foodName,
+                                       calories      : intCal,
+                                       quantity      : intQuantity,
+                                       protien       : intProtien,
+                                       carbs         : intCarbs,
+                                       fats          : intFats,
+                                       calCount      : calorieCount,
+                                       protienCount  : protienCount,
+                                       carbsCount    : carbsCount,
+                                       fatsCount     : fatsCount)
+            withAnimation {
+                modelContext.insert(calData)
             }
         } else { print("Error: Unable to convert one or both values to Int.")  }
     }
