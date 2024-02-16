@@ -25,13 +25,13 @@ struct SignUPScreen: View {
                 VStack{
                     
                     //MARK: - Username textfeild
-                    LoginTextFeildView(textFeildStr: $strNewUserName, placeHolder: "Create UserName")
+                    LoginTextFeildView(textFeildStr: $strNewUserName, placeHolder: "Create UserName", textFeildType: .regular)
                         .frame(height: 60)
                         .padding(.horizontal, 20.0)
                         .padding(.vertical, 5.0)
                     
                     //MARK: - Username textfeild
-                    LoginTextFeildView(textFeildStr: $strNewPassword, placeHolder: "Create Password")
+                    LoginTextFeildView(textFeildStr: $strNewPassword, placeHolder: "Create Password", textFeildType: .passwordFeild)
                         .frame(height: 60)
                         .padding(.horizontal, 20.0)
                         .padding(.vertical, 5.0)

@@ -40,7 +40,7 @@ struct SimpleEntry: TimelineEntry {
 }
 
 struct FoodWidgetsEntryView : View {
-    @Query var dietData: [DietData]
+    @Query var dietData: [CalorieModel]
     var entry: Provider.Entry
     
     var body: some View {

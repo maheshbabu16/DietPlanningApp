@@ -27,6 +27,7 @@ struct SettingsView: View {
     @State private var changeAppIcon = ""
     @State private var editSheetPresented : Bool = false
     @State private var showChangePasswordSheet : Bool = false
+    @State var strUserName : String = ""
     
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.modelContext) var dataFromDataBase
@@ -72,7 +73,9 @@ struct SettingsView: View {
                         //MARK: - Profile Section
                         Section{
                             HStack {
-                                Text("\(userDataM[0].name)")
+                                Text("\(strUserName)")
+                                    .minimumScaleFactor(0.1)
+                                    .lineLimit(1)
                                     .font(.system(size: 25))
                                     .bold()
                                     .padding(.leading)
@@ -133,7 +136,7 @@ struct SettingsView: View {
                             Text("Account")
                         }
                         
-                        //MARK: - Device Section
+                        //MARK: - Apperance Section
                         Section{
                             
                             HStack{
@@ -222,7 +225,7 @@ struct SettingsView: View {
                                 self.showsAlert = true
                             } label: {
                                 HStack{
-                                    Image(systemName: "trash").foregroundStyle(Color.red)
+                                    Image(systemName: "shared.with.you.slash").foregroundStyle(Color.red)
                                     Text("Delete my account")
                                         .font(.system(size: 14))
                                         .foregroundStyle(Color.primary)
@@ -245,14 +248,18 @@ struct SettingsView: View {
                                 Text("Credentials")
                             }
                         }
+                        
                         //MARK: - Database Section
                         Section{
-                            
                             Button{
+                                
                             }label: {
-                                Text("Clear Database")
-                                    .font(.system(size: 14))
-                                    .foregroundStyle(Color.btnGradientColor)
+                                HStack{
+                                    Image(systemName: "trash")
+                                    Text("Clear Database")
+                                        .font(.system(size: 14))
+                                        .foregroundStyle(Color.btnGradientColor)
+                                }
                             }
                         }header: {
                             HStack{
@@ -285,14 +292,17 @@ struct SettingsView: View {
         }.onChange(of: activeAppIcon) { newIcon in
             UIApplication.shared.setAlternateIconName(newIcon)
         }
+        .onAppear {
+            strUserName = userDataM.count > 0 ? userDataM[0].name : "Your name displays here"
+        }
     }
     
     //MARK: - Function meathods.
     func deleteAccountAction(){
         
         do {
-            try dataFromDataBase.delete(model: DietData.self, where: #Predicate { data in
-                data.isLogInApproved == true
+            try dataFromDataBase.delete(model: UserDataModel.self, where: #Predicate { data in
+                data.isLoginApproved == true
             })
             shouldRedirectToLogIn = true
         } catch {
@@ -301,7 +311,7 @@ struct SettingsView: View {
         
         func deleteDataBase(){
             do {
-                try dataFromDataBase.delete(model: DietData.self) } catch { print("Failed to clear all data.") }
+                try dataFromDataBase.delete(model: UserDataModel.self) } catch { print("Failed to clear all data.") }
         }
     }
 }

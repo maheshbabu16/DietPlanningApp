@@ -12,7 +12,7 @@ struct ChangePasswordView: View {
     @Binding var textFeildStr: String
     @State var sheetTitle : String = ""
     @State var iconImg : String = ""
-
+    
     var placeHolder: String = ""
     var strUsername: String = ""
     var editButtonClicked: (() -> Void)?
@@ -27,16 +27,16 @@ struct ChangePasswordView: View {
         NavigationStack{
             ZStack{
                 Color.black.ignoresSafeArea()
-                    if sheetType == .editUserName{
-                        LoginTextFeildView(textFeildStr: $textFeildStr, placeHolder: "Enter new username here").frame(height: 60).padding()
-                    } else if sheetType == .changePassword{
-                        VStack(spacing: 40){
-                            LoginTextFeildView(textFeildStr: $textFeildStr, placeHolder: "Enter Old password").frame(height: 60)
-                            VStack{
-                                LoginTextFeildView(textFeildStr: $textFeildStr, placeHolder: "Enter New Password").frame(height: 60)
-                                LoginTextFeildView(textFeildStr: $textFeildStr, placeHolder: "Confirm Password").frame(height: 60)
-                            }
-                        }.padding(10)
+                if sheetType == .editUserName{
+                    LoginTextFeildView(textFeildStr: $textFeildStr, placeHolder: "Enter new username here", textFeildType: .regular).frame(height: 60).padding()
+                } else if sheetType == .changePassword{
+                    VStack(spacing: 40){
+                        LoginTextFeildView(textFeildStr: $textFeildStr, placeHolder: "Enter Old password", textFeildType: .regular).frame(height: 60)
+                        VStack{
+                            LoginTextFeildView(textFeildStr: $textFeildStr, placeHolder: "Enter New Password", textFeildType: .passwordFeild).frame(height: 60)
+                            LoginTextFeildView(textFeildStr: $textFeildStr, placeHolder: "Confirm Password", textFeildType: .regular).frame(height: 60)
+                        }
+                    }.padding(10)
                 }
             }.toolbar(content: {
                 ToolbarItem(placement: .topBarLeading) {

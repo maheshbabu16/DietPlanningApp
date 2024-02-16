@@ -31,10 +31,10 @@ struct LogInView: View {
                     Spacer()
                     Spacer()
 
-                    LoginTextFeildView(textFeildStr: $txtUserName, placeHolder: "User Name")
+                    LoginTextFeildView(textFeildStr: $txtUserName, placeHolder: "User Name", textFeildType: .regular)
                         .frame(height: 60)
                         .padding(.horizontal, 20.0)
-                    LoginTextFeildView(textFeildStr: $txtPassWord, placeHolder: "Password")
+                    LoginTextFeildView(textFeildStr: $txtPassWord, placeHolder: "Password", textFeildType: .passwordFeild)
                         .frame(height: 60)
                         .padding(.horizontal, 20.0)
                         .padding(.bottom, 5.0)
