@@ -31,30 +31,31 @@ struct AppetiteHomeView: View {
         NavigationView{
                 
             List {
-                if let calData = calCountDatabase[0].dietChart {
-                    
-                    if (calData.calCount > 0) {
-                        Section{
+                if calCountDatabase.count > 0{
+                    if let calData = calCountDatabase[0].dietChart {
+                        if (calData.calCount > 0) {
                             
-                            ScrollView(.horizontal, showsIndicators: false){
-                                LazyHGrid(rows: [GridItem()], spacing: 15) {
-                                    
-//                                    ForEach(calorieData) { diet in
-//                                         let strCal:String = "\(diet.calCount)"
-//                                        FoodGridView(
-//                                            sheetTitle: diet.name,
-//                                            calorieCount: strCal,
-//                                            gridWidth: 155,gridHeight: 125,
-//                                            deleteBlockHandler: {
-//                                                //                                                deleteRow(at: IndexSet(integer: index))
-//                                            }
-//                                        )
-//                                    }
-                                }
-                            }.frame(height: 130)
-                                .listRowBackground(Color.clear)
-                        }header: {
-                            Text("Profile")
+                            Section{
+                                ScrollView(.horizontal, showsIndicators: false){
+                                    LazyHGrid(rows: [GridItem()], spacing: 15) {
+                                        
+                                        ForEach(calorieData) { diet in
+                                            let strCal:String = "\(diet.calCount)"
+                                            FoodGridView(
+                                                sheetTitle: diet.name,
+                                                calorieCount: strCal,
+                                                gridWidth: 155,gridHeight: 125,
+                                                deleteBlockHandler: {
+                                                    //                                                deleteRow(at: IndexSet(integer: index))
+                                                }
+                                            )
+                                        }
+                                    }
+                                }.frame(height: 130)
+                                    .listRowBackground(Color.clear)
+                            }header: {
+                                Text("Profile")
+                            }
                         }
                     }
                 }

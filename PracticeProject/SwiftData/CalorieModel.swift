@@ -10,7 +10,7 @@ import SwiftData
 
 @Model
 class CalorieModel {
-    @Attribute(.unique) var userID : String
+    var userID : String
     var name: String
     var calories: Int
     var quantity: Int

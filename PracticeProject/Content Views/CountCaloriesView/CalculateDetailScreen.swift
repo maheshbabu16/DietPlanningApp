@@ -6,7 +6,7 @@ struct CalculateDetailScreen: View {
     @Environment(\.modelContext) var modelContext
     
     //MARK: - Property Wrappers for variables
-    @State private var calCountDatabase: [CalorieModel] = []
+    @Binding var calCountDatabase: [CalorieModel]
     
     @State private var foodName: String = ""
     @State private var foodTotalCalories: String = ""

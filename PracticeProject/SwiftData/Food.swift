@@ -24,7 +24,7 @@ struct Food: Identifiable {
             Food(name: "Kiwi", icon: "🥝", description: "110", isFavorite: false),
             Food(name: "Strawberry", icon: "🍓", description: "46", isFavorite: true),
             Food(name: "Grapes", icon: "🍇", description: "62", isFavorite: true),
-            Food(name: "Rice", icon: "🍚", description: "62", isFavorite: true),
+            Food(name: "Rice", icon: "🍚", description: "130", isFavorite: true),
             Food(name: "Oats", icon: "🥣", description: "62", isFavorite: true)
         ]
     }

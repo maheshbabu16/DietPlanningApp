@@ -151,14 +151,22 @@ struct SettingsView: View {
                             HStack{
                                 Image(systemName: "square.dashed.inset.filled")
                                 Picker("Select icon", selection: $activeAppIcon) {
-                                    let customIcons: [String] = ["AppIcon", "BallIcon", "OrangeIcon"]
-                                    ForEach(customIcons, id: \.self){ i in
+                                    
                                         HStack{
-                                            Image("IconApp").resizable().frame(width: 30, height: 30)
-                                            Text("\(i)")
-                                        }
-                                        .tag(i)
-                                    }
+                                            Image("IconApp").resizable().frame(width: 50, height: 50)
+                                            Text("Original")
+                                        }.tag("AppIcon")
+                                    
+                                    HStack{
+                                        Image("pIcon").resizable().frame(width: 50, height: 50)
+                                        Text("P Icon")
+                                    }.tag("AppIcon2")
+                                    
+                                    HStack{
+                                        Image("rainbow").resizable().frame(width: 50, height: 50)
+                                        Text("Rainbow Icon")
+                                    }.tag("AppIcon3")
+
                                 }.pickerStyle(NavigationLinkPickerStyle())
                                 
                             }
@@ -273,7 +281,9 @@ struct SettingsView: View {
                         // Apply appearance changes when the selected style changes
                         deviceAppearance.applyAppearance()
                     }
-                }.sheet(isPresented: $editSheetPresented) {
+                }.sheet(isPresented: $editSheetPresented, onDismiss: {
+                    strUserName = userDataM.count > 0 ? userDataM[0].name : "Your name displays here"
+                }, content: {
                     ChangePasswordView(textFeildStr: $profileUsername, editButtonClicked: {
                         if profileUsername != userDataM[0].name && profileUsername != ""{
                             userDataM[0].name = profileUsername
@@ -281,7 +291,7 @@ struct SettingsView: View {
                         self.editSheetPresented.toggle()
                     }, sheetType: .editUserName)
                     .presentationDetents([.medium, .large])
-                }
+                })
                 .sheet(isPresented: $showChangePasswordSheet) {
                     ChangePasswordView(textFeildStr: .constant(""), editButtonClicked: {
                         
@@ -289,9 +299,9 @@ struct SettingsView: View {
                     }, sheetType: .changePassword)
                     .presentationDetents([.medium, .large])                }
             }
-        }.onChange(of: activeAppIcon) { newIcon in
+        }.onChange(of: activeAppIcon, perform: { newIcon in
             UIApplication.shared.setAlternateIconName(newIcon)
-        }
+        })
         .onAppear {
             strUserName = userDataM.count > 0 ? userDataM[0].name : "Your name displays here"
         }

@@ -38,10 +38,17 @@ struct CalculationView: View {
                     VStack{
                         Text("Add your data")
                             .font(.system(size: 20))
+                        Button{
+                            isSheetPresented.toggle()
+                        }label: {
+                            Image(systemName: "note.text.badge.plus")
+                        }
+                        .foregroundStyle(Color.btnGradientColor)
+                        .frame(height: 100)
+                        .padding(.top)
                     }
                     
-                }else {
-                    
+                } else {
                     List{
                         Section{
                                 TitleHeaderView()
@@ -138,16 +145,17 @@ struct CalculationView: View {
             .onAppear(perform: {
                 fetchData()
             })
-            .toolbar{
-                Button{
-                    isSheetPresented.toggle()
-                }label: {
-                    Image(systemName: "note.text.badge.plus").foregroundStyle(Color.btnGradientColor)
+            .toolbar {
+                if (totalCalories > 0) {
+                    Button{
+                        isSheetPresented.toggle()
+                    }label: {
+                        Image(systemName: "note.text.badge.plus").foregroundStyle(Color.btnGradientColor)
+                    }
                 }
-                
             }.sheet(isPresented: $isSheetPresented) {
                 CalculateDetailScreen(
-                    dismissSheetHandler: {
+                    calCountDatabase: $foodDataStorage, dismissSheetHandler: {
                         isSheetPresented.toggle()
                         fetchData()
                     }
