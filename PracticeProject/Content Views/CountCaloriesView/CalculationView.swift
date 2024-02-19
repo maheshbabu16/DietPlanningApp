@@ -13,6 +13,7 @@ struct CalculationView: View {
     @Environment(\.modelContext) var formData
     @State private var isSheetPresented = false
     @State private var foodDataStorage: [CalorieModel] = []
+    @State var deleteSheetClicked : Bool = false
     
     var totalCalories: Int {
         foodDataStorage.reduce(0) { $0 + (Int($1.calCount) ) }
@@ -52,36 +53,36 @@ struct CalculationView: View {
                 } else {
                     List{
                         Section{
-                                TitleHeaderView()
-                                VStack(spacing: 5){
-                                    ForEach(foodDataStorage) { item in
-                                        CalculateRowCell(foodItem: item)
-                                            .swipeActions(edge: .trailing, allowsFullSwipe: true, content: {
-                                                
-                                                Button{
-
-                                                }label: {
-                                                    Image(systemName: "trash")
-                                                }.tint(Color.red)
-                                            })
-                                            .swipeActions(edge: .leading, allowsFullSwipe: true, content: {
-                                                
-                                                Button{
-
-                                                }label: {
-                                                    Image(systemName: "pencil")
-                                                }.tint(Color.blue)
-                                            })
-
-                                    }
-                                }
+                            TitleHeaderView()
+                            VStack(spacing: 5){
+                                ForEach(foodDataStorage) { item in
+                                    CalculateRowCell(foodItem: item)
+                                    
+                                }.swipeActions(edge: .trailing, allowsFullSwipe: true, content: {
+                                    
+                                    Button{
+                                        
+                                    }label: {
+                                        Image(systemName: "trash")
+                                    }.tint(Color.red)
+                                })
+                                .swipeActions(edge: .leading, allowsFullSwipe: true, content: {
+                                    
+                                    Button{
+                                        
+                                    }label: {
+                                        Image(systemName: "pencil")
+                                    }.tint(Color.blue)
+                                })
+                                
+                            }
                         } .listRowBackground(Color.clear)
                             .listRowSeparatorTint(Color.clear)
                         
                         
                         Section(){
                             VStack{
-
+                                
                                 HStack{
                                     Text("Total Protien")
                                         .font(.system(size: 16))
@@ -94,7 +95,7 @@ struct CalculationView: View {
                                         .minimumScaleFactor(0.2)
                                 }
                                 .padding([.top, .leading, .trailing], 10.0)
-
+                                
                                 HStack{
                                     Text("Total Carbs")
                                         .font(.system(size: 16))
@@ -107,7 +108,7 @@ struct CalculationView: View {
                                         .minimumScaleFactor(0.2)
                                 }
                                 .padding([.top, .leading, .trailing], 10.0)
-
+                                
                                 HStack{
                                     Text("Total Fats")
                                         .font(.system(size: 16))
@@ -130,15 +131,14 @@ struct CalculationView: View {
                                         .font(.system(size: 16))
                                         .fontWeight(.regular)
                                         .minimumScaleFactor(0.2)
-                                }
+                                }.padding([.top, .leading, .trailing], 10.0)
+                                
                             }
-                               
+                            
                             .listRowSeparatorTint(Color.clear)
                         }
-                        .listStyle(PlainListStyle())
-                            .background(Color.clear)
-
-                    }
+                    } .listStyle(PlainListStyle())
+                        .background(Color.clear)
                 }
             }
             .onAppear(perform: {
@@ -146,13 +146,32 @@ struct CalculationView: View {
             })
             .toolbar {
                 if (totalCalories > 0) {
-                    Button{
-                        isSheetPresented.toggle()
-                    }label: {
-                        Image(systemName: "note.text.badge.plus").foregroundStyle(Color.btnGradientColor)
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button{
+                            isSheetPresented.toggle()
+                        }label: {
+                            Image(systemName: "note.text.badge.plus").foregroundStyle(Color.btnGradientColor)
+                        }
+                    }
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button {
+                            self.deleteSheetClicked.toggle()
+                        } label: {
+                            Image(systemName: "trash")
+                                .foregroundStyle(Color.red)
+                        }
                     }
                 }
-            }.sheet(isPresented: $isSheetPresented) {
+            }.alert("Are You Sure ?", isPresented: $deleteSheetClicked, actions: {
+                Button(role: .destructive) {
+                    self.deletCalorieChart()
+                    self.fetchData()
+                } label: {
+                    Text("Delete")
+                }
+
+            })
+            .sheet(isPresented: $isSheetPresented) {
                 CalculateDetailScreen(
                     calCountDatabase: $foodDataStorage, dismissSheetHandler: {
                         isSheetPresented.toggle()
@@ -179,9 +198,19 @@ struct CalculationView: View {
     }
     func deleteItemAtRow(_ indexSet: IndexSet){
         for index in indexSet {
-               let destination = foodDataStorage[index]
+            let destination = foodDataStorage[index]
             formData.delete(destination)
-            }
+        }
+    }
+    func shoeDeleteAlert(){
+       
+    }
+    func deletCalorieChart(){
+        do {
+            try formData.delete(model: CalorieModel.self) }
+        catch {
+            print("Failed to clear all data.")
+        }
     }
 }
 

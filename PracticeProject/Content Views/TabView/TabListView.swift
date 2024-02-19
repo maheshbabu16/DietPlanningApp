@@ -21,7 +21,7 @@ struct TabListView: View {
     //MARK: - Body view
     var body: some View {
         TabView(selection: $selectedTab){
-            AppetiteHomeView()
+            HomeMainView()
                 .tabItem {
                     Label("Appetite", systemImage: "fork.knife.circle")
                 }.tag(0)

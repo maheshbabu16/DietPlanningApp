@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct Food: Identifiable {
     let id = UUID()
@@ -30,17 +31,13 @@ struct Food: Identifiable {
     }
 }
 
-struct FoodCount: Identifiable {
-    let id = UUID()
-    var name: String
-    var calories: Int
-    var quantity: Int
-    var protien: Int
-    var carbs: Int
-    var fats: Int
-    var calCount: Int
-    var protienCount: Int
-    var carbsCount: Int
-    var fatsCount: Int
+struct FoodCardRow: Identifiable {
+    
+    var id = UUID()
+    var cardTitle : String
+    var cardHeadTitle : String
+    var cardDesc : String
+    var backgroundGradient : LinearGradient
+    var backgroundImageString : String
 }
 
