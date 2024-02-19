@@ -10,11 +10,9 @@ import SwiftUI
 struct CalculationView: View {
     
     //MARK: - Property Wrappers for variables
-    @State private var foodDataStorage: [CalorieModel] = []
-    
     @Environment(\.modelContext) var formData
     @State private var isSheetPresented = false
-    
+    @State private var foodDataStorage: [CalorieModel] = []
     
     var totalCalories: Int {
         foodDataStorage.reduce(0) { $0 + (Int($1.calCount) ) }
@@ -29,7 +27,6 @@ struct CalculationView: View {
         foodDataStorage.reduce(0) { $0 + (Int($1.fatsCount) ) }
     }
     
-
     var body: some View {
         NavigationView{
             
@@ -37,15 +34,19 @@ struct CalculationView: View {
                 if !(totalCalories > 0) {
                     VStack{
                         Text("Add your data")
-                            .font(.system(size: 20))
+                            .font(.system(size: 18))
                         Button{
                             isSheetPresented.toggle()
                         }label: {
-                            Image(systemName: "note.text.badge.plus")
-                        }
-                        .foregroundStyle(Color.btnGradientColor)
-                        .frame(height: 100)
-                        .padding(.top)
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 15)
+                                    .fill(Color.textColor.opacity(0.15))
+                                Image(systemName: "plus")
+                                    .resizable()
+                                    .frame(width: 15, height: 15)
+                                    .foregroundStyle(Color.blue)
+                            }
+                        }.frame(width: 90, height: 30).padding(.top, 5)
                     }
                     
                 } else {
@@ -130,16 +131,14 @@ struct CalculationView: View {
                                         .fontWeight(.regular)
                                         .minimumScaleFactor(0.2)
                                 }
-                                .padding([.top, .leading, .trailing], 10.0)
-                                .listRowBackground(Color.clear)
                             }
+                               
+                            .listRowSeparatorTint(Color.clear)
                         }
-                           
-                        .listRowSeparatorTint(Color.clear)
+                        .listStyle(PlainListStyle())
+                            .background(Color.clear)
+
                     }
-                    .listStyle(PlainListStyle())
-                        .background(Color.clear)
-                    
                 }
             }
             .onAppear(perform: {
