@@ -16,70 +16,53 @@ struct FoodCardView: View {
     var backgroundImageString : String
     var customBackgroundColor : LinearGradient
     var body: some View {
-        ZStack{
-            VStack(spacing: 0){
+        ZStack(alignment: .topTrailing){
                 ZStack{
-                    UnevenRoundedRectangle(topLeadingRadius: 15, bottomLeadingRadius: 0, bottomTrailingRadius: 0, topTrailingRadius: 15)
+                    RoundedRectangle(cornerRadius: 15)
                         .fill(customBackgroundColor)
-
-                    ZStack(alignment: .bottom){
-
+                    
+                    VStack{
                             Image("\(backgroundImageString)")
                                 .resizable()
                                 .scaledToFit()
-                                .mask {
-                                    UnevenRoundedRectangle(topLeadingRadius: 15, bottomLeadingRadius: 0, bottomTrailingRadius: 0, topTrailingRadius: 15)
-                                }
+                                .frame(height: height*3/5)
                         
                         VStack(alignment: .leading, spacing: 10){
-                            Text("\(strCardHeadLine)")
-                                .foregroundStyle(Color.white)
-                                .fontWeight(.medium)
-                                .lineLimit(1)
-                                .font(.system(size: 18))
-                            
+//                            Text("\(strCardTitle)")
+//                                .bold()
+//                                .multilineTextAlignment(.leading)
+//                                .foregroundStyle(Color.white)
+//                                .fontWeight(.medium)
+//                                .lineLimit(1)
+//                                .font(.title)
                             Text("\(strCardDescription)")
+                                .multilineTextAlignment(.leading)
                                 .foregroundStyle(Color.white)
                                 .lineLimit(2)
-                                .font(.system(size: 25))
+                                .font(.headline)
                                 .bold()
-                        }
-                        .padding(.bottom, 20)
-
-                    }.frame(height: height*4/5)
-                }.frame(height: height*4/5)
+                        }.padding(.bottom, 0)
+                        .padding(.horizontal)
+                    }.frame(height: height)
+                }.frame(height: height)
+            Button{
                 
-                ZStack(alignment: .leading){
-                    
-                    UnevenRoundedRectangle(topLeadingRadius: 0, bottomLeadingRadius: 15, bottomTrailingRadius: 15, topTrailingRadius: 0)
-                        .fill(Color.textColor.opacity(0.15))
-                    
-                    HStack{
-                        Text("\(strCardTitle)")
-                            .font(.system(size: 20))
-                            .bold()
-                        Spacer()
+            }label: {
+                ZStack{
+                    UnevenRoundedRectangle(topLeadingRadius: 0, bottomLeadingRadius: 15, bottomTrailingRadius: 0, topTrailingRadius: 15)
+                        .fill(Color.red)
+                    Text("\(strCardTitle)")
+                        .font(.title3)
+                        .bold()
+                        .foregroundStyle(Color.white)
                         
-                        Button {
-                            self.expandButtonHandler?()
-                        }label: {
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color.textColor.opacity(0.15))
-                                Text("Expand")
-                                    .minimumScaleFactor(0.2)
-                                    .foregroundStyle(Color.primary)
-                                    .bold()
-                            }
-                        }.frame(width: 100, height: height/12)
-                    }.padding()
-                }.frame(height: height/5)
-            }.frame(height: height)
-        }
-            .padding()
+                }.frame(minWidth: height*1/3, maxWidth: height/2)
+                .frame(height: 40)
+            }
+        }.padding()
     }
 }
 
 #Preview {
-    FoodCardView(height: 400, strCardTitle: "Hello", strCardHeadLine: "This is a sub line for card", strCardDescription: "This is a description for card that can be customised later", backgroundImageString: "google.logo", customBackgroundColor: Color.btnGradientColor)
+    FoodCardView(height: 400, strCardTitle: "Hello", strCardHeadLine: "This is a sub line for card", strCardDescription: "Your can view the list of all food items with unhealthy foods", backgroundImageString: "google.logo", customBackgroundColor: Color.btnGradientColor)
 }

@@ -12,13 +12,13 @@ import SwiftData
 class UserDataModel  {
     
     @Attribute(.unique) var userID : String
-    var userName: String
+    @Attribute(originalName: "user_name") var userName: String
     var passWord: String
     var name: String
     var isLoginApproved : Bool 
-    @Relationship(deleteRule: .cascade) var userPrefrence :  UserPrefrences?
-    @Relationship(deleteRule: .cascade) var dietChart :  CalorieModel?
-    @Relationship(deleteRule: .cascade) var workoutChart :  SheduleWorkoutModel?
+    @Relationship(deleteRule: .cascade) var userPrefrence : UserPrefrences?
+    @Relationship(deleteRule: .cascade) var dietChart     : CalorieModel?
+    @Relationship(deleteRule: .cascade) var workoutChart  : SheduleWorkoutModel?
     
     init(userID: String, userName: String, passWord: String, name: String, isLoginApproved: Bool, userPrefrence: UserPrefrences? = nil, dietChart: CalorieModel? = nil, workoutChart: SheduleWorkoutModel? = nil) {
         self.userID = userID

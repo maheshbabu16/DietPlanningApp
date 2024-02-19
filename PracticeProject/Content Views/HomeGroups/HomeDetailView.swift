@@ -35,7 +35,6 @@ struct HomeDetailView: View {
                             }.cornerRadius(20)
                                 .frame(width:40, height:40)
                                 .padding(.top, 50)
-                                .padding(.trailing, 10)
                         }
                     }
                 }.frame(height: imageHeight)

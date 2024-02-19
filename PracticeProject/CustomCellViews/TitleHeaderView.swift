@@ -34,7 +34,13 @@ struct TitleHeaderView: View {
         }.padding()
     }
 }
-
+struct DemoDummyViewScreen: View {
+    var body: some View {
+        ZStack{
+            LinearGradient(colors: [.pink, .neonClr], startPoint: .bottomTrailing, endPoint: .center)
+        }
+    }
+}
 #Preview {
-    TitleHeaderView()
+    DemoDummyViewScreen()
 }
