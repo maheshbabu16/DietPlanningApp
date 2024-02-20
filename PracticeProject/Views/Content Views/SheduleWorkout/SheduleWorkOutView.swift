@@ -13,27 +13,40 @@ struct SheduleWorkOutView: View {
     @State private var userWorkout: [SheduleWorkoutModel] = []
     @State private var presentWorkoutSheet : Bool = false
     @Environment (\.modelContext) var formData
+    @State var selectedDay = ""
+    @State var selectedWorkoutType = ""
     
     var body: some View {
         NavigationStack{
-            VStack{
-                Text("Add your data from here")
-                    .font(.system(size: 18))
-                
+            ZStack {
                 if (userWorkout.count == 0){
-                    Button{
-                        self.presentWorkoutSheet.toggle()
-                        CommonFunctions.Functions.getHapticFeedback(impact: .light)
-                    }label: {
-                        ZStack{
-                            RoundedRectangle(cornerRadius: 15)
-                                .fill(Color.textColor.opacity(0.15))
-                            Image(systemName: "plus")
-                                .resizable()
-                                .frame(width: 15, height: 15)
-                                .foregroundStyle(Color.blue)
+                    VStack{
+                        Text("Add your data from here")
+                            .font(.system(size: 18))
+                        
+                        Button{
+                            self.presentWorkoutSheet.toggle()
+                            CommonFunctions.Functions.getHapticFeedback(impact: .light)
+                        }label: {
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 20)
+                                    .fill(Color.textColor.opacity(0.15))
+                                Image(systemName: "plus")
+                                    .resizable()
+                                    .frame(width: 15, height: 15)
+                                    .foregroundStyle(Color.blue)
+                            }
+                        }.frame(width: 40, height: 40).padding(.top, 5)
+                    }
+                }else {
+                    List {
+                        ForEach(userWorkout){ item in
+                            Section("Monday"){
+                                Text("Type").font(.system(size: 20))
+                                    .padding()
+                            }
                         }
-                    }.frame(width: 90, height: 30).padding(.top, 5)
+                    }.listStyle(DefaultListStyle())
                 }
             }
             .navigationTitle("My Workout")
@@ -60,9 +73,11 @@ struct SheduleWorkOutView: View {
                 }
             }
         }.sheet(isPresented: $presentWorkoutSheet, onDismiss: {
-            
+            fetchData()
         }, content: {
-            AddWorkoutSheduleView()
+            AddWorkoutSheduleView(strSelectedType: $selectedWorkoutType, sheduleChart: $userWorkout) {
+                self.presentWorkoutSheet.toggle()
+            }
                 .presentationDetents([.fraction(0.75), .large])
         })
     }

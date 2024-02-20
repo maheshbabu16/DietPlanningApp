@@ -21,6 +21,9 @@
 		18A15C0D2B8334DF00DF70EE /* FoodCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A15C0C2B8334DF00DF70EE /* FoodCardView.swift */; };
 		18A15C0F2B83544200DF70EE /* HomeMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A15C0E2B83544200DF70EE /* HomeMainView.swift */; };
 		18A15C122B835FBC00DF70EE /* HomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A15C112B835FBC00DF70EE /* HomeDetailView.swift */; };
+		18A15C142B8480AE00DF70EE /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A15C132B8480AE00DF70EE /* NotificationManager.swift */; };
+		18A15C192B8483E700DF70EE /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A15C182B8483E700DF70EE /* LocationManager.swift */; };
+		18A15C1A2B84849B00DF70EE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2820872B03504800A902AA /* Constants.swift */; };
 		FE088ED12B02AA5800CBD77F /* MapTrackingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE088ED02B02AA5800CBD77F /* MapTrackingView.swift */; };
 		FE20A7412B4AB24D00B9BD68 /* SignUPScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE20A7402B4AB24D00B9BD68 /* SignUPScreen.swift */; };
 		FE245AE02B026610000EF370 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE245ADF2B026610000EF370 /* WidgetKit.framework */; };
@@ -92,6 +95,8 @@
 		18A15C0C2B8334DF00DF70EE /* FoodCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCardView.swift; sourceTree = "<group>"; };
 		18A15C0E2B83544200DF70EE /* HomeMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainView.swift; sourceTree = "<group>"; };
 		18A15C112B835FBC00DF70EE /* HomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailView.swift; sourceTree = "<group>"; };
+		18A15C132B8480AE00DF70EE /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		18A15C182B8483E700DF70EE /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FE088ED02B02AA5800CBD77F /* MapTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTrackingView.swift; sourceTree = "<group>"; };
 		FE1F49252B5C1AA80071FFCF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		FE20A7402B4AB24D00B9BD68 /* SignUPScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUPScreen.swift; sourceTree = "<group>"; };
@@ -172,6 +177,24 @@
 				18A15C112B835FBC00DF70EE /* HomeDetailView.swift */,
 			);
 			path = HomeGroups;
+			sourceTree = "<group>";
+		};
+		18A15C152B84837E00DF70EE /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				18A15C132B8480AE00DF70EE /* NotificationManager.swift */,
+				18A15C182B8483E700DF70EE /* LocationManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		18A15C172B8483B500DF70EE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				18456B422B7A1BAB001013EF /* CustomCellViews */,
+				FEC1EB5E2B023C5600DF109E /* Content Views */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		FE245AD62B025DD9000EF370 /* Assets */ = {
@@ -307,13 +330,13 @@
 		FE5CCE592B02212D00F6F1C3 /* PracticeProject */ = {
 			isa = PBXGroup;
 			children = (
+				FE245AD62B025DD9000EF370 /* Assets */,
 				FE1F49252B5C1AA80071FFCF /* Info.plist */,
 				FE45EC3B2B63D24F0040B6C6 /* MainWindow */,
 				FE5CCE6E2B02226F00F6F1C3 /* SwiftData */,
-				FE245AD62B025DD9000EF370 /* Assets */,
 				FE45EC3D2B63D2AF0040B6C6 /* Constants + Extensions */,
-				18456B422B7A1BAB001013EF /* CustomCellViews */,
-				FEC1EB5E2B023C5600DF109E /* Content Views */,
+				18A15C172B8483B500DF70EE /* Views */,
+				18A15C152B84837E00DF70EE /* Managers */,
 				FE5CCE602B02213000F6F1C3 /* PracticeProject.entitlements */,
 				FE5CCE612B02213000F6F1C3 /* Preview Content */,
 			);
@@ -465,6 +488,7 @@
 				182C51B12B7E31C30034B91D /* CalorieModel.swift in Sources */,
 				FE245AE92B026610000EF370 /* FoodWidgets.swift in Sources */,
 				FED9F3142B048996007932C6 /* Food.swift in Sources */,
+				18A15C1A2B84849B00DF70EE /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -476,6 +500,7 @@
 				FEC1EB602B0244D400DF109E /* SplashScreen.swift in Sources */,
 				182C51AE2B7E1F660034B91D /* CalculateRowCell.swift in Sources */,
 				18456B442B7A1BD2001013EF /* LoginTextFeildView.swift in Sources */,
+				18A15C192B8483E700DF70EE /* LocationManager.swift in Sources */,
 				FE5CCE5D2B02212D00F6F1C3 /* TabListView.swift in Sources */,
 				FE5CCE702B022B3800F6F1C3 /* AppetiteHomeView.swift in Sources */,
 				FE415D232B13686C00EF7D87 /* ProgressViewScreen.swift in Sources */,
@@ -494,6 +519,7 @@
 				FE5CCE6C2B02219A00F6F1C3 /* AppetiteDetailView.swift in Sources */,
 				187CB5A62B7CD0A80051DEC9 /* SheduleWorkoutModel.swift in Sources */,
 				FEE88AF72B08C363007E953E /* FoodGridView.swift in Sources */,
+				18A15C142B8480AE00DF70EE /* NotificationManager.swift in Sources */,
 				FE2F0A0E2B73E0DC0010B400 /* SheduleWorkOutView.swift in Sources */,
 				18A15C0D2B8334DF00DF70EE /* FoodCardView.swift in Sources */,
 				187CB5AA2B7CDD790051DEC9 /* Extensions.swift in Sources */,
@@ -701,7 +727,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PracticeProject/Preview Content\"";
-				DEVELOPMENT_TEAM = 467J6N72WG;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -747,7 +773,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PracticeProject/Preview Content\"";
-				DEVELOPMENT_TEAM = 467J6N72WG;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

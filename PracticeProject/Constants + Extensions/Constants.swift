@@ -17,7 +17,6 @@ enum Constants {
         static let doneTitle = "Done"
         
     }
-    
 }
 
 struct CommonFunctions{
@@ -26,6 +25,10 @@ struct CommonFunctions{
             let generator = UIImpactFeedbackGenerator(style: impact)
             generator.impactOccurred()
         }
+        
     }
- 
+    
+    enum getStringFunctions{
+        
+    }
 }

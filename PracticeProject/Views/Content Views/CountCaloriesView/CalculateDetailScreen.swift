@@ -89,6 +89,7 @@ struct CalculateDetailScreen: View {
                                        fatsCount     : fatsCount)
             withAnimation {
                 modelContext.insert(calData)
+                CommonFunctions.Functions.getHapticFeedback(impact: .light)
             }
         } else { print("Error: Unable to convert one or both values to Int.")  }
     }

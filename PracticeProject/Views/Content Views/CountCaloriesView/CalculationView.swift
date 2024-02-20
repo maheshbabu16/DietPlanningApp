@@ -40,14 +40,14 @@ struct CalculationView: View {
                             isSheetPresented.toggle()
                         }label: {
                             ZStack{
-                                RoundedRectangle(cornerRadius: 15)
+                                RoundedRectangle(cornerRadius: 20)
                                     .fill(Color.textColor.opacity(0.15))
                                 Image(systemName: "plus")
                                     .resizable()
                                     .frame(width: 15, height: 15)
                                     .foregroundStyle(Color.blue)
                             }
-                        }.frame(width: 90, height: 30).padding(.top, 5)
+                        }.frame(width: 40, height: 40).padding(.top, 5)
                     }
                     
                 } else {

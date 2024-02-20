@@ -12,7 +12,8 @@ struct SettingsView: View {
     
     //MARK: - Property Wrappers for variables
     @AppStorage("active_icon") var activeAppIcon : String = "AppIcon"
-    
+    @StateObject var notificationManager = NotificationManager()
+
     @State var showsAlert = false
     @State var showsLogOutAlert = false
     @State var showProgress = false
@@ -34,6 +35,7 @@ struct SettingsView: View {
     @Query(filter: #Predicate<UserDataModel> { data in
         data.isLoginApproved == true
     }) var userDataM: [UserDataModel]
+    
     
     enum AppearnaceStyle {
         case automatic
@@ -107,7 +109,26 @@ struct SettingsView: View {
                         Section{
                             HStack{
                                 Image(systemName: "app.badge")
-                                Toggle("Notifications", isOn: $isNotificationsEnabled).foregroundStyle(Color("TextColor")).font(.system(size: 14))
+                                Toggle("Notifications", isOn: $isNotificationsEnabled)
+                                    .onChange(of: isNotificationsEnabled, perform: { newValue in
+                                        if newValue{
+                                            Task{
+                                                await notificationManager.request()
+                                                isNotificationsEnabled = notificationManager.permissionsEnabled
+                                            }
+                                        }else {
+                                            if let appSettings = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(appSettings) {
+                                                UIApplication.shared.open(appSettings)
+                                            }
+                                        }
+                                        
+                                    })
+                                    .task {
+                                        await notificationManager.getAuthorisationStatus()
+                                    }
+                                    .foregroundStyle(Color("TextColor"))
+                                    .font(.system(size: 14))
+                                
                             }
                         }header: {
                             HStack{
@@ -303,6 +324,7 @@ struct SettingsView: View {
             UIApplication.shared.setAlternateIconName(newIcon)
         })
         .onAppear {
+            isNotificationsEnabled = notificationManager.permissionsEnabled
             strUserName = userDataM.count > 0 ? userDataM[0].name : "Your name displays here"
         }
     }
