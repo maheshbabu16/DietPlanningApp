@@ -14,52 +14,31 @@ struct SettingsView: View {
     @AppStorage("active_icon") var activeAppIcon : String = "AppIcon"
     @StateObject var notificationManager = NotificationManager()
     
-    @State var showsAlert = false
-    @State var showsLogOutAlert = false
-    @State var showProgress = false
-    @State var isPrivate: Bool = false
-    @State private var profileImageSize = false
-    @State fileprivate var shouldRedirectToLogIn = false
-    @State fileprivate var reportIssue: Bool = false
-    @State fileprivate var isNotificationsEnabled: Bool = false
-    @State var profileUsername: String = ""
-    @State private var fontSize: CGFloat = 5
-    @State private var deviceAppearance: AppearnaceStyle = .automatic
-    @State private var changeAppIcon = ""
-    @State private var editSheetPresented : Bool = false
-    @State private var showChangePasswordSheet : Bool = false
-    @State var strUserName : String = ""
-    
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.modelContext) var dataFromDataBase
     @Query(filter: #Predicate<UserDataModel> { data in
         data.isLoginApproved == true
     }) var userDataM: [UserDataModel]
     
+    @State var deleteAccountAlert = false
+    @State var showsLogOutAlert = false
     
-    enum AppearnaceStyle {
-        case automatic
-        case light
-        case dark
-        
-        var systemAppearance: UIUserInterfaceStyle{
-            
-            switch self {
-            case .automatic:
-                return .unspecified
-            case .light:
-                return .light
-            case .dark:
-                return .dark
-            }
-        }
-        
-        func applyAppearance() {
-            UIApplication.shared.windows.forEach { window in
-                window.overrideUserInterfaceStyle = self.systemAppearance
-            }
-        }
-    }
+    @State var isPrivate: Bool = false
+    @State fileprivate var reportIssue: Bool = false
+    
+    @State fileprivate var isNotificationsEnabled: Bool = false
+    
+    @State fileprivate var shouldRedirectToLogIn = false
+    @State private var editSheetPresented : Bool = false
+    @State private var showChangePasswordSheet : Bool = false
+    
+    @State var deviceAppearanceImage : String = ""
+    @State var profileUsername: String = ""
+    @State var lockIconStr : String = ""
+    @State var strUserName : String = ""
+    
+    @State private var fontSize: CGFloat = 5
+    @State private var deviceAppearance: UIUserInterfaceStyle = .unspecified
     
     //MARK: - Body for main view
     var body: some View {
@@ -130,12 +109,8 @@ struct SettingsView: View {
                                     .font(.system(size: 14))
                                 
                             }
-                        }header: {
-                            //                            HStack{
-                            //                                Image(systemName: "bell.badge")
-                            //                                Text("Notifications")
-                            //                            }
-                        }
+                        }header: {}
+                        
                         
                         //MARK: - Account Section
                         Section{
@@ -150,8 +125,17 @@ struct SettingsView: View {
                                     .font(.system(size: 14))
                             }
                             HStack{
-                                Image(systemName: "lock")
-                                Toggle("Make account Private", isOn: $isPrivate).foregroundStyle(Color("TextColor")).font(.system(size: 14))
+                                Image(systemName: "\(lockIconStr)")
+                                Toggle(isOn: $isPrivate) {
+                                    Text("Private account")
+                                        .foregroundStyle(Color.textColor)
+                                        .font(.system(size: 14))
+                                    
+                                }.onChange(of: isPrivate) { newValue in
+                                    withAnimation(.smooth) {
+                                        lockIconStr = newValue ? "lock" : "lock.open"
+                                    }
+                                }
                             }
                         }header: {
                             Text("Account")
@@ -161,46 +145,58 @@ struct SettingsView: View {
                         Section{
                             
                             HStack{
-                                Image(systemName: "moonphase.first.quarter")
+                                Image(systemName: "\(deviceAppearanceImage)").foregroundStyle(Color.blueYellowGradient)
                                 Picker(selection: $deviceAppearance) {
-                                    Text("Auto").tag(AppearnaceStyle.automatic)
-                                    Text("Light").tag(AppearnaceStyle.light)
-                                    Text("Dark").tag(AppearnaceStyle.dark)
+                                    
+                                    Text("Auto").tag(UIUserInterfaceStyle.unspecified)
+                                    Text("Light").tag(UIUserInterfaceStyle.light)
+                                    Text("Dark").tag(UIUserInterfaceStyle.dark)
+                                    
                                 } label: {
                                     Text("Appearnace").font(.system(size: 14))
                                 }
-                                
                             }
                             
                             HStack{
-                                Image(systemName: "square.dashed.inset.filled")
-                                Picker(selection: $activeAppIcon) {
-                                    
-                                    HStack{
-                                        Image("IconApp").resizable().frame(width: 30, height: 30)
-                                        Text("Original")
-                                    }.tag("AppIcon")
-                                    
-                                    HStack{
-                                        Image("pIcon").resizable().frame(width: 30, height: 30)
-                                        Text("P Icon")
-                                    }.tag("AppIcon2")
-                                    
-                                    HStack{
-                                        Image("rainbow").resizable().frame(width: 30, height: 30)
-                                        Text("Rainbow Icon")
-                                    }.tag("AppIcon3")
+                                HStack{
+                                    Image(systemName: "square.dashed").font(.system(size: 14))
+                                    Text("Select Icon").font(.system(size: 14))
+                                }
+                                Spacer()
+                                
+                                Menu {
+                                  Text("Choose Icon")
+                                    Picker(selection: $activeAppIcon) {
+                                        
+                                        HStack{
+                                            Image("IconApp").resizable().frame(width: 30, height: 30)
+                                            Text("Original")
+                                        }.tag("AppIcon")
+                                        
+                                        HStack{
+                                            Image("pIcon").resizable().frame(width: 30, height: 30)
+                                            Text("P Icon")
+                                        }.tag("AppIcon2")
+                                        
+                                        HStack{
+                                            Image("rainbow").resizable().frame(width: 30, height: 30)
+                                            Text("Rainbow Icon")
+                                        }.tag("AppIcon3")
+                                        
+                                    } label: {
+                                        Text("Select icon")
+                                    }.pickerStyle(InlinePickerStyle())
                                     
                                 } label: {
-                                    Text("Select icon")
-                                }.pickerStyle(NavigationLinkPickerStyle())
-                                
+                                    Image(systemName: "ellipsis")
+                                        .font(.system(size: 20))
+                                        .foregroundStyle(Color.red)
+                                }
                             }
-                            
-                        } header: {
+                        }header: {
                             HStack{
                                 Image(systemName: "ipad.and.iphone")
-                                Text("Appearance")
+                                Text("Device")
                             }
                         }
                         
@@ -256,7 +252,7 @@ struct SettingsView: View {
                             }
                             
                             Button{
-                                self.showsAlert = true
+                                self.deleteAccountAlert = true
                             } label: {
                                 HStack{
                                     Image(systemName: "shared.with.you.slash").foregroundStyle(Color.red)
@@ -264,7 +260,7 @@ struct SettingsView: View {
                                         .font(.system(size: 14))
                                         .foregroundStyle(Color.primary)
                                 }
-                            } .confirmationDialog("This action deletes your account from database!!!", isPresented: $showsAlert, titleVisibility: .visible, actions: {
+                            } .confirmationDialog("This action deletes your account from database!!!", isPresented: $deleteAccountAlert, titleVisibility: .visible, actions: {
                                 Button {
                                     self.showsLogOutAlert = true
                                 } label: {
@@ -303,9 +299,19 @@ struct SettingsView: View {
                         }
                     }
                     .navigationTitle("Settings")
-                    .onChange(of: deviceAppearance) { _ in
+                    .onChange(of: deviceAppearance) { appearnce in
                         // Apply appearance changes when the selected style changes
-                        deviceAppearance.applyAppearance()
+                        if deviceAppearance == .unspecified {
+                            deviceAppearanceImage = "livephoto.badge.automatic"
+                        } else if deviceAppearance == .light {
+                            deviceAppearanceImage = "sun.min"
+                        }else if deviceAppearance == .dark {
+                            deviceAppearanceImage = "moon.stars"
+                        }
+                        
+                        UIApplication.shared.windows.forEach { window in
+                            window.overrideUserInterfaceStyle = appearnce
+                        }
                     }
                 }.sheet(isPresented: $editSheetPresented, onDismiss: {
                     strUserName = userDataM.count > 0 ? userDataM[0].name : "Your name displays here"
@@ -331,6 +337,8 @@ struct SettingsView: View {
         .onAppear {
             isNotificationsEnabled = notificationManager.permissionsEnabled
             strUserName = userDataM.count > 0 ? userDataM[0].name : "Your name displays here"
+            deviceAppearanceImage = "livephoto.badge.automatic"
+            lockIconStr = isPrivate ? "lock" : "lock.open"
         }
     }
     
@@ -347,9 +355,7 @@ struct SettingsView: View {
         }
         
         func deleteDataBase(){
-            do {
-                try dataFromDataBase.delete(model: UserDataModel.self) } catch { print("Failed to clear all data.") }
-        }
+            do { try dataFromDataBase.delete(model: UserDataModel.self) } catch { print("Failed to clear all data.") } }
     }
 }
 
