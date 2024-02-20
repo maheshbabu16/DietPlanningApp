@@ -13,7 +13,7 @@ struct SettingsView: View {
     //MARK: - Property Wrappers for variables
     @AppStorage("active_icon") var activeAppIcon : String = "AppIcon"
     @StateObject var notificationManager = NotificationManager()
-
+    
     @State var showsAlert = false
     @State var showsLogOutAlert = false
     @State var showProgress = false
@@ -114,7 +114,7 @@ struct SettingsView: View {
                                         if newValue{
                                             Task{
                                                 await notificationManager.request()
-                                                isNotificationsEnabled = notificationManager.permissionsEnabled
+                                                
                                             }
                                         }else {
                                             if let appSettings = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(appSettings) {
@@ -131,10 +131,10 @@ struct SettingsView: View {
                                 
                             }
                         }header: {
-                            HStack{
-                                Image(systemName: "bell.badge")
-                                Text("Notifications")
-                            }
+                            //                            HStack{
+                            //                                Image(systemName: "bell.badge")
+                            //                                Text("Notifications")
+                            //                            }
                         }
                         
                         //MARK: - Account Section
@@ -162,32 +162,37 @@ struct SettingsView: View {
                             
                             HStack{
                                 Image(systemName: "moonphase.first.quarter")
-                                Picker("Appearnace", selection: $deviceAppearance){
+                                Picker(selection: $deviceAppearance) {
                                     Text("Auto").tag(AppearnaceStyle.automatic)
                                     Text("Light").tag(AppearnaceStyle.light)
                                     Text("Dark").tag(AppearnaceStyle.dark)
-                                }.font(.system(size: 14))
+                                } label: {
+                                    Text("Appearnace").font(.system(size: 14))
+                                }
+                                
                             }
                             
                             HStack{
                                 Image(systemName: "square.dashed.inset.filled")
-                                Picker("Select icon", selection: $activeAppIcon) {
-                                    
-                                        HStack{
-                                            Image("IconApp").resizable().frame(width: 50, height: 50)
-                                            Text("Original")
-                                        }.tag("AppIcon")
+                                Picker(selection: $activeAppIcon) {
                                     
                                     HStack{
-                                        Image("pIcon").resizable().frame(width: 50, height: 50)
+                                        Image("IconApp").resizable().frame(width: 30, height: 30)
+                                        Text("Original")
+                                    }.tag("AppIcon")
+                                    
+                                    HStack{
+                                        Image("pIcon").resizable().frame(width: 30, height: 30)
                                         Text("P Icon")
                                     }.tag("AppIcon2")
                                     
                                     HStack{
-                                        Image("rainbow").resizable().frame(width: 50, height: 50)
+                                        Image("rainbow").resizable().frame(width: 30, height: 30)
                                         Text("Rainbow Icon")
                                     }.tag("AppIcon3")
-
+                                    
+                                } label: {
+                                    Text("Select icon")
                                 }.pickerStyle(NavigationLinkPickerStyle())
                                 
                             }
