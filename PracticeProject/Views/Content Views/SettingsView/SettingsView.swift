@@ -300,18 +300,20 @@ struct SettingsView: View {
                     }
                     .navigationTitle("Settings")
                     .onChange(of: deviceAppearance) { appearnce in
-                        // Apply appearance changes when the selected style changes
-                        if deviceAppearance == .unspecified {
-                            deviceAppearanceImage = "livephoto.badge.automatic"
-                        } else if deviceAppearance == .light {
-                            deviceAppearanceImage = "sun.min"
-                        }else if deviceAppearance == .dark {
-                            deviceAppearanceImage = "moon.stars"
+                        withAnimation {
+                            
+                            // Apply appearance changes when the selected style changes
+                            if deviceAppearance == .unspecified {
+                                deviceAppearanceImage = "livephoto.badge.automatic"
+                            } else if deviceAppearance == .light {
+                                deviceAppearanceImage = "sun.min"
+                            }else if deviceAppearance == .dark {
+                                deviceAppearanceImage = "moon.stars"
+                            }
                         }
-                        
-                        UIApplication.shared.windows.forEach { window in
-                            window.overrideUserInterfaceStyle = appearnce
-                        }
+                            UIApplication.shared.windows.forEach { window in
+                                window.overrideUserInterfaceStyle = appearnce
+                            }
                     }
                 }.sheet(isPresented: $editSheetPresented, onDismiss: {
                     strUserName = userDataM.count > 0 ? userDataM[0].name : "Your name displays here"
@@ -332,6 +334,7 @@ struct SettingsView: View {
                     .presentationDetents([.medium, .large])                }
             }
         }.onChange(of: activeAppIcon, perform: { newIcon in
+            UserDefaults.standard.setValue(newIcon, forKey: "active_icon")
             UIApplication.shared.setAlternateIconName(newIcon)
         })
         .onAppear {
