@@ -300,8 +300,8 @@ struct SettingsView: View {
                     }
                     .navigationTitle("Settings")
                     .onChange(of: deviceAppearance) { appearnce in
+                        
                         withAnimation {
-                            
                             // Apply appearance changes when the selected style changes
                             if deviceAppearance == .unspecified {
                                 deviceAppearanceImage = "livephoto.badge.automatic"

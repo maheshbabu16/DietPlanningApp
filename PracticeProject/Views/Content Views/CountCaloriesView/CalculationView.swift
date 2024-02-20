@@ -207,7 +207,11 @@ struct CalculationView: View {
     }
     func deletCalorieChart(){
         do {
-            try formData.delete(model: CalorieModel.self) }
+            let userID =  UserDefaults.standard.value(forKey: "UserID") as! String
+            try formData.delete(model: CalorieModel.self, where: #Predicate { calorieData in
+                calorieData.userID == userID
+            })
+        }
         catch {
             print("Failed to clear all data.")
         }
