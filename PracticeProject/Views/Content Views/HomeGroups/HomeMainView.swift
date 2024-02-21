@@ -11,36 +11,82 @@ struct HomeMainView: View {
     
     @State var isSheetExpanded : Bool = false
     @State private var arrCards : [String] = ["Healthy Foods", "Unhealthy Food", "High in protien", ]
-    
     @State private var cards : [FoodCardRow] = []
+    @State var showProfileImage : Bool = false
+    @Namespace var nameSpace
     
     var body: some View {
-        NavigationStack{
-            ZStack{
-                ScrollView(.vertical, showsIndicators: false, content: {
-                    LazyVGrid(columns: [GridItem()], content: {
-                        ForEach(cards) { card in
-                            FoodCardView(height: 400,
-                                         strCardTitle: card.cardTitle,
-                                         strCardHeadLine: card.cardHeadTitle, strCardDescription: card.cardDesc, expandButtonHandler: {
-                                self.isSheetExpanded.toggle()
-                               
-                            }, backgroundImageString: card.backgroundImageString, customBackgroundColor: card.backgroundGradient)
-                            .fullScreenCover(isPresented: $isSheetExpanded,onDismiss: {
-                                addData()
-                            }, content: {
-                                
-                                HomeDetailView(closeButtonHandler: {
-                                    self.isSheetExpanded.toggle()
-                                }, backgroundGredient: card.backgroundGradient, imageString: card.backgroundImageString, imageHeight: 350)
-                            }) .transition(.move(edge: .trailing))
-                        }
-                    })
-                })
-            }.padding(.horizontal, 5)
-                .navigationTitle("Home")
-        }
-        .onAppear(perform: {
+        ZStack{
+            if showProfileImage{
+                ZStack(alignment: .center) {
+                    Color.black.opacity(0.15).ignoresSafeArea()
+                        Image("flower")
+                                   .resizable()
+                                   .clipShape(Circle())
+                                   .matchedGeometryEffect(id: "image", in: nameSpace)
+                                   .frame(width: 300,height: 300)
+                }.onTapGesture {
+                    withAnimation(.spring) {
+                        showProfileImage.toggle()
+                    }
+                }
+            }else {
+                NavigationStack{
+                    ZStack{
+                        ScrollView(.vertical, showsIndicators: false, content: {
+                            LazyVGrid(columns: [GridItem()], content: {
+                                ForEach(cards) { card in
+                                    FoodCardView(height: 400,
+                                                 strCardTitle: card.cardTitle,
+                                                 strCardHeadLine: card.cardHeadTitle, strCardDescription: card.cardDesc, expandButtonHandler: {
+                                        self.isSheetExpanded.toggle()
+                                        
+                                    }, backgroundImageString: card.backgroundImageString, customBackgroundColor: card.backgroundGradient)
+                                    .fullScreenCover(isPresented: $isSheetExpanded,onDismiss: {
+                                        addData()
+                                    }, content: {
+                                        
+                                        HomeDetailView(closeButtonHandler: {
+                                            self.isSheetExpanded.toggle()
+                                        }, backgroundGredient: card.backgroundGradient, imageString: card.backgroundImageString, imageHeight: 350)
+                                    }) .transition(.move(edge: .trailing))
+                                }
+                            })
+                        })
+                        
+                        
+                    }.padding(.horizontal, 5)
+                        .navigationTitle("Home")
+                    
+                        .toolbar(content: {
+                            ToolbarItem(placement: .topBarTrailing, content: {
+                                Button{
+                                    withAnimation(.spring) {
+                                        showProfileImage.toggle()
+                                    }
+                                }label: {
+                                    Image("flower")
+                                        .resizable()
+                                        .clipShape(Circle())
+                                        .matchedGeometryEffect(id: "image", in: nameSpace)
+                                        .scaledToFit()
+                                        .frame(width: 75,height: 75)
+                                }.padding(.bottom)
+                            })
+                            
+                            ToolbarItem(placement: .topBarLeading, content: {
+                                NavigationLink {
+                                    ImageGalleryView()
+                                } label: {
+                                    Image(systemName: "photo.on.rectangle.angled")
+                                        .foregroundStyle(Color.btnGradientColor)
+                                }
+                            })
+                        })
+                }
+            }
+
+        }.onAppear(perform: {
             addData()
         })
     }    

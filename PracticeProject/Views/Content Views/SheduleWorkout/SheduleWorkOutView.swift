@@ -64,22 +64,13 @@ struct SheduleWorkOutView: View {
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
-                    HStack{
+                    if (userWorkout.count != 0){
                         Button{
-                            
+                            self.presentWorkoutSheet.toggle()
+                            CommonFunctions.Functions.getHapticFeedback(impact: .light)
                         }label: {
-                            Image(systemName: "photo.on.rectangle.angled")
+                            Image(systemName: "plus.app")
                                 .foregroundStyle(Color.btnGradientColor)
-                        }
-                        
-                        if (userWorkout.count != 0){
-                            Button{
-                                self.presentWorkoutSheet.toggle()
-                                CommonFunctions.Functions.getHapticFeedback(impact: .light)
-                            }label: {
-                                Image(systemName: "plus.app")
-                                    .foregroundStyle(Color.btnGradientColor)
-                            }
                         }
                     }
                 }

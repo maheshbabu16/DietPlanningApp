@@ -19,12 +19,15 @@ enum Constants {
     }
 }
 
+//FIXME: - Change this
 struct CommonFunctions{
+    
     enum Functions{
         static func getHapticFeedback(impact: UIImpactFeedbackGenerator.FeedbackStyle) {
             let generator = UIImpactFeedbackGenerator(style: impact)
             generator.impactOccurred()
         }
+        
         
     }
     
