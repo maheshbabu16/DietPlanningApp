@@ -25,7 +25,10 @@ struct HomeMainView: View {
                                          strCardHeadLine: card.cardHeadTitle, strCardDescription: card.cardDesc, expandButtonHandler: {
                                 self.isSheetExpanded.toggle()
                                
-                            }, backgroundImageString: card.backgroundImageString, customBackgroundColor: card.backgroundGradient)
+                            }, backgroundImageString: card.backgroundImageString, customBackgroundColor: card.backgroundGradient).onTapGesture(perform: {
+                                self.isSheetExpanded.toggle()
+
+                            })
                             .fullScreenCover(isPresented: $isSheetExpanded,onDismiss: {
                                 addData()
                             }, content: {
@@ -33,13 +36,17 @@ struct HomeMainView: View {
                                 HomeDetailView(closeButtonHandler: {
                                     self.isSheetExpanded.toggle()
                                 }, backgroundGredient: card.backgroundGradient, imageString: card.backgroundImageString, imageHeight: 350)
-                            }) .transition(.move(edge: .trailing))
+                            })
                         }
                     })
                 })
             }.padding(.horizontal, 5)
                 .navigationTitle("Home")
-        }
+        }.toolbar(content: {
+            ToolbarItem(placement: .topBarTrailing) {
+                
+            }
+        })
         .onAppear(perform: {
             addData()
         })

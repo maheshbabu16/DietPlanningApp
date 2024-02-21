@@ -18,8 +18,8 @@ extension Color {
     static let btnGradientColor = LinearGradient(colors: [.blue, .pink], startPoint: .top, endPoint: .bottomTrailing)
     static let viewGradientColor = LinearGradient(colors: [.secondary.opacity(0.75), .green.opacity(0.75)], startPoint: .top, endPoint: .bottomTrailing)
     static let blueYellowGradient = LinearGradient(colors: [.blue, .yellow], startPoint: .topLeading, endPoint: .bottomTrailing)
-    static let pinkYellowGradient = LinearGradient(colors: [.pink, .yellow], startPoint: .bottomLeading, endPoint: .bottomTrailing)
-    static let pinkNeonGradient = LinearGradient(colors: [.pink, .neonClr], startPoint: .bottomTrailing, endPoint: .center)
+    static let pinkYellowGradient = LinearGradient(colors: [.orange.opacity(0.15), .orange], startPoint: .top, endPoint: .bottom)
+    static let pinkNeonGradient = LinearGradient(colors: [.blue.opacity(0.2), .blue], startPoint: .topLeading, endPoint: .bottom)
 
 
     
