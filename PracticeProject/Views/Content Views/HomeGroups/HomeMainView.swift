@@ -57,6 +57,7 @@ struct HomeMainView: View {
                                 .padding(.bottom)
                                 .onTapGesture{
                                     withAnimation(.spring) {
+                                        CommonFunctions.Functions.getHapticFeedback(impact: .light)
                                         profilePhotoTapped.toggle()
                                     }
                                 }
@@ -80,6 +81,7 @@ struct HomeMainView: View {
                         .frame(width: 250, height: 250)
                 }.onTapGesture {
                     withAnimation(.spring) {
+                        CommonFunctions.Functions.getHapticFeedback(impact: .light)
                         profilePhotoTapped.toggle()
                     }
                 }
