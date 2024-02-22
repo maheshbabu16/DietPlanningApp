@@ -78,16 +78,16 @@ struct AppetiteHomeView: View {
                 
             }.listStyle(DefaultListStyle())
                     .background(Color.clear)
-            
-            .navigationTitle("Food")
-            .toolbar{
-                Button{
-                    isSheetPresented.toggle()
-                }label: {
-                    Image(systemName: "plus.circle").foregroundStyle(Color.btnGradientColor)
-                }
-
-            }.sheet(isPresented: $isSheetPresented) {
+//            
+//            .navigationTitle("Food")
+//            .toolbar{
+//                Button{
+//                    isSheetPresented.toggle()
+//                }label: {
+//                    Image(systemName: "plus.circle").foregroundStyle(Color.btnGradientColor)
+//                }
+//            }
+            .sheet(isPresented: $isSheetPresented) {
                 AddAppetiteItemView(foods: $foods,
                                dismissSheetHandler: { isSheetPresented.toggle() } )
                 .presentationDetents([.fraction(0.8), .large])

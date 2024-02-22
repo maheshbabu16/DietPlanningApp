@@ -14,33 +14,37 @@ struct HomeMainView: View {
     
     @State private var cards : [FoodCardRow] = []
     @State private var profilePhotoTapped : Bool = false
+    @State private var gridTapped : Bool = false
+    
     @Namespace private var nameSpace
+    @Namespace private var newNameSpace
     
     var body: some View {
         ZStack{
             NavigationStack{
                 ZStack{
                     ScrollView(.vertical, showsIndicators: false, content: {
-                        LazyVGrid(columns: [GridItem()], content: {
+                        LazyVGrid(columns: [GridItem()], spacing: 15, content: {
                             ForEach(cards) { card in
-                                FoodCardView(height: 400,
-                                             strCardTitle: card.cardTitle,
-                                             strCardHeadLine: card.cardHeadTitle, strCardDescription: card.cardDesc, expandButtonHandler: {
-                                    self.isSheetExpanded.toggle()
-                                    
-                                }, backgroundImageString: card.backgroundImageString, customBackgroundColor: card.backgroundGradient)
-                                .fullScreenCover(isPresented: $isSheetExpanded,onDismiss: {
-                                    addData()
-                                }, content: {
-                                    
+                                NavigationLink {
                                     HomeDetailView(closeButtonHandler: {
                                         self.isSheetExpanded.toggle()
                                     }, backgroundGredient: card.backgroundGradient, imageString: card.backgroundImageString, imageHeight: 350)
-                                }) .transition(.move(edge: .trailing))
+                                } label: {
+                                    FoodCardView(height: 400,
+                                                 strCardTitle: card.cardTitle,
+                                                 strCardHeadLine: card.cardHeadTitle, strCardDescription: card.cardDesc, expandButtonHandler: {
+                                        self.isSheetExpanded.toggle()
+                                        
+                                    }, backgroundImageString: card.backgroundImageString, customBackgroundColor: card.backgroundGradient)
+                                }
+                            }.onTapGesture {
+                                self.isSheetExpanded.toggle()
                             }
                         })
                     })
-                }.padding(.horizontal, 5)
+                }.blur(radius: profilePhotoTapped ? 100 : 0)
+                    .padding()
                     .navigationTitle("Home")
                     .toolbar(content: {
                         ToolbarItem(placement: .topBarTrailing) {
@@ -50,7 +54,8 @@ struct HomeMainView: View {
                                 .matchedGeometryEffect(id: "image", in: nameSpace)
                                 .scaledToFit()
                                 .frame(width: 75, height: 75)
-                                .onTapGesture {
+                                .padding(.bottom)
+                                .onTapGesture{
                                     withAnimation(.spring) {
                                         profilePhotoTapped.toggle()
                                     }
@@ -59,12 +64,13 @@ struct HomeMainView: View {
                     })
             }
             .onAppear(perform: {
+                
                 addData()
             })
             
             if profilePhotoTapped{
                 ZStack {
-                    Color.black.opacity(0.5)
+                    Color.black.opacity(0)
                         .ignoresSafeArea()
                     Image("flower")
                         .resizable()

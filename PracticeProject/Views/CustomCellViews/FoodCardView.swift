@@ -41,6 +41,8 @@ struct FoodCardView: View {
                                 .lineLimit(2)
                                 .font(.headline)
                                 .bold()
+                                .minimumScaleFactor(0.2)
+
                         }.padding(.bottom, 0)
                         .padding(.horizontal)
                     }.frame(height: height)
@@ -55,11 +57,12 @@ struct FoodCardView: View {
                         .font(.title3)
                         .bold()
                         .foregroundStyle(Color.white)
+                        .minimumScaleFactor(0.2)
                         
                 }.frame(minWidth: height*1/3, maxWidth: height/2)
                 .frame(height: 40)
             }
-        }.padding()
+        }
     }
 }
 
