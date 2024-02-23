@@ -26,31 +26,6 @@ struct FoodCardView: View {
                         .scaledToFit()
                         .frame(height: height*3/5)
                     
-                    VStack{
-                            Image("\(backgroundImageString)")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(height: height*3/5)
-                        
-                        VStack(alignment: .leading, spacing: 10){
-//                            Text("\(strCardTitle)")
-//                                .bold()
-//                                .multilineTextAlignment(.leading)
-//                                .foregroundStyle(Color.white)
-//                                .fontWeight(.medium)
-//                                .lineLimit(1)
-//                                .font(.title)
-                            Text("\(strCardDescription)")
-                                .multilineTextAlignment(.leading)
-                                .foregroundStyle(Color.white)
-                                .lineLimit(2)
-                                .font(.headline)
-                                .bold()
-                                .minimumScaleFactor(0.2)
-
-                        }.padding(.bottom, 0)
-                        .padding(.horizontal)
-                    }.frame(height: height)
                 }.frame(height: height)
                 Text("\(strCardDescription)")
                     .multilineTextAlignment(.leading)
