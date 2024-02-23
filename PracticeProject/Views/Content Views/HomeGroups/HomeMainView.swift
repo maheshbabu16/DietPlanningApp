@@ -13,44 +13,81 @@ struct HomeMainView: View {
     @State private var arrCards : [String] = ["Healthy Foods", "Unhealthy Food", "High in protien", ]
     
     @State private var cards : [FoodCardRow] = []
+    @State private var profilePhotoTapped : Bool = false
+    @State private var gridTapped : Bool = false
+    
+    @Namespace private var nameSpace
+    @Namespace private var newNameSpace
     
     var body: some View {
-        NavigationStack{
-            ZStack{
-                ScrollView(.vertical, showsIndicators: false, content: {
-                    LazyVGrid(columns: [GridItem()], content: {
-                        ForEach(cards) { card in
-                            FoodCardView(height: 400,
-                                         strCardTitle: card.cardTitle,
-                                         strCardHeadLine: card.cardHeadTitle, strCardDescription: card.cardDesc, expandButtonHandler: {
+        ZStack{
+            NavigationStack{
+                ZStack{
+                    ScrollView(.vertical, showsIndicators: false, content: {
+                        LazyVGrid(columns: [GridItem()], spacing: 15, content: {
+                            ForEach(cards) { card in
+                                NavigationLink {
+                                    HomeDetailView(closeButtonHandler: {
+                                        self.isSheetExpanded.toggle()
+                                    }, backgroundGredient: card.backgroundGradient, imageString: card.backgroundImageString, imageHeight: 350)
+                                } label: {
+                                    FoodCardView(height: 400,
+                                                 strCardTitle: card.cardTitle,
+                                                 strCardHeadLine: card.cardHeadTitle, strCardDescription: card.cardDesc, expandButtonHandler: {
+                                        self.isSheetExpanded.toggle()
+                                        
+                                    }, backgroundImageString: card.backgroundImageString, customBackgroundColor: card.backgroundGradient)
+                                }
+                            }.onTapGesture {
                                 self.isSheetExpanded.toggle()
-                               
-                            }, backgroundImageString: card.backgroundImageString, customBackgroundColor: card.backgroundGradient).onTapGesture(perform: {
-                                self.isSheetExpanded.toggle()
-
-                            })
-                            .fullScreenCover(isPresented: $isSheetExpanded,onDismiss: {
-                                addData()
-                            }, content: {
-                                
-                                HomeDetailView(closeButtonHandler: {
-                                    self.isSheetExpanded.toggle()
-                                }, backgroundGredient: card.backgroundGradient, imageString: card.backgroundImageString, imageHeight: 350)
-                            })
+                            }
+                        })
+                    })
+                }.blur(radius: profilePhotoTapped ? 100 : 0)
+                    .padding()
+                    .navigationTitle("Home")
+                    .toolbar(content: {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            Image("flower")
+                                .resizable()
+                                .clipShape(Circle())
+                                .matchedGeometryEffect(id: "image", in: nameSpace)
+                                .scaledToFit()
+                                .frame(width: 75, height: 75)
+                                .padding(.bottom)
+                                .onTapGesture{
+                                    withAnimation(.spring) {
+                                        CommonFunctions.Functions.getHapticFeedback(impact: .light)
+                                        profilePhotoTapped.toggle()
+                                    }
+                                }
                         }
                     })
-                })
-            }.padding(.horizontal, 5)
-                .navigationTitle("Home")
-        }.toolbar(content: {
-            ToolbarItem(placement: .topBarTrailing) {
-                
             }
-        })
-        .onAppear(perform: {
-            addData()
-        })
-    }    
+            .onAppear(perform: {
+                
+                addData()
+            })
+            
+            if profilePhotoTapped{
+                ZStack {
+                    Color.black.opacity(0)
+                        .ignoresSafeArea()
+                    Image("flower")
+                        .resizable()
+                        .clipShape(Circle())
+                        .matchedGeometryEffect(id: "image", in: nameSpace)
+                        .scaledToFill()
+                        .frame(width: 250, height: 250)
+                }.onTapGesture {
+                    withAnimation(.spring) {
+                        CommonFunctions.Functions.getHapticFeedback(impact: .light)
+                        profilePhotoTapped.toggle()
+                    }
+                }
+            }
+        }
+    }
     
     func addData(){
         cards = [
