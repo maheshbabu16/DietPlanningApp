@@ -16,6 +16,7 @@ struct SignUPScreen: View {
     @State private var strNewPassword = ""
     @State private var showAlert: Bool = false
     @State private var showMachingAlert: Bool = false
+    @State private var presentSuccessScreen : Bool = false
     
     //MARK: - Body view
     var body: some View {
@@ -41,32 +42,37 @@ struct SignUPScreen: View {
                         if !(strNewPassword == "" && strNewUserName == ""){
                             if !checkUserNameAlreadyExists(userName: strNewUserName){
                                 addData()
-                                showAlert = true
+                                presentSuccessScreen.toggle()
                             }else {
                                 showMachingAlert = true
                             }
                         }
                         
                     }label: {
-                        Text("Sign Up")
-                            .foregroundStyle(Color.white)
+                        Text("Sign up")
+                            .foregroundStyle(Color.black)
                             .font(.system(size: 20))
                             .bold()
                     }
                     .frame(width:200, height: 50)
-                    .background(Color.textGradient)
+                    .background(Color.blueYellowGradient)
                     .cornerRadius(10).padding(.top, 20.0)
-                }
-            }.alert("Data Added Successfully", isPresented: $showAlert, actions: {
-                
-            })
+                }.blur(radius: presentSuccessScreen ? 3.0 : 0.0)
+               
+            }
             .alert("Select a diffrent User Name", isPresented: $showMachingAlert, actions: {
                 
             })
             
+            .fullScreenCover(isPresented: $presentSuccessScreen, content: {
+                CheckMarkViewScreen {
+                    presentSuccessScreen.toggle()
+                }.cornerRadius(20).frame(height: 300)
+                .presentationBackground(Color.clear)
+            })
             //MARK: - Toolbar items
             .toolbar {
-                ToolbarItem(placement: .principal) { // <3>
+                ToolbarItem(placement: .principal) { 
                     Text("Create Your Credentials")
                         .font(.system(size: 20))
                         .fontWeight(.semibold)
@@ -81,6 +87,7 @@ struct SignUPScreen: View {
         let newData = UserDataModel(userID: UUID().uuidString, userName: strNewUserName, passWord: strNewPassword, name: strNewUserName, isLoginApproved: false)
         withAnimation {
             addLogInCredentials.insert(newData)
+            CommonFunctions.Functions.getHapticFeedback(impact: .light)
             print("Data Saved")
         }
     }

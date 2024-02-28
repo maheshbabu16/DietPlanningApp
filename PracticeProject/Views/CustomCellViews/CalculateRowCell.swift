@@ -47,27 +47,17 @@ struct WorkoutRowCell: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             
             HStack{
-                Image("\(workoutImageString)")
-                    .resizable()
-                    .clipShape(Circle())
-                    .frame(width: 40, height: 40)
+                Text("\(workoutModel.day)")
+                    .font(.system(size: 14))
+                    .foregroundStyle(Color.textColor)
                 Spacer()
-                VStack(alignment: .trailing, spacing: 5){
-                    Text("\(workoutModel.day)")
-                        .font(.system(size: 14))
-                        .foregroundStyle(Color.textColor)
-                    Text("\(workoutModel.workoutType)")
-                        .bold()
-                        .lineLimit(1)
-                        .minimumScaleFactor(0.5)
-                        .font(.system(size: 20))
-                        .foregroundStyle(Color.textColor)
-                }
+                Text("\(workoutModel.workoutType)")
+                    .bold()
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.5)
+                    .font(.system(size: 20))
+                    .foregroundStyle(Color.textColor)
             }.padding()
         }
     }
 }
-
-//#Preview {
-//    
-//}

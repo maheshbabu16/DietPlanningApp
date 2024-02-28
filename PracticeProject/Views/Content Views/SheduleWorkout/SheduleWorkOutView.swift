@@ -42,8 +42,10 @@ struct SheduleWorkOutView: View {
                     List {
                         ForEach(userWorkout){ item in
                             WorkoutRowCell(workoutModel: item)
+                                .listRowBackground(Color.clear)
+                                .listRowSeparator(.hidden)
                         }
-                    }.listStyle(DefaultListStyle())
+                    }.listStyle(PlainListStyle())
                 }
             }
             .navigationTitle("My Workout")
@@ -62,12 +64,14 @@ struct SheduleWorkOutView: View {
                 
                 ToolbarItem(placement: .topBarTrailing) {
                     HStack{
-                        Button{
-                            
-                        }label: {
-                            Image(systemName: "photo.on.rectangle.angled")
-                                .foregroundStyle(Color.btnGradientColor)
-                        }
+                            NavigationLink {
+                                ImageGalleryView()
+                            } label: {
+                                Image(systemName: "photo.on.rectangle.angled")
+                                    .foregroundStyle(Color.btnGradientColor)
+                            }
+
+                        
                         
                         if (userWorkout.count != 0){
                             Button{
