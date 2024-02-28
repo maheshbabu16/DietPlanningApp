@@ -21,13 +21,13 @@ struct TabListView: View {
     //MARK: - Body view
     var body: some View {
         TabView(selection: $selectedTab){
-            HomeMainView()
+            HomeListView()
                 .tabItem {
-                    Label("Appetite", systemImage: "fork.knife.circle")
+                    Label("Home", systemImage: "house")
                 }.tag(0)
             CalculationView()
                 .tabItem {
-                    Label("Count Calories", systemImage: "takeoutbag.and.cup.and.straw")
+                    Label("Count Calories", systemImage: "fork.knife.circle")
                 }.tag(1)
             SheduleWorkOutView()
                 .tabItem {
@@ -37,7 +37,7 @@ struct TabListView: View {
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }.tag(3)
-        }
+        }.background(.ultraThinMaterial)
         .onAppear(perform: {
             UserDefaults.standard.setValue(userModel[0].userID, forKey: "UserID")
         })

@@ -41,10 +41,7 @@ struct SheduleWorkOutView: View {
                 }else {
                     List {
                         ForEach(userWorkout){ item in
-                            Section("Monday"){
-                                Text("Type").font(.system(size: 20))
-                                    .padding()
-                            }
+                            WorkoutRowCell(workoutModel: item)
                         }
                     }.listStyle(DefaultListStyle())
                 }

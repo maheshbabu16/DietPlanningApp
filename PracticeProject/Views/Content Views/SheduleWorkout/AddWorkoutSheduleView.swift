@@ -57,6 +57,14 @@ struct AddWorkoutSheduleView: View {
                     }.foregroundStyle(Color.blue)
                 }
             })
+            .toolbar(content: {
+                ToolbarItem(placement: .topBarLeading) {
+                    Text("Shedule")
+                        .bold()
+                        .foregroundStyle(Color.white)
+                        .font(.largeTitle)
+                }
+            })
         }
     }
     

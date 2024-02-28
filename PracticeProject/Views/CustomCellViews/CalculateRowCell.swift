@@ -34,3 +34,40 @@ struct CalculateRowCell: View {
     }
 }
 
+
+struct WorkoutRowCell: View {
+    
+    let workoutModel: SheduleWorkoutModel
+    var workoutImageString: String?
+    
+    var body: some View {
+        ZStack{
+            RoundedRectangle(cornerRadius: 5)
+                .fill(Color.textColor.opacity(0.1))
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+            
+            HStack{
+                Image("\(workoutImageString)")
+                    .resizable()
+                    .clipShape(Circle())
+                    .frame(width: 40, height: 40)
+                Spacer()
+                VStack(alignment: .trailing, spacing: 5){
+                    Text("\(workoutModel.day)")
+                        .font(.system(size: 14))
+                        .foregroundStyle(Color.textColor)
+                    Text("\(workoutModel.workoutType)")
+                        .bold()
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.5)
+                        .font(.system(size: 20))
+                        .foregroundStyle(Color.textColor)
+                }
+            }.padding()
+        }
+    }
+}
+
+//#Preview {
+//    
+//}

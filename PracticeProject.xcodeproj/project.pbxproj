@@ -12,6 +12,7 @@
 		182C51B12B7E31C30034B91D /* CalorieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CB5A72B7CD0C80051DEC9 /* CalorieModel.swift */; };
 		18308FDE2B7A251B005D9963 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18308FDD2B7A251B005D9963 /* ChangePasswordView.swift */; };
 		18456B442B7A1BD2001013EF /* LoginTextFeildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18456B432B7A1BD2001013EF /* LoginTextFeildView.swift */; };
+		1869D2102B8F13CA00BE7E82 /* HomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869D20F2B8F13CA00BE7E82 /* HomeListView.swift */; };
 		187CB5A22B7CCCAE0051DEC9 /* UserPrefrences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CB5A12B7CCCAE0051DEC9 /* UserPrefrences.swift */; };
 		187CB5A42B7CCF480051DEC9 /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CB5A32B7CCF480051DEC9 /* UserDataModel.swift */; };
 		187CB5A62B7CD0A80051DEC9 /* SheduleWorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CB5A52B7CD0A80051DEC9 /* SheduleWorkoutModel.swift */; };
@@ -19,8 +20,6 @@
 		187CB5AA2B7CDD790051DEC9 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CB5A92B7CDD790051DEC9 /* Extensions.swift */; };
 		18A15C0B2B831ADD00DF70EE /* AddWorkoutSheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A15C0A2B831ADD00DF70EE /* AddWorkoutSheduleView.swift */; };
 		18A15C0D2B8334DF00DF70EE /* FoodCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A15C0C2B8334DF00DF70EE /* FoodCardView.swift */; };
-		18A15C0F2B83544200DF70EE /* HomeMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A15C0E2B83544200DF70EE /* HomeMainView.swift */; };
-		18A15C122B835FBC00DF70EE /* HomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A15C112B835FBC00DF70EE /* HomeDetailView.swift */; };
 		18A15C142B8480AE00DF70EE /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A15C132B8480AE00DF70EE /* NotificationManager.swift */; };
 		18A15C192B8483E700DF70EE /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A15C182B8483E700DF70EE /* LocationManager.swift */; };
 		18A15C1A2B84849B00DF70EE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2820872B03504800A902AA /* Constants.swift */; };
@@ -42,12 +41,9 @@
 		FE5CCE5F2B02213000F6F1C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE5CCE5E2B02213000F6F1C3 /* Assets.xcassets */; };
 		FE5CCE632B02213000F6F1C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE5CCE622B02213000F6F1C3 /* Preview Assets.xcassets */; };
 		FE5CCE6A2B02219100F6F1C3 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CCE692B02219000F6F1C3 /* Food.swift */; };
-		FE5CCE6C2B02219A00F6F1C3 /* AppetiteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CCE6B2B02219A00F6F1C3 /* AppetiteDetailView.swift */; };
-		FE5CCE702B022B3800F6F1C3 /* AppetiteHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CCE6F2B022B3800F6F1C3 /* AppetiteHomeView.swift */; };
 		FE5CCE722B022BE000F6F1C3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CCE712B022BE000F6F1C3 /* SettingsView.swift */; };
 		FE6404F02B0337DD0073CA51 /* CalculationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6404EF2B0337DD0073CA51 /* CalculationView.swift */; };
 		FEBD70232B31A21B006EC997 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBD70222B31A21B006EC997 /* LogInView.swift */; };
-		FEC1EB5D2B023C4A00DF109E /* AddAppetiteItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC1EB5C2B023C4A00DF109E /* AddAppetiteItemView.swift */; };
 		FEC1EB602B0244D400DF109E /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC1EB5F2B0244D400DF109E /* SplashScreen.swift */; };
 		FEC966842B03859D00A211D6 /* CalculateDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC966832B03859D00A211D6 /* CalculateDetailScreen.swift */; };
 		FEC966852B03859D00A211D6 /* CalculateDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC966832B03859D00A211D6 /* CalculateDetailScreen.swift */; };
@@ -85,6 +81,7 @@
 		182C51AF2B7E1FDF0034B91D /* TitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderView.swift; sourceTree = "<group>"; };
 		18308FDD2B7A251B005D9963 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		18456B432B7A1BD2001013EF /* LoginTextFeildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFeildView.swift; sourceTree = "<group>"; };
+		1869D20F2B8F13CA00BE7E82 /* HomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListView.swift; sourceTree = "<group>"; };
 		187CB5A12B7CCCAE0051DEC9 /* UserPrefrences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPrefrences.swift; sourceTree = "<group>"; };
 		187CB5A32B7CCF480051DEC9 /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
 		187CB5A52B7CD0A80051DEC9 /* SheduleWorkoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheduleWorkoutModel.swift; sourceTree = "<group>"; };
@@ -93,8 +90,6 @@
 		187CB5AC2B7CE3840051DEC9 /* RemindMe.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = RemindMe.md; sourceTree = "<group>"; };
 		18A15C0A2B831ADD00DF70EE /* AddWorkoutSheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWorkoutSheduleView.swift; sourceTree = "<group>"; };
 		18A15C0C2B8334DF00DF70EE /* FoodCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCardView.swift; sourceTree = "<group>"; };
-		18A15C0E2B83544200DF70EE /* HomeMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMainView.swift; sourceTree = "<group>"; };
-		18A15C112B835FBC00DF70EE /* HomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailView.swift; sourceTree = "<group>"; };
 		18A15C132B8480AE00DF70EE /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		18A15C182B8483E700DF70EE /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FE088ED02B02AA5800CBD77F /* MapTrackingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTrackingView.swift; sourceTree = "<group>"; };
@@ -119,12 +114,9 @@
 		FE5CCE602B02213000F6F1C3 /* PracticeProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PracticeProject.entitlements; sourceTree = "<group>"; };
 		FE5CCE622B02213000F6F1C3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FE5CCE692B02219000F6F1C3 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
-		FE5CCE6B2B02219A00F6F1C3 /* AppetiteDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppetiteDetailView.swift; sourceTree = "<group>"; };
-		FE5CCE6F2B022B3800F6F1C3 /* AppetiteHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppetiteHomeView.swift; sourceTree = "<group>"; };
 		FE5CCE712B022BE000F6F1C3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		FE6404EF2B0337DD0073CA51 /* CalculationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationView.swift; sourceTree = "<group>"; };
 		FEBD70222B31A21B006EC997 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
-		FEC1EB5C2B023C4A00DF109E /* AddAppetiteItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppetiteItemView.swift; sourceTree = "<group>"; };
 		FEC1EB5F2B0244D400DF109E /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		FEC966832B03859D00A211D6 /* CalculateDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateDetailScreen.swift; sourceTree = "<group>"; };
 		FEE88AF62B08C363007E953E /* FoodGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodGridView.swift; sourceTree = "<group>"; };
@@ -157,6 +149,7 @@
 				182C51AD2B7E1F660034B91D /* CalculateRowCell.swift */,
 				182C51AF2B7E1FDF0034B91D /* TitleHeaderView.swift */,
 				18A15C0C2B8334DF00DF70EE /* FoodCardView.swift */,
+				FEE88AF62B08C363007E953E /* FoodGridView.swift */,
 			);
 			path = CustomCellViews;
 			sourceTree = "<group>";
@@ -173,8 +166,7 @@
 		18A15C102B835FA600DF70EE /* HomeGroups */ = {
 			isa = PBXGroup;
 			children = (
-				18A15C0E2B83544200DF70EE /* HomeMainView.swift */,
-				18A15C112B835FBC00DF70EE /* HomeDetailView.swift */,
+				1869D20F2B8F13CA00BE7E82 /* HomeListView.swift */,
 			);
 			path = HomeGroups;
 			sourceTree = "<group>";
@@ -259,17 +251,6 @@
 				187CB5A92B7CDD790051DEC9 /* Extensions.swift */,
 			);
 			path = "Constants + Extensions";
-			sourceTree = "<group>";
-		};
-		FE58C5502B04C6E2008C368D /* Appetite */ = {
-			isa = PBXGroup;
-			children = (
-				FE5CCE6F2B022B3800F6F1C3 /* AppetiteHomeView.swift */,
-				FE5CCE6B2B02219A00F6F1C3 /* AppetiteDetailView.swift */,
-				FEC1EB5C2B023C4A00DF109E /* AddAppetiteItemView.swift */,
-				FEE88AF62B08C363007E953E /* FoodGridView.swift */,
-			);
-			path = Appetite;
 			sourceTree = "<group>";
 		};
 		FE58C5512B04C6EE008C368D /* SettingsView */ = {
@@ -369,7 +350,6 @@
 				FE58C5532B04C733008C368D /* SplashScreen */,
 				FE2596F32B31C39F00CC21DB /* Login Views */,
 				FE45EC3C2B63D2800040B6C6 /* TabView */,
-				FE58C5502B04C6E2008C368D /* Appetite */,
 				18A15C102B835FA600DF70EE /* HomeGroups */,
 				FE58C5522B04C70A008C368D /* CountCaloriesView */,
 				187CB5AB2B7CE3110051DEC9 /* SheduleWorkout */,
@@ -496,13 +476,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18A15C122B835FBC00DF70EE /* HomeDetailView.swift in Sources */,
 				FEC1EB602B0244D400DF109E /* SplashScreen.swift in Sources */,
 				182C51AE2B7E1F660034B91D /* CalculateRowCell.swift in Sources */,
 				18456B442B7A1BD2001013EF /* LoginTextFeildView.swift in Sources */,
 				18A15C192B8483E700DF70EE /* LocationManager.swift in Sources */,
 				FE5CCE5D2B02212D00F6F1C3 /* TabListView.swift in Sources */,
-				FE5CCE702B022B3800F6F1C3 /* AppetiteHomeView.swift in Sources */,
 				FE415D232B13686C00EF7D87 /* ProgressViewScreen.swift in Sources */,
 				187CB5A82B7CD0C80051DEC9 /* CalorieModel.swift in Sources */,
 				182C51B02B7E1FDF0034B91D /* TitleHeaderView.swift in Sources */,
@@ -513,10 +491,9 @@
 				18308FDE2B7A251B005D9963 /* ChangePasswordView.swift in Sources */,
 				FE6404F02B0337DD0073CA51 /* CalculationView.swift in Sources */,
 				187CB5A22B7CCCAE0051DEC9 /* UserPrefrences.swift in Sources */,
-				FEC1EB5D2B023C4A00DF109E /* AddAppetiteItemView.swift in Sources */,
+				1869D2102B8F13CA00BE7E82 /* HomeListView.swift in Sources */,
 				FEC966842B03859D00A211D6 /* CalculateDetailScreen.swift in Sources */,
 				FE5CCE722B022BE000F6F1C3 /* SettingsView.swift in Sources */,
-				FE5CCE6C2B02219A00F6F1C3 /* AppetiteDetailView.swift in Sources */,
 				187CB5A62B7CD0A80051DEC9 /* SheduleWorkoutModel.swift in Sources */,
 				FEE88AF72B08C363007E953E /* FoodGridView.swift in Sources */,
 				18A15C142B8480AE00DF70EE /* NotificationManager.swift in Sources */,
@@ -526,7 +503,6 @@
 				FE20A7412B4AB24D00B9BD68 /* SignUPScreen.swift in Sources */,
 				FE5CCE6A2B02219100F6F1C3 /* Food.swift in Sources */,
 				FEBD70232B31A21B006EC997 /* LogInView.swift in Sources */,
-				18A15C0F2B83544200DF70EE /* HomeMainView.swift in Sources */,
 				FE2820882B03504800A902AA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
