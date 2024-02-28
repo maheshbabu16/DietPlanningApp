@@ -21,7 +21,7 @@ struct LoginTextFeildView: View {
     var showEditButton: Bool = false
     var textFeildType : TextFeildType
     var editButtonClicked: (() -> Void)?
-
+    
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 10)
@@ -45,10 +45,11 @@ struct LoginTextFeildView: View {
                 .foregroundStyle(Color.white)
                 
             }
-            
         }
     }
 }
 #Preview {
     LoginTextFeildView(textFeildStr: .constant("Mahesh"), placeHolder: "Enter text", textFeildType: .passwordFeild)
+        .frame(height: 60)
+        .preferredColorScheme(.dark)
 }
