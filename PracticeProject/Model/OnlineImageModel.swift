@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class OnlineImage: Decodable, Identifiable {
+class OnlineImageModel: Decodable, Identifiable {
     let imageData: Data // Use Data instead of UIImage
     
     init(imageData: Data) {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 final class APIManager: ObservableObject {
-    @Published var imageArray :  [OnlineImage] = []
+    @Published var imageArray :  [OnlineImageModel] = []
     
     func loadImagesFromAPIUrl() async{
         guard let url = URL(string: "https://picsum.photos/200/200") else { return }
@@ -18,7 +18,7 @@ final class APIManager: ObservableObject {
                 print("Status Code: \(response.statusCode)")
                 
                 if response.statusCode == 200 {
-                    let onlineImage = OnlineImage(imageData: data)
+                    let onlineImage = OnlineImageModel(imageData: data)
                     
                     DispatchQueue.main.async {
                         self.imageArray.append(onlineImage)

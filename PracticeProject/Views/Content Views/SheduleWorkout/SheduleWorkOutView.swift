@@ -47,7 +47,9 @@ struct SheduleWorkOutView: View {
                         }
                     }.listStyle(PlainListStyle())
                 }
-            }
+            }.onAppear(perform: {
+                fetchData()
+            })
             .navigationTitle("My Workout")
             .toolbar(){
                 ToolbarItem(placement: .topBarLeading) {
