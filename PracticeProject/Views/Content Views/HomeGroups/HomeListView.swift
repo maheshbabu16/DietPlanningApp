@@ -61,48 +61,52 @@ struct HomeListView: View {
                         .foregroundStyle(Color.textColor)
                 }
 
-                
-                Section{
-                    ScrollView(.horizontal){
-                        LazyHGrid(rows: [GridItem()], alignment: .center, spacing: 20, content: {
-                            withAnimation {
-                                ForEach(apiManager.imageArray) { images in
-                                    if let newImage = images.image{
-                                        NavigationLink {
-                                            Image(uiImage: newImage)
-                                                .resizable()
-                                                .scaledToFit()
-                                                .cornerRadius(10)
-                                                .frame(width: 195*2, height: 195*2, alignment: .center)
-                                        } label: {
-                                            ZStack(alignment: .bottomLeading){
-                                                ZStack{
+                if apiManager.imageArray.count > 0{
+                    withAnimation(.easeIn) {
+                        Section{
+                            ScrollView(.horizontal){
+                                LazyHGrid(rows: [GridItem()], alignment: .center, spacing: 20, content: {
+                                    withAnimation {
+                                        ForEach(apiManager.imageArray) { images in
+                                            if let newImage = images.image{
+                                                NavigationLink {
                                                     Image(uiImage: newImage)
                                                         .resizable()
                                                         .scaledToFit()
                                                         .cornerRadius(10)
-                                                    Color.black.opacity(0.15)
-                                                }
-                                                
-                                                Text("New")
-                                                    .bold()
-                                                    .font(.title)
-                                                    .foregroundStyle(Color.white)
-                                                    .padding()
+                                                        .frame(width: 195*2, height: 195*2, alignment: .center)
+                                                } label: {
+                                                    ZStack(alignment: .bottomLeading){
+                                                        ZStack{
+                                                            Image(uiImage: newImage)
+                                                                .resizable()
+                                                                .scaledToFit()
+                                                                .cornerRadius(10)
+                                                            Color.black.opacity(0.15)
+                                                        }
+                                                        
+                                                        Text("New")
+                                                            .bold()
+                                                            .font(.title)
+                                                            .foregroundStyle(Color.white)
+                                                            .padding()
+                                                    }
+                                                }.frame(height: 185)
+                                                    .cornerRadius(10)
                                             }
-                                        }.frame(height: 185)
-                                            .cornerRadius(10)
+                                        }
                                     }
-                                }
-                            }
-                        })
-                    }.scrollIndicators(.hidden)
-                    .listRowSeparator(.hidden)
-                } header: {
-                    Text("Top picks for you")
-                        .bold()
-                        .font(.title2)
-                        .foregroundStyle(Color.textColor)
+                                })
+                            }.scrollIndicators(.hidden)
+                            .listRowSeparator(.hidden)
+                        } header: {
+                            Text("Top picks for you")
+                                .bold()
+                                .font(.title2)
+                                .foregroundStyle(Color.textColor)
+                        }
+
+                    }
                 }
                 
                 Section{
