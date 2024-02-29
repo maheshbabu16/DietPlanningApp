@@ -15,6 +15,7 @@ struct SheduleWorkOutView: View {
     @Environment (\.modelContext) var formData
     @State var selectedDay = ""
     @State var selectedWorkoutType = ""
+    @State var showDeleteAlert : Bool = false
     
     var body: some View {
         NavigationStack{
@@ -54,12 +55,18 @@ struct SheduleWorkOutView: View {
             .toolbar(){
                 ToolbarItem(placement: .topBarLeading) {
                     if (userWorkout.count != 0){
-                        
                         Button{
-                            
+                            showDeleteAlert = true
                         }label: {
                             Image(systemName: "trash")
                                 .foregroundStyle(Color.red)
+                        }.alert(isPresented: $showDeleteAlert) {
+                            Alert(title: Text("Confirm!!!"), message: Text("This action deletes your workout chart"), primaryButton: .destructive(Text("Delete"),
+                                                                                                                                           action: {
+                                deletCalorieChart()
+                                fetchData()
+                                
+                            }), secondaryButton: .cancel())
                         }
                     }
                 }
@@ -72,8 +79,6 @@ struct SheduleWorkOutView: View {
                                 Image(systemName: "photo.on.rectangle.angled")
                                     .foregroundStyle(Color.btnGradientColor)
                             }
-
-                        
                         
                         if (userWorkout.count != 0){
                             Button{

@@ -26,7 +26,7 @@ struct ImageGalleryView: View {
                                 ForEach(apiManager.imageArray) { images in
                                     if let newImage = images.image{
                                         NavigationLink {
-                                            ImageExpandedView(imgSelected: newImage)
+
                                         } label: {
                                             Image(uiImage: newImage)
                                                 .resizable()

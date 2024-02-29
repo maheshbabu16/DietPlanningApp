@@ -39,11 +39,20 @@ struct HomeListView: View {
                                                 .padding()
                                         }.frame(width: 230, height: 285)
                                             .cornerRadius(10)
+                                            .onTapGesture {
+                                                if title == "Track"{
+                                                    tabItemTag = 1
+                                                }else if title == "Shedule"{
+                                                    tabItemTag = 2
+                                                }
+                                                
+                                            }
                                     }
                                 }
                             }
                         })
-                    }
+                        
+                    }.scrollIndicators(.hidden)
                     .listRowSeparator(.hidden)
                 }header: {
                     Text("Activity")
@@ -60,7 +69,11 @@ struct HomeListView: View {
                                 ForEach(apiManager.imageArray) { images in
                                     if let newImage = images.image{
                                         NavigationLink {
-                                            ImageExpandedView(imgSelected: newImage)
+                                            Image(uiImage: newImage)
+                                                .resizable()
+                                                .scaledToFit()
+                                                .cornerRadius(10)
+                                                .frame(width: 195*2, height: 195*2, alignment: .center)
                                         } label: {
                                             ZStack(alignment: .bottomLeading){
                                                 ZStack{
@@ -83,7 +96,7 @@ struct HomeListView: View {
                                 }
                             }
                         })
-                    }
+                    }.scrollIndicators(.hidden)
                     .listRowSeparator(.hidden)
                 } header: {
                     Text("Top picks for you")
