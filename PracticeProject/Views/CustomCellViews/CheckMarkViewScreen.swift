@@ -9,13 +9,14 @@ import SwiftUI
 
 struct CheckMarkViewScreen : View {
     var automaticDismissHandler: (() -> Void)?
-    
+    @State var animate : Bool = false
     var body : some View{
         ZStack{
             VStack{
-                Image(systemName: "checkmark")
+                Image(systemName: animate ? "checkmark" : "person.fill")
                     .resizable()
                     .scaledToFit()
+                    .symbolEffect(.bounce, value: animate)
                     .foregroundStyle(Color.textColor.opacity(0.15))
                     .padding(50)
                 Text("Success")
@@ -24,11 +25,16 @@ struct CheckMarkViewScreen : View {
             }.padding()
         }.background(.thinMaterial)
             .onAppear(perform: {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
-                    self.automaticDismissHandler?()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                    animate.toggle()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
+                        self.automaticDismissHandler?()
+                    }
                 }
             })
     }
+    
 }
 
 #Preview {
