@@ -82,7 +82,6 @@ struct CalculationView: View {
                         
                         Section(){
                             VStack{
-                                
                                 HStack{
                                     Text("Total Protien")
                                         .font(.system(size: 16))
@@ -196,15 +195,14 @@ struct CalculationView: View {
             
         }
     }
+    
     func deleteItemAtRow(_ indexSet: IndexSet){
         for index in indexSet {
             let destination = foodDataStorage[index]
             formData.delete(destination)
         }
     }
-    func shoeDeleteAlert(){
-       
-    }
+    
     func deletCalorieChart(){
         do {
             let userID =  UserDefaults.standard.value(forKey: "UserID") as! String
