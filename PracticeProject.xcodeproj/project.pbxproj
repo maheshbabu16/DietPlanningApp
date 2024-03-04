@@ -17,6 +17,10 @@
 		185BD2062B91D40D00E31252 /* UserChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185BD2052B91D40D00E31252 /* UserChart.swift */; };
 		185BD2082B91EAEB00E31252 /* ThemePrefrenceIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185BD2072B91EAEB00E31252 /* ThemePrefrenceIntroView.swift */; };
 		185BD20A2B91FFB500E31252 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2820872B03504800A902AA /* Constants.swift */; };
+		185BD20C2B95A83700E31252 /* ActivityProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185BD20B2B95A83700E31252 /* ActivityProgressView.swift */; };
+		185BD20E2B95D9F300E31252 /* GraphLegendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185BD20D2B95D9F300E31252 /* GraphLegendView.swift */; };
+		185BD2102B95DA0D00E31252 /* CalorieGraphChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185BD20F2B95DA0D00E31252 /* CalorieGraphChartView.swift */; };
+		185BD2122B95DB3C00E31252 /* UserWorkoutGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185BD2112B95DB3C00E31252 /* UserWorkoutGraphView.swift */; };
 		1869D2102B8F13CA00BE7E82 /* HomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1869D20F2B8F13CA00BE7E82 /* HomeListView.swift */; };
 		187CB5A22B7CCCAE0051DEC9 /* UserPrefrences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CB5A12B7CCCAE0051DEC9 /* UserPrefrences.swift */; };
 		187CB5A42B7CCF480051DEC9 /* UserDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CB5A32B7CCF480051DEC9 /* UserDataModel.swift */; };
@@ -92,6 +96,10 @@
 		185BD2032B91B69B00E31252 /* UserStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatisticsView.swift; sourceTree = "<group>"; };
 		185BD2052B91D40D00E31252 /* UserChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChart.swift; sourceTree = "<group>"; };
 		185BD2072B91EAEB00E31252 /* ThemePrefrenceIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePrefrenceIntroView.swift; sourceTree = "<group>"; };
+		185BD20B2B95A83700E31252 /* ActivityProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityProgressView.swift; sourceTree = "<group>"; };
+		185BD20D2B95D9F300E31252 /* GraphLegendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphLegendView.swift; sourceTree = "<group>"; };
+		185BD20F2B95DA0D00E31252 /* CalorieGraphChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieGraphChartView.swift; sourceTree = "<group>"; };
+		185BD2112B95DB3C00E31252 /* UserWorkoutGraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserWorkoutGraphView.swift; sourceTree = "<group>"; };
 		1869D20F2B8F13CA00BE7E82 /* HomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListView.swift; sourceTree = "<group>"; };
 		187CB5A12B7CCCAE0051DEC9 /* UserPrefrences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPrefrences.swift; sourceTree = "<group>"; };
 		187CB5A32B7CCF480051DEC9 /* UserDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataModel.swift; sourceTree = "<group>"; };
@@ -165,6 +173,10 @@
 				18A15C0C2B8334DF00DF70EE /* FoodCardView.swift */,
 				FEE88AF62B08C363007E953E /* FoodGridView.swift */,
 				18A6A35E2B8F558000FEDE7A /* CheckMarkViewScreen.swift */,
+				185BD20B2B95A83700E31252 /* ActivityProgressView.swift */,
+				185BD20D2B95D9F300E31252 /* GraphLegendView.swift */,
+				185BD2112B95DB3C00E31252 /* UserWorkoutGraphView.swift */,
+				185BD20F2B95DA0D00E31252 /* CalorieGraphChartView.swift */,
 			);
 			path = CustomCellViews;
 			sourceTree = "<group>";
@@ -255,12 +267,12 @@
 			path = "Login Views";
 			sourceTree = "<group>";
 		};
-		FE45EC3B2B63D24F0040B6C6 /* MainWindow */ = {
+		FE45EC3B2B63D24F0040B6C6 /* MainWindowAtLaunch */ = {
 			isa = PBXGroup;
 			children = (
 				FE5CCE5A2B02212D00F6F1C3 /* PracticeProjectApp.swift */,
 			);
-			path = MainWindow;
+			path = MainWindowAtLaunch;
 			sourceTree = "<group>";
 		};
 		FE45EC3C2B63D2800040B6C6 /* TabView */ = {
@@ -340,7 +352,7 @@
 			children = (
 				FE245AD62B025DD9000EF370 /* Assets */,
 				FE1F49252B5C1AA80071FFCF /* Info.plist */,
-				FE45EC3B2B63D24F0040B6C6 /* MainWindow */,
+				FE45EC3B2B63D24F0040B6C6 /* MainWindowAtLaunch */,
 				FED450062B8F7009001D9776 /* Model */,
 				FE45EC3D2B63D2AF0040B6C6 /* Constants + Extensions */,
 				18A15C172B8483B500DF70EE /* Views */,
@@ -521,10 +533,14 @@
 				18A15C192B8483E700DF70EE /* LocationManager.swift in Sources */,
 				FE5CCE5D2B02212D00F6F1C3 /* TabListView.swift in Sources */,
 				FE415D232B13686C00EF7D87 /* ProgressViewScreen.swift in Sources */,
+				185BD2122B95DB3C00E31252 /* UserWorkoutGraphView.swift in Sources */,
+				185BD2102B95DA0D00E31252 /* CalorieGraphChartView.swift in Sources */,
 				187CB5A82B7CD0C80051DEC9 /* CalorieModel.swift in Sources */,
 				182C51B02B7E1FDF0034B91D /* TitleHeaderView.swift in Sources */,
+				185BD20C2B95A83700E31252 /* ActivityProgressView.swift in Sources */,
 				187CB5A42B7CCF480051DEC9 /* UserDataModel.swift in Sources */,
 				18A15C0B2B831ADD00DF70EE /* AddWorkoutSheduleView.swift in Sources */,
+				185BD20E2B95D9F300E31252 /* GraphLegendView.swift in Sources */,
 				FE5CCE5B2B02212D00F6F1C3 /* PracticeProjectApp.swift in Sources */,
 				FE088ED12B02AA5800CBD77F /* MapTrackingView.swift in Sources */,
 				18308FDE2B7A251B005D9963 /* ChangePasswordView.swift in Sources */,

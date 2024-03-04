@@ -14,16 +14,15 @@ struct HomeListView: View {
     @Namespace var nameSpace
     @Environment(\.modelContext) var formData
     
-    @State private var foodDataStorage: [CalorieModel] = []
-    @State private var arrHomeItems : [ActivityCardModel] = []
-    @Binding var tabItemTag : Int
-    @StateObject var apiManager = APIManager()
+    @State private var foodDataStorage: [CalorieModel]      = []
+    @State private var arrHomeItems   : [ActivityCardModel] = []
     @State var totalCaloriesStr : String = "0"
     @State private var drawingStroke = false
+    @State private var showDarkModeScreen = false
     
-    let animation = Animation
-        .easeOut(duration: 3)
-        .delay(0.5)
+    @Binding var tabItemTag : Int
+    @StateObject var apiManager = APIManager()
+    
     var totalCalories: Int {
         foodDataStorage.reduce(0) { $0 + (Int($1.calCount) ) }
     }
@@ -70,20 +69,7 @@ struct HomeListView: View {
                                 }
                             }.padding(.leading)
                             Spacer()
-                            Circle()
-                                .trim(from: 0, to: 1)
-                                .stroke(lineWidth: 25)
-                                .fill(.pink.opacity(0.35))
-                                .padding(20)
-                                .overlay {
-                                    Circle()
-                                        .trim(from: 0, to: drawingStroke ? 6/7 : 0)
-                                        .stroke(.pink,
-                                                style: StrokeStyle(lineWidth: 25, lineCap: .round))
-                                        .padding(20)
-                                }
-                                .rotationEffect(.degrees(-90))
-                                .animation(animation, value: drawingStroke)
+                            ActivityProgressView(drawingStroke: $drawingStroke)
                                 .onAppear {
                                     drawingStroke = true
                                 }
@@ -195,7 +181,7 @@ struct HomeListView: View {
                                     ImageGalleryView()
                                 } label: {
                                     Image(systemName: "chevron.right").bold()
-                                }.tint(Color.white)
+                                }.tint(Color.textColor)
                             }
                         }
                     }
@@ -251,13 +237,23 @@ struct HomeListView: View {
                 }
                 .onAppear(perform: {
                     addHomeData()
-                    fetchCalData()
+                    //                    fetchCalData()
                     totalCaloriesStr = foodDataStorage.count > 0 ? String(totalCalories) : "0"
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                        showDarkModeScreen.toggle()
+                    }
                 })
                 .frame(maxWidth: .infinity)
                 .navigationTitle("Home")
                 .toolbar {
                     
+                }
+                .sheet(isPresented: $showDarkModeScreen) {
+                    
+                } content: {
+                    ThemePrefrenceIntroView {
+                        showDarkModeScreen.toggle()
+                    }
                 }
         }
     }

@@ -10,12 +10,15 @@ import SwiftData
 
 @Model
 class UserPrefrences {
-    var darkModePreffered   : Bool
+    
+    var userID : String
+    var colorScheme   : Int
     var isAccountPrivate    : Bool
     @Attribute(originalName : "active_icon") var preferedAppIcon: String
 
-    init(darkModePreffered: Bool, isAccountPrivate: Bool, preferedAppIcon: String) {
-        self.darkModePreffered = darkModePreffered
+    init(userID: String, colorScheme: Int, isAccountPrivate: Bool, preferedAppIcon: String) {
+        self.userID = userID
+        self.colorScheme = colorScheme
         self.isAccountPrivate = isAccountPrivate
         self.preferedAppIcon = preferedAppIcon
     }
