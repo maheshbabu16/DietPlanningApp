@@ -14,26 +14,63 @@ struct CalculateDetailScreen: View {
     @State private var protienInput: String = ""
     @State private var carbsInput: String = ""
     @State private var fatsInput: String = ""
-        
+    @State var suggestedMealArray : [String] = ["Item1","Item2","Item3","Item4"]
+    @State var addMealToggle : Bool = false
     var dismissSheetHandler: (() -> Void)?
     
     var body: some View {
         NavigationView {
             VStack {
                 List {
-                    Section("Add your meal info") {
-                        TextField("Enter name of your food item", text: $foodName)
+                    Section{
+                        ScrollView(.horizontal){
+                            LazyHGrid(rows: [GridItem()], alignment: .center, spacing: 10, content: {
+                                ForEach(suggestedMealArray, id: \.self){ item in
+                                    ZStack{
+                                        ZStack(alignment: .topTrailing){
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .fill(Color.textColor.opacity(0.15))
+                                            Button{
+                                                self.addMealToggle.toggle()
+                                            }label: {
+                                                Image(systemName: "plus.circle")
+                                                    .foregroundStyle(Color.textColor.opacity(0.5))
+                                                    .padding(10)
+                                            }
+                                        }.frame(width: 125, height: 125)
+                                        VStack{
+                                            Text("🥣")
+                                                .font(.system(size: 30))
+                                            Text("\(item)")                                                .font(.system(size: 20))
+                                                .bold()
+                                        }.padding()
+                                    }
+                                }
+                            })
+                        }.scrollIndicators(.hidden)
+                                .listRowSeparator(.hidden)
+                                .listRowBackground(Color.clear)
+                            
+                    }header: {
+                        HStack{
+                            Text("Suggestions")
+                            Spacer()
+                            Image(systemName: "chevron.right").bold()
+                        }
                     }
-                    Section("Calories") {
-                        TextField("Enter Calories per 100 gm", text: $foodTotalCalories).keyboardType(.numberPad)
-                        TextField("Enter your Quantity Intake in gm", text: $consumedQuantity).keyboardType(.numberPad)
-                    } 
-                    Section("Macros") {
-                        TextField("Protien per 100 gm", text: $protienInput).keyboardType(.numberPad)
-                        TextField("Carbs per 100 gm", text: $carbsInput).keyboardType(.numberPad)
-                        TextField("Fats per 100 gm", text: $fatsInput).keyboardType(.numberPad)
+                        Section("Add your meal info") {
+                            TextField("Enter name of your food item", text: $foodName)
+                        }
+                        Section("Calories") {
+                            TextField("Enter Calories per 100 gm", text: $foodTotalCalories).keyboardType(.numberPad)
+                            TextField("Enter your Quantity Intake in gm", text: $consumedQuantity).keyboardType(.numberPad)
+                        }
+                        Section("Macros") {
+                            TextField("Protien per 100 gm", text: $protienInput).keyboardType(.numberPad)
+                            TextField("Carbs per 100 gm", text: $carbsInput).keyboardType(.numberPad)
+                            TextField("Fats per 100 gm", text: $fatsInput).keyboardType(.numberPad)
+                        }
                     }
-                }
                 .listStyle(DefaultListStyle())
             }
             .onAppear(perform: {
@@ -49,9 +86,6 @@ struct CalculateDetailScreen: View {
                 }
             })
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Text("Add your calorie intake")
-                }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         if (foodName.count > 0) || (foodTotalCalories.count > 0) || (consumedQuantity.count > 0) || (protienInput.count > 0) || (carbsInput.count > 0) || (fatsInput.count > 0){
@@ -62,6 +96,15 @@ struct CalculateDetailScreen: View {
                         Image(systemName: "calendar.badge.checkmark.rtl")
                             .foregroundColor(.accentColor) // Adjust color as needed
                     }
+                }
+            }
+            .navigationTitle("Add your calorie intake")
+            .navigationBarTitleDisplayMode(.inline)
+            .sheet(isPresented: $addMealToggle) {
+            } content: {
+                NewDummyScreen {
+                    self.addMealToggle.toggle()
+                    self.dismissSheetHandler?()
                 }
             }
         }
@@ -92,5 +135,32 @@ struct CalculateDetailScreen: View {
                 CommonFunctions.Functions.getHapticFeedback(impact: .light)
             }
         } else { print("Error: Unable to convert one or both values to Int.")  }
+    }
+}
+//#Preview {
+//    CalculateDetailScreen(calCountDatabase: .constant([]))
+////    NewDummyScreen()
+//        .preferredColorScheme(.dark)
+//}
+
+struct NewDummyScreen: View {
+    var dismissSheetHandler: (() -> Void)?
+
+    var body: some View {
+        
+        NavigationStack{
+            ZStack{
+                
+            }
+            .navigationTitle("Add quantity")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {dismissSheetHandler?()}) {
+                        Image(systemName: "plus.circle.fill")
+                            .foregroundColor(.accentColor) // Adjust color as needed
+                    }
+                }
+            }
+        }
     }
 }

@@ -142,6 +142,7 @@ struct CalculationView: View {
             }
             .onAppear(perform: {
                 fetchData()
+                
             })
             .toolbar {
                 if (totalCalories > 0) {
@@ -177,7 +178,7 @@ struct CalculationView: View {
                         fetchData()
                     }
                 )
-                .presentationDetents([.medium, .large])
+                .presentationDetents([.large])
             }
             .navigationTitle("Calories")
         }
