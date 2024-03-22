@@ -114,19 +114,22 @@ struct HomeListView: View {
                                                             Color.textColor.opacity(0.15)
                                                             Text("New")
                                                                 .bold()
-                                                                .font(.system(20))
+                                                                .font(.system(size: 30))
                                                                 .foregroundStyle(Color.mainColor)
                                                                 .padding()
+
                                                         }
                                                     }.frame(width: 185, height: 185)
                                                         .cornerRadius(10)
-                                                        .matchedGeometryEffect(id: "newOnlineImage", in: nameSpace)
-                                                        .onTapGesture {
-                                                            withAnimation(.spring) {
-                                                                onlineImageExpanded.toggle()
-                                                                selectedOnlineImage = newImage
-                                                            }
-                                                        }
+                                                    
+                                                        .onLongPressGesture(perform: {
+                                                            CommonFunctions.Functions.getHapticFeedback(impact: .rigid)
+                                                                withAnimation(.spring) {
+                                                                    onlineImageExpanded.toggle()
+                                                                    selectedOnlineImage = newImage
+                                                                }
+                                                        })
+                                                       
                                                 }
                                             }
                                         }
@@ -250,24 +253,23 @@ struct HomeListView: View {
                         Capsule()
                             .fill(Color.textColor.opacity(0.15))
                             .frame(width: 40, height: 5)
-                        
-                        ZStack{
-                            Image(uiImage: selectedOnlineImage)
+                        VStack(alignment: .leading){
+                            Image(uiImage: selectedOnlineImage!)
                                 .resizable()
                                 .scaledToFill()
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
-                                
-                            ZStack(alignment: .bottomLeading){
-                                Color.textColor.opacity(0.15)
+                                .matchedGeometryEffect(id: "onlineImage", in: nameSpace)
+                                .frame(width: 300, height: 300)
+                            
+                            HStack{
                                 Text("New")
+                                    .matchedGeometryEffect(id: "AlbumTitle", in: nameSpace)
                                     .bold()
-                                    .font(.system(40))
-                                    .foregroundStyle(Color.mainColor)
-                                    .padding()
-                            }
-                        }.frame(width: 300, height: 300)
-                            .cornerRadius(10)
-                            .matchedGeometryEffect(id: "newOnlineImage", in: nameSpace)
+                                    .font(.system(size: 40))
+                                    .foregroundStyle(Color.textColor)
+                                Spacer()
+                            }.padding(.top, 10)
+                        }.padding()
                     }
                 }.frame(maxWidth: .infinity,maxHeight: .infinity)
                     .background(.thinMaterial)
