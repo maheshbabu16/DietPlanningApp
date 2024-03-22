@@ -93,7 +93,7 @@ struct CalculateDetailScreen: View {
                         }
                         dismissSheetHandler?()
                     }) {
-                        Image(systemName: "calendar.badge.checkmark.rtl")
+                        Image(systemName: "checkmark.rectangle.stack")
                             .foregroundColor(.accentColor) // Adjust color as needed
                     }
                 }
@@ -102,10 +102,7 @@ struct CalculateDetailScreen: View {
             .navigationBarTitleDisplayMode(.inline)
             .sheet(isPresented: $addMealToggle) {
             } content: {
-                NewDummyScreen {
-                    self.addMealToggle.toggle()
-                    self.dismissSheetHandler?()
-                }
+                
             }
         }
     }
@@ -135,32 +132,5 @@ struct CalculateDetailScreen: View {
                 CommonFunctions.Functions.getHapticFeedback(impact: .light)
             }
         } else { print("Error: Unable to convert one or both values to Int.")  }
-    }
-}
-//#Preview {
-//    CalculateDetailScreen(calCountDatabase: .constant([]))
-////    NewDummyScreen()
-//        .preferredColorScheme(.dark)
-//}
-
-struct NewDummyScreen: View {
-    var dismissSheetHandler: (() -> Void)?
-
-    var body: some View {
-        
-        NavigationStack{
-            ZStack{
-                
-            }
-            .navigationTitle("Add quantity")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {dismissSheetHandler?()}) {
-                        Image(systemName: "plus.circle.fill")
-                            .foregroundColor(.accentColor) // Adjust color as needed
-                    }
-                }
-            }
-        }
     }
 }
