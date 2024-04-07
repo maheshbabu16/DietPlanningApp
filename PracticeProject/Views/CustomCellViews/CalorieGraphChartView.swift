@@ -21,14 +21,14 @@ struct CalorieGraphChartView : View{
             if foodDataStorage.count > 0{
                 Chart{
                     ForEach(foodDataStorage){ data in
-                        
                         BarMark(x: .value("Food", data.name), y: .value("Calories", data.calCount))
                             .foregroundStyle(Color.titleGradientColor)
                     }
                 }.padding()
             } else {
-                Text("Add your diet chart to show data.")
-                    .bold()
+                AddYourDataView {
+                    
+                }
             }
         }.frame(height: cardHeight)
     }

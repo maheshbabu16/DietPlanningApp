@@ -72,7 +72,7 @@ struct LogInView: View {
                             .bold()
                     }
                     .frame(width:200, height: 50)
-                    .background(Color.titleGradientColor)
+                    .background(Color.brownBlackGradient)
                     .cornerRadius(10).padding(.top, 20.0)
                     
                     .alert(isPresented: $showsAlert) {

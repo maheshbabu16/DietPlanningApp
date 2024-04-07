@@ -17,7 +17,7 @@ struct UserStatisticsView: View {
     @State private var foodDataStorage : [CalorieModel] = []
     @State var userWorkout     : [SheduleWorkoutModel]  = []
     @State var chartData               : [UserChart]    = []
-
+    
     var totalCalories: Int {
         foodDataStorage.reduce(0) { $0 + (Int($1.calCount) ) }
     }
@@ -69,10 +69,10 @@ struct UserStatisticsView: View {
                     }.frame(height: 185)
                         .listRowSeparator(.hidden)
                 }header: {
-                        Text("Your Activity")
-                            .bold()
-                            .font(.title2)
-                            .foregroundStyle(Color.textColor)
+                    Text("Your Activity")
+                        .bold()
+                        .font(.title2)
+                        .foregroundStyle(Color.textColor)
                 }
                 
                 Section{
@@ -90,13 +90,11 @@ struct UserStatisticsView: View {
                         .bold()
                         .font(.title2)
                         .foregroundStyle(Color.textColor)
-                    
                 }
                 
                 Section{
                     CalorieGraphChartView(foodDataStorage: $foodDataStorage, cardHeight: foodDataStorage.count > 0 ? 300 : 200)
                         .listRowSeparator(.hidden)
-                        
                 }header: {
                     Text("Calorie graph")
                         .bold()
@@ -110,8 +108,8 @@ struct UserStatisticsView: View {
         }
         .onAppear(perform: {
             addChartData()
-//            fetchCalData()
-//            fetchWorkoutData()
+            fetchCalData()
+            fetchWorkoutData()
             totalCaloriesStr = foodDataStorage.count > 0 ? String(totalCalories) : "0"
         })
     }

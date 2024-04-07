@@ -24,7 +24,8 @@ struct SignUPScreen: View {
             ZStack{
                 Color.black.ignoresSafeArea()
                 VStack{
-                    
+                    Spacer()
+                    Spacer()
                     //MARK: - Username textfeild
                     LoginTextFeildView(textFeildStr: $strNewUserName, placeHolder: "Create UserName", textFeildType: .regular)
                         .frame(height: 60)
@@ -37,6 +38,7 @@ struct SignUPScreen: View {
                         .padding(.horizontal, 20.0)
                         .padding(.vertical, 5.0)
                     
+                    Spacer()
                     //MARK: - Signup button
                     Button{
                         if !(strNewPassword == "" && strNewUserName == ""){
@@ -49,14 +51,16 @@ struct SignUPScreen: View {
                         }
                         
                     }label: {
-                        Text("Sign up")
-                            .foregroundStyle(Color.black)
-                            .font(.system(size: 20))
-                            .bold()
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.blue)
+                            Text("Sign up")
+                                .bold()
+                                .foregroundStyle(Color.white)
+                        }.frame(width: 200, height: 50)
                     }
-                    .frame(width:200, height: 50)
-                    .background(Color.blueYellowGradient)
-                    .cornerRadius(10).padding(.top, 20.0)
+                    Spacer()
+                    
                 }.blur(radius: presentSuccessScreen ? 3.0 : 0.0)
                
             }

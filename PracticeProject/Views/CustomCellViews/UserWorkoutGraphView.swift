@@ -15,6 +15,11 @@ struct UserWorkoutGraphView : View {
         ZStack{
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.textColor.opacity(0.1))
+            if userWorkout.isEmpty {
+                AddYourDataView(addButtonBlockHandler: {
+                    
+                })
+            }else {
                 HStack(spacing: 10){
                     ForEach(userWorkout){ user in
                         VStack(spacing:10){
@@ -27,9 +32,10 @@ struct UserWorkoutGraphView : View {
                                 .frame(height: 10)
                         }
                     }
-                }.padding(.vertical)
+                }
+                .padding(.vertical)
                 .padding(.horizontal, 10)
+            }
         }.frame(height: cardHeight)
-
     }
 }

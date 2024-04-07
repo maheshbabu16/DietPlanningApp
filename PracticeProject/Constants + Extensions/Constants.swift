@@ -28,7 +28,4 @@ struct CommonFunctions{
         
     }
     
-    enum getStringFunctions{
-        
-    }
 }

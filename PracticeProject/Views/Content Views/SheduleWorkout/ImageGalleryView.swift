@@ -25,14 +25,11 @@ struct ImageGalleryView: View {
                             withAnimation {
                                 ForEach(apiManager.imageArray) { images in
                                     if let newImage = images.image{
-                                        NavigationLink {
-
-                                        } label: {
-                                            Image(uiImage: newImage)
-                                                .resizable()
-                                                .scaledToFit()
-                                                .cornerRadius(10)
-                                        }.frame(height: 185)
+                                        Image(uiImage: newImage)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .cornerRadius(10)
+                                            .frame(height: 185)
                                             .cornerRadius(10)
                                     }
                                 }

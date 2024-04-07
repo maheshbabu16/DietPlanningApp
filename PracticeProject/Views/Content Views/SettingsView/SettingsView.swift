@@ -31,6 +31,7 @@ struct SettingsView: View {
     @State fileprivate var shouldRedirectToLogIn = false
     @State private var editSheetPresented : Bool = false
     @State private var showChangePasswordSheet : Bool = false
+    @State private var changeAppIconSheet : Bool = false
     
     @State var deviceAppearanceImage : String = ""
     @State var profileUsername: String = ""
@@ -163,35 +164,15 @@ struct SettingsView: View {
                                     Text("Select Icon").font(.system(size: 14))
                                 }
                                 Spacer()
-                                
-                                Menu {
-                                  Text("Choose Icon")
-                                    Picker(selection: $activeAppIcon) {
-                                        
-                                        HStack{
-                                            Image("IconApp").resizable().frame(width: 30, height: 30)
-                                            Text("Original")
-                                        }.tag("AppIcon")
-                                        
-                                        HStack{
-                                            Image("pIcon").resizable().frame(width: 30, height: 30)
-                                            Text("P Icon")
-                                        }.tag("AppIcon2")
-                                        
-                                        HStack{
-                                            Image("rainbow").resizable().frame(width: 30, height: 30)
-                                            Text("Rainbow Icon")
-                                        }.tag("AppIcon3")
-                                        
-                                    } label: {
-                                        Text("Select icon")
-                                    }.pickerStyle(InlinePickerStyle())
-                                    
-                                } label: {
+                                Button(action: {
+                                    self.changeAppIconSheet.toggle()
+                                }, label: {
                                     Image(systemName: "ellipsis")
                                         .font(.system(size: 20))
                                         .foregroundStyle(Color.red)
-                                }
+                                })
+                               
+                                    
                             }
                         }header: {
                             HStack{
@@ -202,6 +183,14 @@ struct SettingsView: View {
                         
                         //MARK: - Help Section
                         Section{
+                            NavigationLink {
+                                
+                            } label: {
+                                HStack{
+                                    Image(systemName: "rays").foregroundStyle(Color.orange)
+                                    Text("Tips")
+                                }
+                            }
                             
                             HStack{
                                 Image(systemName: "exclamationmark.bubble").foregroundStyle(Color.yellow)
@@ -215,42 +204,14 @@ struct SettingsView: View {
                                 }.pickerStyle(NavigationLinkPickerStyle()).font(.system(size: 15))
                             }
                             
-                            HStack{
-                                HStack{
-                                    Image(systemName: "waveform")
-                                    Text("Version").font(.system(size: 14))
-                                }
-                                Spacer()
-                                Text("1.0.0").font(.system(size: 14))
-                            }
                         }header: {
                             HStack{
                                 Image(systemName: "externaldrive.badge.exclamationmark")
                                 Text("Help")
                             }
                         }
-                        
-                        //MARK: - Credentials Section
                         Section{
-                            
-                            Button{
-                                self.showsLogOutAlert = true
-                            }label: {
-                                HStack{
-                                    Image(systemName: "arrow.backward.circle").foregroundStyle(Color.btnGradientColor)
-                                    Text("Log Out")
-                                        .font(.system(size: 14))
-                                        .foregroundStyle(Color.primary)
-                                }
-                                
-                            }.alert(isPresented: $showsLogOutAlert) {
-                                Alert(title: Text("Log Out"), message: Text("Click yes if you wish to logout"), primaryButton: .destructive(Text("Log Out"),
-                                                                                                                                            action: {
-                                    userDataM[0].isLoginApproved = false
-                                    shouldRedirectToLogIn = true
-                                }), secondaryButton: .cancel())
-                            }
-                            
+
                             Button{
                                 self.deleteAccountAlert = true
                             } label: {
@@ -272,15 +233,6 @@ struct SettingsView: View {
                                 }
                             })
                             
-                        }header: {
-                            HStack{
-                                Image(systemName: "key.viewfinder")
-                                Text("Credentials")
-                            }
-                        }
-                        
-                        //MARK: - Database Section
-                        Section{
                             Button{
                                 
                             }label: {
@@ -291,11 +243,41 @@ struct SettingsView: View {
                                         .foregroundStyle(Color.btnGradientColor)
                                 }
                             }
-                        }header: {
+                        }
+                        
+                        HStack{
                             HStack{
-                                Image(systemName: "tray.full")
-                                Text("DataBase")
+                                Image(systemName: "waveform")
+                                Text("Version").font(.system(size: 14))
                             }
+                            Spacer()
+                            Text("1.0.0").font(.system(size: 14))
+                        }
+                        
+                        //MARK: - LogOut Button
+                        Section{
+                            Button{
+                                self.showsLogOutAlert = true
+                                UserDefaults.standard.removeObject(forKey: "UserLogIN")
+                            }label: {
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(Color.textColor.opacity(0.15))
+                                    HStack{
+                                        Image(systemName: "shareplay.slash")
+                                        Text("Logout")
+                                            .bold()
+                                            .font(.system(size: 16))
+                                    }.foregroundStyle(Color.red)
+                                }.frame(height: 50)
+                            }.alert(isPresented: $showsLogOutAlert) {
+                                Alert(title: Text("Log Out"), message: Text("Click yes if you wish to logout"), primaryButton: .destructive(Text("Log Out"),
+                                                                                                                                            action: {
+                                    userDataM[0].isLoginApproved = false
+                                    shouldRedirectToLogIn = true
+                                }), secondaryButton: .cancel())
+                            }
+                            .listRowBackground(Color.clear)
                         }
                     }
                     .navigationTitle("Settings")
@@ -303,17 +285,20 @@ struct SettingsView: View {
                         
                         withAnimation {
                             // Apply appearance changes when the selected style changes
-                            if deviceAppearance == .unspecified {
-                                deviceAppearanceImage = "livephoto.badge.automatic"
-                            } else if deviceAppearance == .light {
+                            switch deviceAppearance {
+                            case .light:
                                 deviceAppearanceImage = "sun.min"
-                            }else if deviceAppearance == .dark {
+                                
+                            case .dark:
                                 deviceAppearanceImage = "moon.stars"
+                                
+                            default:
+                                deviceAppearanceImage = "livephoto.badge.automatic"
                             }
                         }
-                            UIApplication.shared.windows.forEach { window in
-                                window.overrideUserInterfaceStyle = appearnce
-                            }
+                        UIApplication.shared.windows.forEach { window in
+                            window.overrideUserInterfaceStyle = appearnce
+                        }
                     }
                 }.sheet(isPresented: $editSheetPresented, onDismiss: {
                     strUserName = userDataM.count > 0 ? userDataM[0].name : "Your name displays here"
@@ -331,7 +316,14 @@ struct SettingsView: View {
                         
                         self.showChangePasswordSheet.toggle()
                     }, sheetType: .changePassword)
-                    .presentationDetents([.medium, .large])                }
+                    .presentationDetents([.fraction(0.75), .large])   
+                }
+                .sheet(isPresented: $changeAppIconSheet, onDismiss: {
+                    
+                }, content: {
+                    ChangeAppIconScreen()
+                        .presentationDragIndicator(.visible)
+                })
             }
         }.onChange(of: activeAppIcon, perform: { newIcon in
             UserDefaults.standard.setValue(newIcon, forKey: "active_icon")
@@ -358,10 +350,71 @@ struct SettingsView: View {
         }
         
         func deleteDataBase(){
-            do { try dataFromDataBase.delete(model: UserDataModel.self) } catch { print("Failed to clear all data.") } }
+            do {
+                try dataFromDataBase.delete(model: UserDataModel.self) } catch { print("Failed to clear all data.") }
+        }
     }
 }
 
 #Preview {
-    SettingsView()
+    ChangeAppIconScreen()
+}
+
+struct SelectItemView: View{
+    var iconName: String
+    var iconImage: String
+    
+    var body: some View{
+        ZStack{
+            ZStack(alignment: .topTrailing){
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.textColor.opacity(0.15))
+                    .stroke( Color.clear, lineWidth: 2.5)
+                Image(systemName: "circle")
+                    .foregroundStyle(Color.main)
+                    .padding([.top, .trailing], 10)
+            }
+            VStack{
+                Image("\(iconImage)")
+                    .resizable()
+                    .scaledToFit()
+                Text("App Icon")
+            }.padding()
+        }.frame(width: 150, height: 175)
+            .padding(5)
+    }
+}
+struct ChangeAppIconScreen: View{
+    @State var appIconList : [String] = ["IconApp","pIcon","rainbow", "IconApp","pIcon","rainbow"]
+    let columns = [
+        GridItem(.flexible(minimum: 100)),
+        GridItem(.flexible(minimum: 100))
+    ]
+    var body: some View{
+        NavigationStack{
+            ZStack(alignment: .bottom){
+                ScrollView(.vertical) {
+                    LazyVGrid(columns: columns, spacing: 25) {
+                        ForEach(appIconList, id: \.self) { appIcon in
+                            SelectItemView(iconName: appIcon, iconImage: appIcon)
+                        }
+                    }
+                }.padding(.horizontal)
+                    Button {
+                        
+                    }label: {
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.blue)
+                            
+                            Text("Save")
+                                .bold()
+                                .foregroundStyle(Color.white)
+                        }.frame(width: 300, height: 50)
+                    }.padding(.bottom, 20)
+            }
+            .navigationTitle("Choose app icon")
+            .toolbarTitleDisplayMode(.inline)
+        }
+    }
 }

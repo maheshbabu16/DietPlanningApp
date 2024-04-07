@@ -21,24 +21,9 @@ struct SheduleWorkOutView: View {
         NavigationStack{
             ZStack {
                 if (userWorkout.count == 0){
-                    VStack{
-                        Text("Add your data from here")
-                            .font(.system(size: 18))
-                        
-                        Button{
-                            self.presentWorkoutSheet.toggle()
-                            CommonFunctions.Functions.getHapticFeedback(impact: .light)
-                        }label: {
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color.textColor.opacity(0.15))
-                                Image(systemName: "plus")
-                                    .resizable()
-                                    .frame(width: 15, height: 15)
-                                    .foregroundStyle(Color.blue)
-                            }
-                        }.frame(width: 40, height: 40).padding(.top, 5)
-                    }
+                    AddYourDataView(addButtonBlockHandler: {
+                        self.presentWorkoutSheet.toggle()
+                    })
                 }else {
                     List {
                         ForEach(userWorkout){ item in

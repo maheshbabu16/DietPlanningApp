@@ -33,23 +33,9 @@ struct CalculationView: View {
             
             ZStack{
                 if !(totalCalories > 0) {
-                    VStack{
-                        Text("Add your data")
-                            .font(.system(size: 18))
-                        Button{
-                            isSheetPresented.toggle()
-                        }label: {
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 20)
-                                    .fill(Color.textColor.opacity(0.15))
-                                Image(systemName: "plus")
-                                    .resizable()
-                                    .frame(width: 15, height: 15)
-                                    .foregroundStyle(Color.blue)
-                            }
-                        }.frame(width: 40, height: 40).padding(.top, 5)
+                    AddYourDataView {
+                        self.isSheetPresented.toggle()
                     }
-                    
                 } else {
                     List{
                         Section{
