@@ -55,9 +55,9 @@ struct LogInView: View {
                     //MARK: - Login button
                     Button{
                         if checkLogIn(){
-                            NavigationLink("") {
-                                TabListView()
-                            }
+//                            NavigationLink("") {
+//                                TabListView()
+//                            }
                             CommonFunctions.Functions.getHapticFeedback(impact: .light)
                         } else {
                             showsAlert = true
@@ -138,6 +138,13 @@ struct LogInView: View {
                         
                     }label: {
                         Image(systemName: "person.fill.questionmark")
+                    }.foregroundStyle(Color.white)
+                }
+                ToolbarItem(placement: .topBarTrailing) {
+                    NavigationLink{
+                     SettingsView(isLogInScreen: true)
+                    }label: {
+                        Image(systemName: "gear")
                     }.foregroundStyle(Color.white)
                 }
             })

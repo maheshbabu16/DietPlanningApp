@@ -129,9 +129,9 @@ struct ThemePrefrenceIntroView: View {
                     }.frame(maxHeight: .infinity)
                     VStack(spacing: 20){
                         NavigationLink {
-                            CalorieTargetView {
+                            CalorieTargetView(selectedColorScheme: selectedButtonTag, skipButtonBlockHandler: {
                                 skipButtonBlockHandler?()
-                            }
+                            })
                         }label: {
                             ZStack{
                                 RoundedRectangle(cornerRadius: 10)
@@ -144,7 +144,9 @@ struct ThemePrefrenceIntroView: View {
                         }
                         
                         NavigationLink {
-                            CalorieTargetView { skipButtonBlockHandler?() }
+                            CalorieTargetView(skipButtonBlockHandler: {
+                                skipButtonBlockHandler?()
+                            })
                         }label: {
                             Text("Not now")
                                 .bold()
@@ -157,16 +159,6 @@ struct ThemePrefrenceIntroView: View {
 }
 
 extension ThemePrefrenceIntroView{
-//    if colorPrefrence : 0 = Auto || 1 = Light || 2 = Dark
-    func saveUserPrefrenceThemeData(colorPrefrence : Int) {
-        let userID =  UserDefaults.standard.value(forKey: "UserID") as! String
-        let userPrefrenceData = UserPrefrences(userID: userID, colorScheme: selectedButtonTag, isAccountPrivate: false, preferedAppIcon: "")
-        withAnimation {
-            modelContext.insert(userPrefrenceData)
-            CommonFunctions.Functions.getHapticFeedback(impact: .light)
-        }
-    }
-    
     func changeDeviceTheme(mode: UIUserInterfaceStyle){
         UIApplication.shared.windows.forEach { window in
             window.overrideUserInterfaceStyle = mode

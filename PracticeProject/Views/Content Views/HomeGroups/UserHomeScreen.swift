@@ -207,26 +207,23 @@ struct UserHomeScreen: View {
                         Spacer()
                     }.padding([.horizontal, .top])
                 }
-            }
-            
+            }.onAppear(perform: {
+                fetchCalData()
+                totalCaloriesStr = foodDataStorage.count > 0 ? String(totalCalories) : "0"
+                if let user = UserDefaults.standard.object(forKey: "UserLogIN")as? Int, user == 0{
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                        showDarkModeScreen.toggle()
+                    }
+                }
+            })
             
             .sheet(isPresented: $showDarkModeScreen) {
                 UserDefaults.standard.setValue(1, forKey: "UserLogIN")
             } content: {
                 ThemePrefrenceIntroView {
                     showDarkModeScreen.toggle()
-                }
-            }.interactiveDismissDisabled(false)
-            
-            .onAppear(perform: {
-            fetchCalData()
-            totalCaloriesStr = foodDataStorage.count > 0 ? String(totalCalories) : "0"
-            if let user = UserDefaults.standard.object(forKey: "UserLogIN")as? Int, user == 0{
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                    showDarkModeScreen.toggle()
-                }
+                }.interactiveDismissDisabled()
             }
-        })
     }
 }
 extension UserHomeScreen{

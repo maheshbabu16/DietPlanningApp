@@ -10,6 +10,8 @@ import SwiftUI
 struct CalorieTargetView: View {
     
     @State var carCountData: Int = 1000
+    
+    var selectedColorScheme : Int = 0
     var skipButtonBlockHandler : (() -> Void)?
 
     var body: some View {
@@ -63,7 +65,7 @@ struct CalorieTargetView: View {
                 VStack(spacing: 20){
                     
                     NavigationLink{
-                        BMISuggestionView {
+                        BMISuggestionView(selectedColorScheme: selectedColorScheme, userCalorieTarget: carCountData) {
                             skipButtonBlockHandler?()
                         }
                     }label: {
@@ -78,7 +80,7 @@ struct CalorieTargetView: View {
                     }
                     
                     NavigationLink{
-                        BMISuggestionView {
+                        BMISuggestionView(selectedColorScheme: selectedColorScheme) {
                             skipButtonBlockHandler?()
                         }
                     }label: {

@@ -11,6 +11,9 @@ struct BMISuggestionView: View {
     
     @State private var calculateBMI : Bool = false
     
+     var selectedColorScheme : Int = 0
+     var userCalorieTarget : Int = 0
+    
     var skipButtonBlockHandler : (() -> Void)?
 
     var body: some View {
@@ -53,7 +56,7 @@ struct BMISuggestionView: View {
                     }
                     
                     NavigationLink{
-                        GetStartedView {
+                        GetStartedView(selectedColorScheme: selectedColorScheme, userCalorieTarget: userCalorieTarget) {
                             skipButtonBlockHandler?()
                         }
                     }label: {

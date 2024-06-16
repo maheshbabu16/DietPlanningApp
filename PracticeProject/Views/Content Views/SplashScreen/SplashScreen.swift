@@ -13,10 +13,14 @@ struct SplashScreen: View {
     //MARK: - Property Wrappers for variables
     
     @State var isSplashScreenActive: Bool = false
+
     @Query(filter: #Predicate<UserDataModel> { data in
         data.isLoginApproved == true
     }) var fetchDataBase: [UserDataModel]
     
+    
+    @Environment(\.modelContext) var formData
+
     //MARK: - Body View
     
     var body: some View {

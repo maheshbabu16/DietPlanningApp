@@ -41,6 +41,7 @@ struct SettingsView: View {
     @State private var fontSize: CGFloat = 5
     @State private var deviceAppearance: UIUserInterfaceStyle = .unspecified
     
+    var isLogInScreen : Bool = false
     //MARK: - Body for main view
     var body: some View {
         
@@ -52,39 +53,40 @@ struct SettingsView: View {
                 ZStack{
                     List {
                         
-                        //MARK: - Profile Section
-                        Section{
-                            HStack {
-                                Text("\(strUserName)")
-                                    .minimumScaleFactor(0.1)
-                                    .lineLimit(1)
-                                    .font(.system(size: 25))
-                                    .bold()
-                                    .padding(.leading)
-                                Spacer()
-                                Button{
-                                    self.profileUsername = userDataM[0].name
-                                    self.editSheetPresented.toggle()
-                                    CommonFunctions.Functions.getHapticFeedback(impact: .light)
-                                }label: {
-                                    ZStack {
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .fill(Color.blue.opacity(0.25))
-                                        Image(systemName: "pencil").foregroundStyle(Color.primary)
+                        if !isLogInScreen{
+                            //MARK: - Profile Section
+                            Section{
+                                HStack {
+                                    Text("\(strUserName)")
+                                        .minimumScaleFactor(0.1)
+                                        .lineLimit(1)
+                                        .font(.system(size: 25))
+                                        .bold()
+                                        .padding(.leading)
+                                    Spacer()
+                                    Button{
+                                        self.profileUsername = userDataM[0].name
+                                        self.editSheetPresented.toggle()
+                                        CommonFunctions.Functions.getHapticFeedback(impact: .light)
+                                    }label: {
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 20)
+                                                .fill(Color.blue.opacity(0.25))
+                                            Image(systemName: "pencil").foregroundStyle(Color.primary)
+                                        }
+                                        .frame(width: 40 ,height: 40)
                                     }
-                                    .frame(width: 40 ,height: 40)
-                                }
-                            }.padding(.vertical, 5)
-                            
-                            
+                                }.padding(.vertical, 5)
+                                
+                                
+                            }
+                        header: {
+                            HStack{
+                                Image(systemName: "person.fill")
+                                Text("Profile")
+                            }
                         }
-                    header: {
-                        HStack{
-                            Image(systemName: "person.fill")
-                            Text("Profile")
                         }
-                    }
-                        
                         //MARK: - Notifications Section
                         Section{
                             HStack{
@@ -113,35 +115,36 @@ struct SettingsView: View {
                         }header: {}
                         
                         
-                        //MARK: - Account Section
-                        Section{
-                            
-                            HStack {
-                                Button{
-                                    self.showChangePasswordSheet.toggle()
-                                }label: {
-                                    Image(systemName: "key.radiowaves.forward").foregroundStyle(Color.blue)
-                                }
-                                Text("Change Password")
-                                    .font(.system(size: 14))
-                            }
-                            HStack{
-                                Image(systemName: "\(lockIconStr)")
-                                Toggle(isOn: $isPrivate) {
-                                    Text("Private account")
-                                        .foregroundStyle(Color.textColor)
+                        if !isLogInScreen{
+                            //MARK: - Account Section
+                            Section{
+                                
+                                HStack {
+                                    Button{
+                                        self.showChangePasswordSheet.toggle()
+                                    }label: {
+                                        Image(systemName: "key.radiowaves.forward").foregroundStyle(Color.blue)
+                                    }
+                                    Text("Change Password")
                                         .font(.system(size: 14))
-                                    
-                                }.onChange(of: isPrivate) { newValue in
-                                    withAnimation(.smooth) {
-                                        lockIconStr = newValue ? "lock" : "lock.open"
+                                }
+                                HStack{
+                                    Image(systemName: "\(lockIconStr)")
+                                    Toggle(isOn: $isPrivate) {
+                                        Text("Private account")
+                                            .foregroundStyle(Color.textColor)
+                                            .font(.system(size: 14))
+                                        
+                                    }.onChange(of: isPrivate) { newValue in
+                                        withAnimation(.smooth) {
+                                            lockIconStr = newValue ? "lock" : "lock.open"
+                                        }
                                     }
                                 }
+                            }header: {
+                                Text("Account")
                             }
-                        }header: {
-                            Text("Account")
                         }
-                        
                         //MARK: - Apperance Section
                         Section{
                             
@@ -171,8 +174,8 @@ struct SettingsView: View {
                                         .font(.system(size: 20))
                                         .foregroundStyle(Color.red)
                                 })
-                               
-                                    
+                                
+                                
                             }
                         }header: {
                             HStack{
@@ -210,8 +213,10 @@ struct SettingsView: View {
                                 Text("Help")
                             }
                         }
+                        
+                        if !isLogInScreen{
                         Section{
-
+                            
                             Button{
                                 self.deleteAccountAlert = true
                             } label: {
@@ -229,6 +234,7 @@ struct SettingsView: View {
                                 }
                                 
                                 Button("Erase account", role: .destructive) {
+                                    UserDefaults.standard.removeObject(forKey: "UserLogIN")
                                     self.deleteAccountAction()
                                 }
                             })
@@ -253,31 +259,33 @@ struct SettingsView: View {
                             Spacer()
                             Text("1.0.0").font(.system(size: 14))
                         }
+                    }
                         
-                        //MARK: - LogOut Button
-                        Section{
-                            Button{
-                                self.showsLogOutAlert = true
-                                UserDefaults.standard.removeObject(forKey: "UserLogIN")
-                            }label: {
-                                ZStack{
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .fill(Color.textColor.opacity(0.15))
-                                    HStack{
-                                        Image(systemName: "shareplay.slash")
-                                        Text("Logout")
-                                            .bold()
-                                            .font(.system(size: 16))
-                                    }.foregroundStyle(Color.red)
-                                }.frame(height: 50)
-                            }.alert(isPresented: $showsLogOutAlert) {
-                                Alert(title: Text("Log Out"), message: Text("Click yes if you wish to logout"), primaryButton: .destructive(Text("Log Out"),
-                                                                                                                                            action: {
-                                    userDataM[0].isLoginApproved = false
-                                    shouldRedirectToLogIn = true
-                                }), secondaryButton: .cancel())
+                        if !isLogInScreen{
+                            //MARK: - LogOut Button
+                            Section{
+                                Button{
+                                    self.showsLogOutAlert = true
+                                }label: {
+                                    ZStack{
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(Color.textColor.opacity(0.15))
+                                        HStack{
+                                            Image(systemName: "shareplay.slash")
+                                            Text("Logout")
+                                                .bold()
+                                                .font(.system(size: 16))
+                                        }.foregroundStyle(Color.red)
+                                    }.frame(height: 50)
+                                }.alert(isPresented: $showsLogOutAlert) {
+                                    Alert(title: Text("Log Out"), message: Text("Click yes if you wish to logout"), primaryButton: .destructive(Text("Log Out"),
+                                                                                                                                                action: {
+                                        userDataM[0].isLoginApproved = false
+                                        shouldRedirectToLogIn = true
+                                    }), secondaryButton: .cancel())
+                                }
+                                .listRowBackground(Color.clear)
                             }
-                            .listRowBackground(Color.clear)
                         }
                     }
                     .navigationTitle("Settings")
@@ -351,7 +359,9 @@ struct SettingsView: View {
         
         func deleteDataBase(){
             do {
-                try dataFromDataBase.delete(model: UserDataModel.self) } catch { print("Failed to clear all data.") }
+                try dataFromDataBase.delete(model: UserDataModel.self)
+            } catch {
+                print("Failed to clear all data.") }
         }
     }
 }
@@ -384,6 +394,7 @@ struct SelectItemView: View{
             .padding(5)
     }
 }
+
 struct ChangeAppIconScreen: View{
     @State var appIconList : [String] = ["IconApp","pIcon","rainbow", "IconApp","pIcon","rainbow"]
     let columns = [

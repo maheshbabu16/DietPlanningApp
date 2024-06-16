@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct GetStartedView: View {
-    var skipButtonBlockHandler : (() -> Void)?
+    
+    @Environment(\.modelContext) var modelContext
     @State private var showIndicator : Bool = false
+    
+    var selectedColorScheme : Int = 0
+    var userCalorieTarget : Int = 0
+    var skipButtonBlockHandler : (() -> Void)?
     
     var body: some View {
         NavigationStack{
@@ -42,7 +47,8 @@ struct GetStartedView: View {
                 VStack(spacing: 20){
                     Button{
                         if showIndicator{
-                            skipButtonBlockHandler?()
+                            addData()
+                            
                         }
                     }label: {
                         ZStack{
@@ -77,6 +83,20 @@ struct GetStartedView: View {
             .navigationTitle("You are all set now")
             .toolbarTitleDisplayMode(.inline)
         }
+    }
+    
+    func addData() {
+            let userID =  UserDefaults.standard.value(forKey: "UserID") as! String
+            let userPreffData = UserPrefrences(userID: userID,
+                                         colorScheme: selectedColorScheme,
+                                         isAccountPrivate: false,
+                                         userCalorieTarget: userCalorieTarget,
+                                         preferedAppIcon: "")
+            withAnimation {
+                modelContext.insert(userPreffData)
+                CommonFunctions.Functions.getHapticFeedback(impact: .light)
+                skipButtonBlockHandler?()
+            }
     }
 }
 

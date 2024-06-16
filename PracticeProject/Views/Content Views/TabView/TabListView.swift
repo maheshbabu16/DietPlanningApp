@@ -23,7 +23,6 @@ struct TabListView: View {
     //MARK: - Body view
     var body: some View {
         ZStack{
-            
             TabView(selection: $selectedTab){
                 NavigationStack{
                     UserHomeScreen(tabItemTag: $selectedTab)
@@ -39,7 +38,8 @@ struct TabListView: View {
                                             .scaledToFill()
                                             .clipShape(Circle())
                                             .matchedGeometryEffect(id: "profileImageNew", in: profileAnimation)
-                                    }.frame(maxWidth: 50, maxHeight: 50)
+                                    }.matchedGeometryEffect(id: "profileImageBackground", in: profileAnimation)
+                                        .frame(maxWidth: 50, maxHeight: 50)
                                 }
                             }
                         }
@@ -54,7 +54,7 @@ struct TabListView: View {
                     .tabItem { Label("Settings", systemImage: "gear") }.tag(3)
                 
             }.background(.ultraThinMaterial)
-//                .onAppear(perform: { saveDataToUserDefaults() })
+                .onAppear(perform: { saveDataToUserDefaults() })
                 .accentColor(Color.red)
                 .onChange(of: selectedTab) {
                     CommonFunctions.Functions.getHapticFeedback(impact: .heavy)
@@ -67,8 +67,7 @@ struct TabListView: View {
                         .clipShape(Circle())
                         .matchedGeometryEffect(id: "profileImageNew", in: profileAnimation)
                         .frame(maxWidth: 200, maxHeight: 200)
-                }
-//                .matchedGeometryEffect(id: "profileImageBackground", in: profileAnimation)
+                }.matchedGeometryEffect(id: "profileImageBackground", in: profileAnimation)
                     .frame(maxWidth: .infinity,maxHeight: .infinity)
                     .background(.thinMaterial)
                     .onTapGesture {

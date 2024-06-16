@@ -43,24 +43,7 @@ struct CalculationView: View {
                             VStack(spacing: 5){
                                 ForEach(foodDataStorage) { item in
                                     CalculateRowCell(foodItem: item)
-                                    
-                                }.swipeActions(edge: .trailing, allowsFullSwipe: true, content: {
-                                    
-                                    Button{
-                                        
-                                    }label: {
-                                        Image(systemName: "trash")
-                                    }.tint(Color.red)
-                                })
-                                .swipeActions(edge: .leading, allowsFullSwipe: true, content: {
-                                    
-                                    Button{
-                                        
-                                    }label: {
-                                        Image(systemName: "pencil")
-                                    }.tint(Color.blue)
-                                })
-                                
+                                }
                             }
                         } .listRowBackground(Color.clear)
                             .listRowSeparatorTint(Color.clear)
