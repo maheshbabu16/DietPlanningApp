@@ -27,6 +27,8 @@ struct SettingsView: View {
     @State fileprivate var reportIssue: Bool = false
     
     @State fileprivate var isNotificationsEnabled: Bool = false
+    @State fileprivate var isFaceIDEnabled: Bool = false
+    @State fileprivate var faceIDSetupSheet: Bool = false
     
     @State fileprivate var shouldRedirectToLogIn = false
     @State private var editSheetPresented : Bool = false
@@ -96,29 +98,41 @@ struct SettingsView: View {
                                         if newValue{
                                             Task{
                                                 await notificationManager.request()
-                                                
                                             }
-                                        }else {
-                                            if let appSettings = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(appSettings) {
-                                                UIApplication.shared.open(appSettings)
-                                            }
+                                        }else if let appSettings = URL(string: UIApplication.openSettingsURLString), UIApplication.shared.canOpenURL(appSettings) {
+                                            UIApplication.shared.open(appSettings)
                                         }
-                                        
                                     })
                                     .task {
                                         await notificationManager.getAuthorisationStatus()
                                     }
                                     .foregroundStyle(Color("TextColor"))
                                     .font(.system(size: 14))
-                                
                             }
-                        }header: {}
-                        
+                        }
                         
                         if !isLogInScreen{
                             //MARK: - Account Section
                             Section{
-                                
+                                Button{
+                                    faceIDSetupSheet.toggle()
+                                }label: {
+                                    HStack{
+                                        HStack{
+                                            Image(systemName: "faceid")
+                                            Text("Unlock with FaceID").font(.system(size: 14))
+                                        }
+                                        Spacer()
+                                        Image(systemName: "lock.circle.dotted")
+                                    }
+                                }.foregroundStyle(Color.primary)
+                                .sheet(isPresented: $faceIDSetupSheet, content: {
+                                    SetUpFaceIDView(isFaceIDAvailable: $isFaceIDEnabled) {
+                                        faceIDSetupSheet.toggle()
+                                    }
+                                    .interactiveDismissDisabled()
+                                })
+
                                 HStack {
                                     Button{
                                         self.showChangePasswordSheet.toggle()
@@ -145,7 +159,7 @@ struct SettingsView: View {
                                 Text("Account")
                             }
                         }
-                        //MARK: - Apperance Section
+                        //MARK: - Device Section
                         Section{
                             
                             HStack{
@@ -282,6 +296,7 @@ struct SettingsView: View {
                                                                                                                                                 action: {
                                         userDataM[0].isLoginApproved = false
                                         shouldRedirectToLogIn = true
+                                        UserDefaults.standard.removeObject(forKey: "isFaceIDAvailable")
                                     }), secondaryButton: .cancel())
                                 }
                                 .listRowBackground(Color.clear)
@@ -291,8 +306,7 @@ struct SettingsView: View {
                     .navigationTitle("Settings")
                     .onChange(of: deviceAppearance) { appearnce in
                         
-                        withAnimation {
-                            // Apply appearance changes when the selected style changes
+                        withAnimation { /// Apply appearance changes when the selected style changes
                             switch deviceAppearance {
                             case .light:
                                 deviceAppearanceImage = "sun.min"
@@ -367,7 +381,7 @@ struct SettingsView: View {
 }
 
 #Preview {
-    ChangeAppIconScreen()
+    SettingsView()
 }
 
 struct SelectItemView: View{

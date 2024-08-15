@@ -24,19 +24,35 @@ struct SignUPScreen: View {
             ZStack{
                 Color.black.ignoresSafeArea()
                 VStack{
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(Color.white.opacity(0.15))
+                                .frame(maxHeight: 200)
+                                .padding(.horizontal, 20)
+                            VStack{
+                                Image(systemName: "person.badge.plus")
+                                    .resizable()
+                                    .frame(width: 100, height: 100)
+                                    .foregroundStyle(Color.brownBlackGradient)
+                                
+                                Text("Create your credentials")
+                                    .foregroundStyle(.white)
+                                    .padding(.horizontal, 5)
+                                    .minimumScaleFactor(0.2)
+                            }.padding(10)
+                        }.padding(.top, 20)
                     Spacer()
-                    Spacer()
+                    
                     //MARK: - Username textfeild
                     LoginTextFeildView(textFeildStr: $strNewUserName, placeHolder: "Create UserName", textFeildType: .regular)
                         .frame(height: 60)
                         .padding(.horizontal, 20.0)
-                        .padding(.vertical, 5.0)
+                        .padding(.bottom, 5.0)
                     
                     //MARK: - Username textfeild
                     LoginTextFeildView(textFeildStr: $strNewPassword, placeHolder: "Create Password", textFeildType: .passwordFeild)
                         .frame(height: 60)
                         .padding(.horizontal, 20.0)
-                        .padding(.vertical, 5.0)
                     
                     Spacer()
                     //MARK: - Signup button
@@ -76,11 +92,8 @@ struct SignUPScreen: View {
             })
             //MARK: - Toolbar items
             .toolbar {
-                ToolbarItem(placement: .principal) { 
-                    Text("Create Your Credentials")
-                        .font(.system(size: 20))
-                        .fontWeight(.semibold)
-                        .foregroundStyle(Color.white)
+                ToolbarItem(placement: .principal) {
+                    
                 }
             }
         }

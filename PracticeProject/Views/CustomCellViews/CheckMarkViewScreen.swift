@@ -17,11 +17,11 @@ struct CheckMarkViewScreen : View {
                     .resizable()
                     .scaledToFit()
                     .symbolEffect(.bounce, value: animate)
-                    .foregroundStyle(Color.textColor.opacity(0.15))
+                    .foregroundStyle(Color.brownBlackGradient)
                     .padding(50)
                 Text("Success")
                     .bold()
-                    .foregroundStyle(Color.textColor.opacity(0.35))
+                    .foregroundStyle(Color.brownBlackGradient)
             }.padding()
         }.background(.thinMaterial)
             .onAppear(perform: {

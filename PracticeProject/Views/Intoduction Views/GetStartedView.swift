@@ -11,7 +11,7 @@ struct GetStartedView: View {
     
     @Environment(\.modelContext) var modelContext
     @State private var showIndicator : Bool = false
-    
+    @State private var screenTitle : String = ""
     var selectedColorScheme : Int = 0
     var userCalorieTarget : Int = 0
     var skipButtonBlockHandler : (() -> Void)?
@@ -22,7 +22,9 @@ struct GetStartedView: View {
                 ZStack{
                     VStack(spacing: 25){
                         Spacer()
-                        Text("Your prefrences have been saved successfully.")
+                        Text(!showIndicator ?
+                             "Saving your prefrences. Please wait" :
+                             "Your prefrences have been saved successfully.")
                             .font(.title)
                             .multilineTextAlignment(.center)
                             .minimumScaleFactor(0.02)
@@ -43,6 +45,11 @@ struct GetStartedView: View {
                         Spacer()
                     }
                 }.frame(maxHeight: .infinity)
+                    .onAppear(perform: {
+                        screenTitle = showIndicator ?
+                        "Saving your prefrences. Please wait" :
+                        "Your prefrences have been saved successfully."
+                    })
                 
                 VStack(spacing: 20){
                     Button{

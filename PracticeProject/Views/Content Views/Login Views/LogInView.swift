@@ -13,7 +13,7 @@ struct LogInView: View {
     //MARK: - Property Wrappers for variables
     @Environment(\ .modelContext) var logInInfo
     @Query var arrSignUpUserData: [UserDataModel]
-   
+    
     @State private var txtUserName = ""
     @State private var txtPassWord = ""
     @State private var allowLogIn:Bool = false
@@ -30,7 +30,7 @@ struct LogInView: View {
                     Spacer()
                     Spacer()
                     Spacer()
-
+                    
                     LoginTextFeildView(textFeildStr: $txtUserName, placeHolder: "User Name", textFeildType: .regular)
                         .frame(height: 60)
                         .padding(.horizontal, 20.0)
@@ -55,9 +55,9 @@ struct LogInView: View {
                     //MARK: - Login button
                     Button{
                         if checkLogIn(){
-//                            NavigationLink("") {
-//                                TabListView()
-//                            }
+                            //                            NavigationLink("") {
+                            //                                TabListView()
+                            //                            }
                             CommonFunctions.Functions.getHapticFeedback(impact: .light)
                         } else {
                             showsAlert = true
@@ -67,12 +67,12 @@ struct LogInView: View {
                         
                     }label: {
                         Text("Login")
-                            .foregroundStyle(Color.textColor)
+                            .foregroundStyle(Color.white)
                             .font(.system(size: 20))
                             .bold()
                     }
                     .frame(width:200, height: 50)
-                    .background(Color.brownBlackGradient)
+                    .background(Color.blue)
                     .cornerRadius(10).padding(.top, 20.0)
                     
                     .alert(isPresented: $showsAlert) {
@@ -85,7 +85,7 @@ struct LogInView: View {
                         )
                     }
                     Spacer()
-
+                    
                     HStack(spacing: 10){
                         //MARK: - Sign in with apple
                         
@@ -121,7 +121,7 @@ struct LogInView: View {
                             .cornerRadius(10).padding(.top, 20.0)
                     }.padding(.top, 5.0)
                     Spacer()
-                
+                    
                 }
                 //MARK: - Toolbar Contents
                 
@@ -142,7 +142,7 @@ struct LogInView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink{
-                     SettingsView(isLogInScreen: true)
+                        SettingsView(isLogInScreen: true)
                     }label: {
                         Image(systemName: "gear")
                     }.foregroundStyle(Color.white)
