@@ -25,7 +25,7 @@ struct SplashScreen: View {
     
     var body: some View {
         ZStack{
-            if biometry.isAuthenticated{
+            if biometry.isAuthenticated, fetchDataBase.count > 0, fetchDataBase[0].isLoginApproved{
                 TabListView().navigationBarBackButtonHidden()
             }else{
                 if self.isSplashScreenActive {

@@ -7,11 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		182092BA2B8F619D00A13C85 /* OnlineImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182092B92B8F619D00A13C85 /* OnlineImageModel.swift */; };
 		182C51AE2B7E1F660034B91D /* CalculateRowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C51AD2B7E1F660034B91D /* CalculateRowCell.swift */; };
 		182C51B02B7E1FDF0034B91D /* TitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182C51AF2B7E1FDF0034B91D /* TitleHeaderView.swift */; };
 		182C51B12B7E31C30034B91D /* CalorieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CB5A72B7CD0C80051DEC9 /* CalorieModel.swift */; };
-		18308FDE2B7A251B005D9963 /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18308FDD2B7A251B005D9963 /* ChangePasswordView.swift */; };
 		18456B442B7A1BD2001013EF /* LoginTextFeildView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18456B432B7A1BD2001013EF /* LoginTextFeildView.swift */; };
 		185BD2042B91B69B00E31252 /* UserStatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185BD2032B91B69B00E31252 /* UserStatisticsView.swift */; };
 		185BD2062B91D40D00E31252 /* UserChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185BD2052B91D40D00E31252 /* UserChart.swift */; };
@@ -45,7 +43,6 @@
 		FE2820882B03504800A902AA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2820872B03504800A902AA /* Constants.swift */; };
 		FE2F0A0E2B73E0DC0010B400 /* SheduleWorkOutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2F0A0D2B73E0DC0010B400 /* SheduleWorkOutView.swift */; };
 		FE33E7DB2BB9802800DDD502 /* CalorieTargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE33E7DA2BB9802800DDD502 /* CalorieTargetView.swift */; };
-		FE33E7DD2BB9896500DDD502 /* BMISuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE33E7DC2BB9896500DDD502 /* BMISuggestionView.swift */; };
 		FE33E7DF2BB98F0800DDD502 /* GetStartedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE33E7DE2BB98F0800DDD502 /* GetStartedView.swift */; };
 		FE34D2AB2BAE9DDD008403C8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CB5A92B7CDD790051DEC9 /* Extensions.swift */; };
 		FE5893392BC03F6500CD9E81 /* UserHomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5893382BC03F6500CD9E81 /* UserHomeScreen.swift */; };
@@ -53,17 +50,20 @@
 		FE5CCE5D2B02212D00F6F1C3 /* TabListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CCE5C2B02212D00F6F1C3 /* TabListView.swift */; };
 		FE5CCE5F2B02213000F6F1C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE5CCE5E2B02213000F6F1C3 /* Assets.xcassets */; };
 		FE5CCE632B02213000F6F1C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE5CCE622B02213000F6F1C3 /* Preview Assets.xcassets */; };
-		FE5CCE6A2B02219100F6F1C3 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CCE692B02219000F6F1C3 /* Food.swift */; };
 		FE5CCE722B022BE000F6F1C3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CCE712B022BE000F6F1C3 /* SettingsView.swift */; };
 		FE6404F02B0337DD0073CA51 /* CalculationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6404EF2B0337DD0073CA51 /* CalculationView.swift */; };
 		FE8170BD2C6DD3DF00ED3DC8 /* SetUpFaceIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8170BC2C6DD3DF00ED3DC8 /* SetUpFaceIDView.swift */; };
 		FE9C89B82C6BB56D00FEC424 /* BiometryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9C89B72C6BB56D00FEC424 /* BiometryManager.swift */; };
+		FE9EA40A2C8D94CB0049F5D6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9EA4092C8D94CB0049F5D6 /* HomeView.swift */; };
+		FE9EA40C2C8D96D50049F5D6 /* SettingsViewMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9EA40B2C8D96D50049F5D6 /* SettingsViewMethods.swift */; };
+		FE9EA4102C8DAAD80049F5D6 /* ChangeAppIconScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9EA40F2C8DAAD80049F5D6 /* ChangeAppIconScreen.swift */; };
+		FEB4AD442C8DB891002ED76D /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB4AD432C8DB891002ED76D /* ChangePasswordView.swift */; };
+		FEB4AD462C8DB908002ED76D /* BMISuggestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB4AD452C8DB908002ED76D /* BMISuggestionView.swift */; };
 		FEBD70232B31A21B006EC997 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBD70222B31A21B006EC997 /* LogInView.swift */; };
 		FEC1EB602B0244D400DF109E /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC1EB5F2B0244D400DF109E /* SplashScreen.swift */; };
 		FEC966842B03859D00A211D6 /* CalculateDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC966832B03859D00A211D6 /* CalculateDetailScreen.swift */; };
 		FEC966852B03859D00A211D6 /* CalculateDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC966832B03859D00A211D6 /* CalculateDetailScreen.swift */; };
 		FED1CB7D2BC14B3E00BA95C6 /* AddYourDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED1CB7C2BC14B3E00BA95C6 /* AddYourDataView.swift */; };
-		FED9F3142B048996007932C6 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5CCE692B02219000F6F1C3 /* Food.swift */; };
 		FED9F3162B0493E4007932C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE5CCE5E2B02213000F6F1C3 /* Assets.xcassets */; };
 		FEE88AF72B08C363007E953E /* FoodGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE88AF62B08C363007E953E /* FoodGridView.swift */; };
 /* End PBXBuildFile section */
@@ -93,10 +93,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		182092B92B8F619D00A13C85 /* OnlineImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlineImageModel.swift; sourceTree = "<group>"; };
 		182C51AD2B7E1F660034B91D /* CalculateRowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateRowCell.swift; sourceTree = "<group>"; };
 		182C51AF2B7E1FDF0034B91D /* TitleHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleHeaderView.swift; sourceTree = "<group>"; };
-		18308FDD2B7A251B005D9963 /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
 		18456B432B7A1BD2001013EF /* LoginTextFeildView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFeildView.swift; sourceTree = "<group>"; };
 		185BD2032B91B69B00E31252 /* UserStatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatisticsView.swift; sourceTree = "<group>"; };
 		185BD2052B91D40D00E31252 /* UserChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChart.swift; sourceTree = "<group>"; };
@@ -132,7 +130,6 @@
 		FE2820872B03504800A902AA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FE2F0A0D2B73E0DC0010B400 /* SheduleWorkOutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheduleWorkOutView.swift; sourceTree = "<group>"; };
 		FE33E7DA2BB9802800DDD502 /* CalorieTargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalorieTargetView.swift; sourceTree = "<group>"; };
-		FE33E7DC2BB9896500DDD502 /* BMISuggestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BMISuggestionView.swift; sourceTree = "<group>"; };
 		FE33E7DE2BB98F0800DDD502 /* GetStartedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedView.swift; sourceTree = "<group>"; };
 		FE5893382BC03F6500CD9E81 /* UserHomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHomeScreen.swift; sourceTree = "<group>"; };
 		FE5CCE572B02212D00F6F1C3 /* PracticeProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PracticeProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,11 +138,15 @@
 		FE5CCE5E2B02213000F6F1C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE5CCE602B02213000F6F1C3 /* PracticeProject.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PracticeProject.entitlements; sourceTree = "<group>"; };
 		FE5CCE622B02213000F6F1C3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		FE5CCE692B02219000F6F1C3 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		FE5CCE712B022BE000F6F1C3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		FE6404EF2B0337DD0073CA51 /* CalculationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationView.swift; sourceTree = "<group>"; };
 		FE8170BC2C6DD3DF00ED3DC8 /* SetUpFaceIDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpFaceIDView.swift; sourceTree = "<group>"; };
 		FE9C89B72C6BB56D00FEC424 /* BiometryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometryManager.swift; sourceTree = "<group>"; };
+		FE9EA4092C8D94CB0049F5D6 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		FE9EA40B2C8D96D50049F5D6 /* SettingsViewMethods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewMethods.swift; sourceTree = "<group>"; };
+		FE9EA40F2C8DAAD80049F5D6 /* ChangeAppIconScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAppIconScreen.swift; sourceTree = "<group>"; };
+		FEB4AD432C8DB891002ED76D /* ChangePasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		FEB4AD452C8DB908002ED76D /* BMISuggestionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BMISuggestionView.swift; sourceTree = "<group>"; };
 		FEBD70222B31A21B006EC997 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		FEC1EB5F2B0244D400DF109E /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 		FEC966832B03859D00A211D6 /* CalculateDetailScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateDetailScreen.swift; sourceTree = "<group>"; };
@@ -194,9 +195,9 @@
 		185BD2092B91EAF200E31252 /* Intoduction Views */ = {
 			isa = PBXGroup;
 			children = (
+				FEB4AD452C8DB908002ED76D /* BMISuggestionView.swift */,
 				185BD2072B91EAEB00E31252 /* ThemePrefrenceIntroView.swift */,
 				FE33E7DA2BB9802800DDD502 /* CalorieTargetView.swift */,
-				FE33E7DC2BB9896500DDD502 /* BMISuggestionView.swift */,
 				FE33E7DE2BB98F0800DDD502 /* GetStartedView.swift */,
 			);
 			path = "Intoduction Views";
@@ -215,6 +216,7 @@
 		18A15C102B835FA600DF70EE /* HomeGroups */ = {
 			isa = PBXGroup;
 			children = (
+				FE9EA4092C8D94CB0049F5D6 /* HomeView.swift */,
 				FE5893382BC03F6500CD9E81 /* UserHomeScreen.swift */,
 				185BD2032B91B69B00E31252 /* UserStatisticsView.swift */,
 			);
@@ -310,7 +312,9 @@
 			isa = PBXGroup;
 			children = (
 				FE5CCE712B022BE000F6F1C3 /* SettingsView.swift */,
-				18308FDD2B7A251B005D9963 /* ChangePasswordView.swift */,
+				FEB4AD432C8DB891002ED76D /* ChangePasswordView.swift */,
+				FE9EA40B2C8D96D50049F5D6 /* SettingsViewMethods.swift */,
+				FE9EA40F2C8DAAD80049F5D6 /* ChangeAppIconScreen.swift */,
 			);
 			path = SettingsView;
 			sourceTree = "<group>";
@@ -406,8 +410,6 @@
 			isa = PBXGroup;
 			children = (
 				FE5CCE6E2B02226F00F6F1C3 /* SwiftData Models */,
-				FE5CCE692B02219000F6F1C3 /* Food.swift */,
-				182092B92B8F619D00A13C85 /* OnlineImageModel.swift */,
 				185BD2052B91D40D00E31252 /* UserChart.swift */,
 			);
 			path = Model;
@@ -522,7 +524,6 @@
 				FEC966852B03859D00A211D6 /* CalculateDetailScreen.swift in Sources */,
 				182C51B12B7E31C30034B91D /* CalorieModel.swift in Sources */,
 				FE245AE92B026610000EF370 /* FoodWidgets.swift in Sources */,
-				FED9F3142B048996007932C6 /* Food.swift in Sources */,
 				185BD20A2B91FFB500E31252 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -536,6 +537,8 @@
 				182C51AE2B7E1F660034B91D /* CalculateRowCell.swift in Sources */,
 				18456B442B7A1BD2001013EF /* LoginTextFeildView.swift in Sources */,
 				185BD2082B91EAEB00E31252 /* ThemePrefrenceIntroView.swift in Sources */,
+				FEB4AD462C8DB908002ED76D /* BMISuggestionView.swift in Sources */,
+				FE9EA40A2C8D94CB0049F5D6 /* HomeView.swift in Sources */,
 				18A15C192B8483E700DF70EE /* LocationManager.swift in Sources */,
 				FE5CCE5D2B02212D00F6F1C3 /* TabListView.swift in Sources */,
 				185BD2122B95DB3C00E31252 /* UserWorkoutGraphView.swift in Sources */,
@@ -548,7 +551,7 @@
 				18A15C0B2B831ADD00DF70EE /* AddWorkoutSheduleView.swift in Sources */,
 				185BD20E2B95D9F300E31252 /* GraphLegendView.swift in Sources */,
 				FE5CCE5B2B02212D00F6F1C3 /* PracticeProjectApp.swift in Sources */,
-				18308FDE2B7A251B005D9963 /* ChangePasswordView.swift in Sources */,
+				FEB4AD442C8DB891002ED76D /* ChangePasswordView.swift in Sources */,
 				FE6404F02B0337DD0073CA51 /* CalculationView.swift in Sources */,
 				18A6A3612B8F60CF00FEDE7A /* ImageGalleryView.swift in Sources */,
 				FE9C89B82C6BB56D00FEC424 /* BiometryManager.swift in Sources */,
@@ -558,18 +561,17 @@
 				FE33E7DF2BB98F0800DDD502 /* GetStartedView.swift in Sources */,
 				FE5CCE722B022BE000F6F1C3 /* SettingsView.swift in Sources */,
 				185BD2062B91D40D00E31252 /* UserChart.swift in Sources */,
-				182092BA2B8F619D00A13C85 /* OnlineImageModel.swift in Sources */,
+				FE9EA40C2C8D96D50049F5D6 /* SettingsViewMethods.swift in Sources */,
 				187CB5A62B7CD0A80051DEC9 /* SheduleWorkoutModel.swift in Sources */,
 				FEE88AF72B08C363007E953E /* FoodGridView.swift in Sources */,
 				18A15C142B8480AE00DF70EE /* NotificationManager.swift in Sources */,
-				FE33E7DD2BB9896500DDD502 /* BMISuggestionView.swift in Sources */,
 				18C53B282B8F6146000BB575 /* APIManager.swift in Sources */,
 				FE2F0A0E2B73E0DC0010B400 /* SheduleWorkOutView.swift in Sources */,
 				18A15C0D2B8334DF00DF70EE /* FoodCardView.swift in Sources */,
 				187CB5AA2B7CDD790051DEC9 /* Extensions.swift in Sources */,
 				FE33E7DB2BB9802800DDD502 /* CalorieTargetView.swift in Sources */,
 				FE20A7412B4AB24D00B9BD68 /* SignUPScreen.swift in Sources */,
-				FE5CCE6A2B02219100F6F1C3 /* Food.swift in Sources */,
+				FE9EA4102C8DAAD80049F5D6 /* ChangeAppIconScreen.swift in Sources */,
 				FEBD70232B31A21B006EC997 /* LogInView.swift in Sources */,
 				FE5893392BC03F6500CD9E81 /* UserHomeScreen.swift in Sources */,
 				FE2820882B03504800A902AA /* Constants.swift in Sources */,
@@ -593,13 +595,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 467J6N72WG;
+				DEVELOPMENT_TEAM = 97QBUFF38Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FoodWidgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FoodWidgets;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We want to use your location inorder to track your movement all time";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We want to use your location";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -607,8 +612,9 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mahesh.PracticeProject.FoodWidgets;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mahesh.ProjectMS.FoodWidgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -622,13 +628,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 467J6N72WG;
+				DEVELOPMENT_TEAM = 97QBUFF38Q;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FoodWidgets/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FoodWidgets;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We want to use your location inorder to track your movement all time";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We want to use your location";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -636,8 +645,9 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mahesh.PracticeProject.FoodWidgets;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mahesh.ProjectMS.FoodWidgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -765,21 +775,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIcon AppIcon2 AppIcon3";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIconMain AppIcon2 AppIcon3";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon1;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = PracticeProject/PracticeProject.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PracticeProject/Preview Content\"";
-				DEVELOPMENT_TEAM = 467J6N72WG;
+				DEVELOPMENT_TEAM = 97QBUFF38Q;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PracticeProject/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Plan My Diet";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We would like to use FaceID authentication for security purpose";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Diet app wants to use your location always";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Diet app wants to use yout location";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -797,7 +809,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mahesh.PracticeProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mahesh.ProjectMS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -811,21 +823,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIcon AppIcon2 AppIcon3";
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIconMain AppIcon2 AppIcon3";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon1;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = PracticeProject/PracticeProject.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PracticeProject/Preview Content\"";
-				DEVELOPMENT_TEAM = 467J6N72WG;
+				DEVELOPMENT_TEAM = 97QBUFF38Q;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PracticeProject/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Plan My Diet";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "We would like to use FaceID authentication for security purpose";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Diet app wants to use your location always";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Diet app wants to use yout location";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -843,7 +857,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.mahesh.PracticeProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mahesh.ProjectMS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";

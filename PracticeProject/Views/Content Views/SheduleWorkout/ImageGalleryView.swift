@@ -23,15 +23,14 @@ struct ImageGalleryView: View {
                     ScrollView(.vertical){
                         LazyVGrid(columns: columns, alignment: .center, spacing: 0, content: {
                             withAnimation {
-                                ForEach(apiManager.imageArray) { images in
-                                    if let newImage = images.image{
-                                        Image(uiImage: newImage)
+                                ForEach(apiManager.imageArray.indices, id: \.self) { index in
+                                    let image = apiManager.imageArray[index]
+                                        Image(uiImage: image)
                                             .resizable()
                                             .scaledToFit()
                                             .cornerRadius(10)
                                             .frame(height: 185)
                                             .cornerRadius(10)
-                                    }
                                 }
                             }
                         })

@@ -12,6 +12,8 @@ struct ChangePasswordView: View {
     @Binding var textFeildStr: String
     @State var sheetTitle : String = ""
     @State var iconImg : String = ""
+    @State var showView : Bool = false
+    var strPassword: String?
     
     var placeHolder: String = ""
     var strUsername: String = ""
